@@ -4,6 +4,10 @@
     --text1-nav-color:#fff;
     --text2-nav-color:#d0aa20;
     --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
 }
 section{
     padding: 20px 100px;
@@ -91,6 +95,11 @@ header .logo{
     letter-spacing: 2px;
 }
 
+.logo span{
+    color: var(--text2-nav-color);
+    font-size: 45px;
+}
+
 header .navigation{
     position: relative;
     line-height: 75px;
@@ -174,6 +183,112 @@ header.sticky .menu-item .sub-menu{
 .menu-btn{
     display: none;
 }
+
+/* Footer */
+
+footer{
+    width: 100%;
+    color: var(--footer-color);
+}
+
+.footer-link{
+    text-decoration: none;
+}
+
+#footer_content{
+    background-color: var(--bg-footer);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem 3.5rem;
+}
+
+#footer_contacts span{
+    color: var(--text2-nav-color);
+    font-size: 45px;
+}
+
+#footer_contacts h1{
+    margin-bottom: 0.75rem;
+}
+
+#footer_social_midia{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#footer_social_midia .footer-link{
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--footer-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s;
+}
+
+#footer_social_midia .footer-link i{
+    font-size: 1.5rem;
+}
+
+#footer_social_midia .footer-link:hover{
+    opacity: 0.8;
+}
+
+#instagram{
+    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+
+#facebook{
+    background: #4767b3;
+}
+
+#whatsapp{
+    background: #25d366;
+}
+
+.footer-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.footer-list .footer-link{
+    color: var(--text-footer-color);
+    transition: all 0.4s;
+}
+
+.footer-list .footer-link:hover{
+    color: var(--text2-nav-color);
+}
+
+#footer_endereco{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#footer_endereco p{
+    color: var(--text-footer-color);
+    transition: all 0.4s;
+}
+
+#footer_endereco p:hover{
+    color: var(--text2-nav-color);
+}
+
+#footer_copyright{
+    display: flex;
+    justify-content: center;
+    background-color: var(--copyrigth-color);
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    font-weight: 100;
+}
+
+/* Responsividade */
 
 @media (max-width: 1060px){
     header .navigation .menu{
