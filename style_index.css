@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
 :root{
     --bg-nav-color:#23252B;
     --text1-nav-color:#fff;
@@ -59,13 +67,6 @@ section{
     color: var(--text1-nav-color);
     font-size: 1em;
     margin: 30px 0;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
 }
 
 /* Header */
@@ -142,17 +143,18 @@ header{
 
 header .navigation{
     position: relative;
-    line-height: 97px;
+    line-height: 70px;
     transition: 0.6s;
     transition-property: line-height;
 }
 
 header.sticky .navigation{
-    line-height: 85px;
+    line-height: 65px;
 }
 
 header .navigation .menu{
     position:relative;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     list-style: none;
@@ -226,13 +228,168 @@ header.sticky .menu-item .sub-menu{
 
 /* Header fim */
 
+/* Filtro */
+
+.teste-filtro{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filtro{
+    margin: 10px 80px;
+    width: 42%;
+    height: 510px;
+    background-color: var(--bg-nav-color);
+}
+
+.filtro h1{
+    margin: 20px 40px;
+    color: var(--text1-nav-color);
+}
+
+.form-filtro{
+    margin: 20px 40px;
+}
+
+.btn-alugar-comprar button{
+    padding: 0px 20px 5px 0px;
+    color: var(--text1-nav-color);
+    background: none;
+    outline: none;
+    border: 1px solid var(--bg-nav-color);
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-alugar-comprar button::after{
+    content: " ";
+    width: 80%;
+    height: 4px;
+    background-color: var(--text1-nav-color);
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-filtro input{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: var(--footer-color);
+}
+
+.input-cidade{
+    padding: 7px;
+    gap: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--copyrigth-color);
+    display: flex;
+}
+
+.label-cidade{
+    color: var(--footer-color);
+}
+
+.label-cidade p{
+    font-size: 15px;
+}
+
+.input-bairro{
+    padding: 7px;
+    gap: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--copyrigth-color);
+    display: flex;
+}
+
+.label-bairro{
+    color: var(--footer-color);
+}
+
+.label-bairro p{
+    font-size: 15px;
+}
+
+.select{
+    padding: 7px;
+    margin-top: 10px;
+    border: 1px solid var(--copyrigth-color);
+    display: inline-flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.div-label-select p{
+    color: var(--text1-nav-color);
+}
+
+.dropdown{
+    width: 200px;
+    position: relative;
+}
+
+.dropdown:hover .dropdown-list{
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-select{
+    padding: 1px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.dropdown-list{
+    border-radius: 4px;
+    background-color: var(--copyrigth-color);
+    position: absolute;
+    top: 110%;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+}
+
+.dropdown-list-item{
+    padding: 5px;
+}
+
+
+
+.select-span{
+    color: var(--text1-nav-color);
+    display: flex;
+}
+
+
+.buscar{
+    width: 100%;
+    height: 45px;
+    margin-top: 15px;
+    background-color: var(--text2-nav-color);
+    border: none;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Tentativa de fazer algo*/
 
 #bodo{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;    
@@ -241,13 +398,12 @@ header.sticky .menu-item .sub-menu{
 .slider{
     margin: 0 auto;
     width: 100%;
-    height: 600px;
+    height: 650px;
     overflow: hidden;
 }
 
 .slides{
     width: 400%;
-    height: 400px;
     display: flex;
 }
 
@@ -257,12 +413,14 @@ header.sticky .menu-item .sub-menu{
 
 .slide{
     width: 25%;
+    height: 800px;
     position: relative;
     transition: 2s;
 }
 
 .slide img{
     width: 100%;
+    height: 100%;
 }
 
 #radio1:checked ~ .first{
