@@ -19,6 +19,7 @@
 
     --douradao-teste: #CBB26A;
 }
+
 section{
     padding: 20px 100px;
 }
@@ -51,23 +52,6 @@ section{
     opacity: 0.3;
 }
 
-.section-two{
-    min-height: 100vh;
-    background: var(--bg-nav-color);
-}
-
-.section-two h2{
-    color: var(--text1-nav-color);
-    font-size: 3em;
-    font-weight: 700;
-    margin: 30px 0;
-}
-
-.section-two p{
-    color: var(--text1-nav-color);
-    font-size: 1em;
-    margin: 30px 0;
-}
 
 /* Header */
 
@@ -441,6 +425,105 @@ header.sticky .menu-item .sub-menu{
 
 /* Fim Slider */
 
+/* Cadastre seu imóvel */
+
+.cadastre-imovel{
+    background-color: #4767b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Cadastre seu imóvel fim */
+
+/* Categorias */
+
+.categorias{
+    min-height: 50vh;
+    display: flex;
+    padding: 32px;
+    gap: 10px;
+}
+
+.titulo-categorias{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section.card-categorias{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-nav-color);
+    color: var(--footer-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 256px;
+}
+
+/* Cards antes do footer */
+
+
+.section-two{
+    min-height: 50vh;
+    background: var(--bg-nav-color);
+    display: flex;
+    padding: 32px;
+    gap: 10px;
+}
+
+section.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-nav-color);
+    color: var(--footer-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 256px;
+}
+
+section.card .icon{
+    width: 64px;
+    height: 64px;
+}
+
+section.card img{
+    width: 100%; 
+}
+
+section.card button{
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 32px;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 600;
+}
+
+section.card.contato button{
+    background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
+}
+
+section.card.simulador button{
+    background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
+}
+
+section.card.cad-imovel button{
+    background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
+}
+
+/* Cards antes do footer fim */
+
 /* Footer */
 
 footer{
@@ -672,7 +755,9 @@ footer{
     
 }
 
-.wrapper{
+
+
+/*.wrapper{
     width: 370px;
     margin: 130px auto 0;
 }
@@ -767,5 +852,4 @@ footer{
 
 .options li:hover, li.selected{
     background: #f2f2f2;
-}
-
+}*/
