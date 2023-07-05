@@ -439,32 +439,58 @@ header.sticky .menu-item .sub-menu{
 
 /* Categorias */
 
-.categorias{
-    min-height: 50vh;
-    display: flex;
-    padding: 32px;
-    gap: 10px;
-}
-
 .titulo-categorias{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+}
+
+.categorias{
+    min-height: 50vh;
+    display: flex;
+    padding: 20px;
+    gap: 10px;
 }
 
 section.card-categorias{
+    width: 60vh;
+    max-height: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: var(--bg-nav-color);
-    color: var(--footer-color);
+    color: var(--text1-nav-color);
     border: none;
-    padding: 1rem 1.5rem;
+    padding: 5rem 2rem;
     border-radius: 8px;
-    max-height: 256px;
+}
+
+section.card-categorias button{
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 32px;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 600;
+}
+
+section.card-categorias.casas{
+    background: url(img/casa.jpg);
+    background-position: center;
+}
+
+section.card-categorias.apartamento{
+    background: url(img/aps.jpg);
+    background-position: center;
+}
+
+section.card-categorias.terreno{
+    background: url(img/terreno.jpg);
+    background-position: center;
 }
 
 /* Cards antes do footer */
@@ -601,12 +627,6 @@ footer{
 
 .footer-list .footer-link:hover{
     color: var(--text2-nav-color);
-}
-
-#footer_endereco{
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
 }
 
 #footer_endereco p{
