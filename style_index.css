@@ -437,6 +437,55 @@ header.sticky .menu-item .sub-menu{
 
 /* Cadastre seu imóvel fim */
 
+/* Destaques */
+
+.slide{
+    width: 100%;
+    height: auto;
+}
+
+.image-wrapper{
+    height: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cards-wrapper{
+    display: flex;
+}
+
+.card{
+    margin: 0 .5em;
+    width: calc(100%/3);
+}
+
+
+.card-body{
+    background: var(--bg-nav-color);
+}
+
+
+.card-title{
+    color: var(--text1-nav-color);
+}
+
+
+.card-text{
+    color: var(--text1-nav-color);
+}
+
+.btn.btn-primary{
+    border: none;
+    border-radius: 20px ;
+    background: linear-gradient(to right, #ffc917b4, #f5d56cc4);;
+    color: var(--copyrigth-color);
+}
 /* Categorias */
 
 .titulo-categorias{
@@ -452,11 +501,11 @@ header.sticky .menu-item .sub-menu{
     min-height: 50vh;
     display: flex;
     padding: 20px;
-    gap: 10px;
+    gap: 20px;
 }
 
 section.card-categorias{
-    width: 60vh;
+    width: 57vh;
     max-height: 260px;
     display: flex;
     flex-direction: column;
@@ -504,7 +553,7 @@ section.card-categorias.terreno{
     gap: 10px;
 }
 
-section.card{
+section.card-2{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -517,16 +566,16 @@ section.card{
     max-height: 256px;
 }
 
-section.card .icon{
+section.card-2 .icon{
     width: 64px;
     height: 64px;
 }
 
-section.card img{
+section.card-2 img{
     width: 100%; 
 }
 
-section.card button{
+section.card-2 button{
     padding: 0.5rem 1rem;
     text-transform: uppercase;
     border: 0;
@@ -536,15 +585,15 @@ section.card button{
     font-weight: 600;
 }
 
-section.card.contato button{
+section.card-2.contato button{
     background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
 }
 
-section.card.simulador button{
+section.card-2.simulador button{
     background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
 }
 
-section.card.cad-imovel button{
+section.card-2.cad-imovel button{
     background: linear-gradient(to right, #ffc917b4, #f5d56cc4);
 }
 
