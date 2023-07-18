@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
+
+
+:root{
+    --bg-nav-color:#23252B;
+    --text1-nav-color:#fff;
+    --text2-nav-color:#d0aa20;
+    --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
+
+    --douradao-teste: #CBB26A;
+}
+
+::-webkit-input-placeholder{
+    color: var(--text1-nav-color);
+}
+
+.input:-moz-placeholder{
+    color: var(--text1-nav-color);
+}
+
+/* Header */
+
+header{
+    opacity: 1;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-nav-color);
+    border-bottom: 4px solid var(--douradao-teste);
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+    padding: 0 100px;
+    transition: top 0.6s ease-in-out;
+}
+
+.sticky{
+    display: flex;
+}
+
+.logo img{
+    width: 80%;
+}
+
+.input-header {
+    background: var(--bg-nav-color);
+    height: 40px;
+    min-width: 280px;
+    border: 1px solid var(--douradao-teste);
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 8px 15px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: var(--text1-nav-color);
+    font-size: 16px;
+}
+
+.search-btn{
+    color: var(--douradao-teste);
+    float: right;
+    display: flex;
+    cursor: pointer;
+}
+
+.search-btn:hover{
+    color: var(--douradao-teste);
+    transition: 0.2s;
+}
+
+header .navigation{
+    position: relative;
+    line-height: 70px;
+    transition: 0.6s;
+    transition-property: line-height;
+}
+
+header.sticky .navigation{
+    line-height: 65px;
+}
+
+header .navigation .menu{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a{
+    color: var(--text1-nav-color);
+    font-size: 1em;
+    text-decoration: none;
+    margin: 30px;
+    padding: 25px 0;
+}
+
+.menu-item >a:hover{
+    color: var(--text2-nav-color);
+    transition: 0.3s;
+}
+
+.menu-item .sub-menu{
+    position: absolute;
+    background: var(--bg-nav-color);
+    top: 74px;
+    line-height: 40px;
+    list-style: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+    pointer-events: none;
+    transform: translateY(-80px);
+    opacity: 0;
+    transition: 0.3s;
+    transition-property: transform, opacity;
+}
+
+header.sticky .menu-item .sub-menu{
+    top: 60px;
+}
+
+.menu-item:hover .sub-menu{
+    pointer-events: all;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.menu-item .sub-menu .sub-item{
+    position: relative;
+    padding: 7px 0;
+    cursor: pointer;
+    box-shadow: inset 0px -30px 5px -30px rgba(255, 255 , 255 , 0.2);
+}
+
+.menu-item .sub-menu .sub-item a{
+    color: var(--text1-nav-color);
+    font-size: 1em;
+    text-decoration: none;
+    padding: 15px 30px;
+}
+
+.menu-item .sub-menu .sub-item:hover{
+    background: var(--text2-nav-color);
+}
+
+.menu-item .sub-menu .sub-item:last-child:hover{
+    border-radius: 0 0 8px 8px;
+}
+
+.menu-btn{
+    display: none;
+}
+
+/* Header fim */
+
+
+/* Responsividade */
+
+@media (max-width: 1060px){
+    header .navigation .menu{
+        position: fixed;
+        display: block;
+        background: var(--bg-nav-color);
+        min-width: 350px;
+        height: 100vh;
+        top: 0;
+        right: -100%;
+        padding: 90px 50px;
+        visibility: hidden;
+        overflow-y: auto;
+        transition: 0.5s;
+        transition-property: right, visibility;
+    }
+
+    header.sticky .navigation{
+        line-height: 75px;
+    }
+
+    header .navigation .menu.active{
+        right: 0;
+        visibility: visible;
+    }
+
+    .menu-item{
+        position: relative;
+    }
+
+    .menu-item .sub-menu{
+        opacity: 1;
+        position: relative;
+        top: 0;
+        transform: translateX(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        display: none;
+    }
+
+    header.sticky .menu-item .sub-menu{
+        top: 0;
+    }
+
+    .menu-item:hover .sub-menu{
+        transform: translateX(10px);
+    }
+
+    .menu-item .sub-menu .sub-item{
+        box-shadow: none;
+    }
+
+    .menu-item .sub-menu .sub-item:hover{
+        background: none;
+    }
+
+    .menu-item .sub-menu .sub-item a:hover{
+        color:var(--text2-nav-color);
+        transition: 0.3s;
+    }
+
+    .close-btn{
+        position: absolute;
+        background: url(img/close.png)no-repeat;
+        width: 40px;
+        height: 40px;
+        background-size: 25px;
+        background-position: center;
+        top: 0;
+        left: 0;
+        margin: 25px;
+        cursor: pointer;
+    }
+    
+    .menu-btn{
+        background: url(img/menubut.png)no-repeat;
+        width: 40px;
+        height: 40px;
+        background-size: 30px;
+        background-position: center;
+        cursor: pointer;
+        display: block;
+    }
+
+    header{
+        padding: 15px 20px;
+    }
+
+    header.sticky{
+        padding: 10px 20px;
+    }
+}
+
+
+@media screen and (max-width: 820px) {
+    .input-header{
+        margin-top: 5px;
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 819px) {
+    .input-header {
+        background: var(--bg-nav-color);
+        height: 35px;
+        min-width: 50px;
+        border-radius: 10px;
+        margin-top: 5px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .search-btn{
+        color: var(--text1-nav-color);
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 2s;
+    }
+    
+    .search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: var(--text1-nav-color);
+        font-size: 16px;
+        transition: 0.4s;
+        line-height: 40px;
+        width: 0px;
+    }
+    
+    .input-header:hover > .search-txt{
+        width: 250px;
+        padding: 0 8px;
+        left: 10%;
+    }
+}
