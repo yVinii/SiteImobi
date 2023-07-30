@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+:root{
+    --bg-nav-color:#23252B;
+    --text1-nav-color:#fff;
+    --text2-nav-color:#d0aa20;
+    --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
+
+    --douradao-teste: #CBB26A;
+}
+
+::-webkit-scrollbar{
+    background: var(--bg-nav-color);
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#f5f5f5;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#CBB26A;
+}
+
+section{
+    padding: 20px 100px;
+}
+
+.titulo{
+    margin-top: 130px;
+    border-bottom: 1px solid var(--bg-nav-color);
+    display: flex;
+    justify-content: center;
+}
+
+.titulo h2{
+    font-weight: 300;
+}
+
+.input-groups{
+    margin-top: 30px;
+    gap: 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.input-groups input{
+    background: var(--bg-nav-color);
+    color: var(--text1-nav-color);
+    height: 40px;
+    min-width: 280px;
+    border: 1px solid var(--douradao-teste);
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 8px 15px;
+    outline: none;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.btn-input-groups{
+    margin-top: 30px;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-input-groups p{
+    margin-top: 17px;
+}
+
+.botao-calcular{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao-calcular button{
+    width: 100px;
+    height: 30px;   
+    border: 2px solid var(--douradao-teste);
+    border-radius: 5px;
+    color: var(--text1-nav-color);
+    text-transform: uppercase;
+    font-weight: 300;
+    background-color: var(--bg-nav-color);
+}
+
+table, th, td{
+    border: 1px solid var(--bg-nav-color);
+    border-collapse: collapse;
+    padding: 15px;
+}
+
+.titulo-2{
+    border-bottom: 1px solid var(--bg-nav-color);
+    display: flex;
+    justify-content: center;
+}
+
+.titulo-2 h2{
+    font-weight: 300;
+}
+
+.simuladores{
+    background-color: var(--bg-nav-color);
+}

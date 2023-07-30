@@ -55,24 +55,30 @@ section.catigoria::before{
     bottom: 0;
 }
 
-/* Filtro
+/* Filtro */
 
 .teste-filtro{
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-image: url(https://boldfinance.com.br/wp-content/uploads/2021/08/Saiba-escolher-a-melhor-imobiliaria-para-deixar-seu-imovel-.png);
+    background-size: cover;
 }
 
 .filtro{
-    margin: 10px 80px;
-    width: 42%;
+    margin-left: 5%;
+    margin-top: 9%;
+    width: 40%;
     height: 510px;
-    background-color: var(--bg-nav-color);
+    background-color: var(--bg-footer);
+    position: relative;
+    border: 4px solid var(--douradao-teste);
 }
 
 .filtro h1{
-    margin: 20px 40px;
+    margin: 10px 40px;
     color: var(--text1-nav-color);
 }
 
@@ -191,27 +197,25 @@ section.catigoria::before{
     padding: 5px;
 }
 
-
-
 .select-span{
     color: var(--text1-nav-color);
     display: flex;
 }
 
-
 .buscar{
     width: 100%;
-    height: 45px;
+    height: 40px;
     margin-top: 15px;
-    background-color: var(--text2-nav-color);
-    border: none;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    border: 3px solid var(--douradao-teste);
+    color: var(--text1-nav-color);
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: var(--copyrigth-color);   
 }
 
-/* Tentativa de fazer algo
+/* Filtro Fim */
+
+ /*Tentativa de fazer algo
 
 #bodo{
     margin: 0;
@@ -272,12 +276,13 @@ section.catigoria::before{
 
 .cadastro-imovel{
     display: flex;
-    justify-content: space-between;
+    justify-content: safe;
+    margin-top: 20px;
 }
 
 .cadastre-imovel{
-    background-color: #25d366;
-    color: var(--bg-nav-color);
+    background-color: var(--bg-footer);
+    color: var(--text1-nav-color);
     display: flex;
     flex-direction: column;
     width: 450px;
@@ -292,32 +297,30 @@ section.catigoria::before{
 .cadastre-imovel p{
     margin: 30px;
     font-size: 20px;
-    color: var(--bg-nav-color);
+    color: var(--text1-nav-color);
+}
+
+.cadastre-imovel a{
+    margin: 6%; 
+    width: 250px;
+    height: 40px;
+    margin-top: 7%;
 }
 
 .cadastre-imovel button{
-    margin: 30px;
     width: 250px;
-    height: 40px;
+    height: 40px;   
     border: 3px solid var(--douradao-teste);
     color: var(--text1-nav-color);
     text-transform: uppercase;
     font-weight: 500;
-    background-color: var(--bg-nav-color);
+    background-color: var(--copyrigth-color);
 }
 
 .form-cad-imovel{
-    background-color: #4767b3;
-    min-width: 700px;
-}
-
-.formulario-cadastro{
-    margin: 30px;
-}
-
-.inp-nome{
-    display: grid;
-    grid-template-columns: repeat(4 , 1fr);
+    background: url(https://img.freepik.com/vector-premium/feliz-fin-semana-descanso-familiar-patio-casa-familia-feliz-fin-semana-cerca-casa-ilustracion-vector-pasar-tiempo-familia_102902-5771.jpg?w=2000);
+    background-size: cover;
+    width: 700px;
 }
 
 /* Cadastre seu imóvel fim */
@@ -372,6 +375,8 @@ section.catigoria::before{
     color: var(--copyrigth-color);
 }
 
+/* Destaques fim */
+
 /* Categorias */
 
 .titulo-categorias{
@@ -417,32 +422,31 @@ section.card-categorias button{
 
 section.card-categorias.casas{
     background: url(img/casa.jpg);
-    background-position: center;
+    background-size: cover;
 }
 
 section.card-categorias.apartamento{
     background: url(img/aps.jpg);
-    background-position: center;
+    background-size: cover;
 }
 
 section.card-categorias.terreno{
     background: url(img/terreno.jpg);
-    background-position: center;
+    background-size: cover;
 }
 
 section.card-categorias.rural{
     background: url(img/sitio.jpg);
-    background-position: center;
+    background-size: cover;
 }
 
 section.card-categorias.galpoes{
     background: url(img/galpao.jpg);
-    background-position: center;
+    background-size: cover;
 }
-
 section.card-categorias.comercial{
-    background: url(img/comercio.jpg);
-    background-position: center;
+    background: url(https://conube.com.br/blog/wp-content/uploads/2015/07/salas-comerciais.jpg);
+   background-size: cover;
 }
 
 .button-categoria{
@@ -453,8 +457,9 @@ section.card-categorias.comercial{
     padding-top: 25px;
 }
 
-/* Cards antes do footer */
+/* Categorias Fim */
 
+/* Cards antes do footer */
 
 .section-two{
     min-height: 50vh;

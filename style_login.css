@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+:root{
+    --bg-nav-color:#23252B;
+    --text1-nav-color:#fff;
+    --text2-nav-color:#d0aa20;
+    --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
+
+    --douradao-teste: #CBB26A;
+}
+
+body{
+    background-color: var(--bg-nav-color);
+    overflow: hidden;
+}
+
+section.aria-login{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-footer);
+    width: 400px;
+    height: 370px;
+    border: 6px solid var(--douradao-teste);
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.logo img{
+    width: 110px;
+    height: auto;
+}
+
+#inp-text{
+    margin-top: 25px;
+    height: 40px;
+    border: none;
+    border-bottom: 0.5px solid var(--text-footer-color);
+    outline: none;
+    background-color: transparent;
+    color: var(--text-footer-color);
+    padding: 0px 5px;
+}
+
+#btn{
+    margin-top: 40px;
+    height: 40px;
+    border: 3px solid var(--douradao-teste);
+    outline: none;
+    background-color: var(--copyrigth-color);
+    color: var(--text-footer-color);
+    font-weight: 600;
+}
+
+::-webkit-input-placeholder{
+    color: var(--text1-nav-color);
+}
+
+.input:-moz-placeholder{
+    color: var(--text1-nav-color);
+}

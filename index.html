@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> LSilva negócios imobiliários </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
         <link rel="stylesheet" href="style_index.css">
@@ -13,6 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+        <title> LSilva negócios imobiliários </title>
     </head>
     <body> 
         <!--Topo do site-->
@@ -64,14 +64,19 @@
                                     <li class="sub-item"><a href="#tel">Telefones</a></li>
                                 </ul>
                             </li>
+                            <li class="menu-item">
+                                <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
+                            </li>
+                            
                         </div>
                     </ul>
                 </div>
                 <div class="menu-btn"></div>
         </header>
 
-      
+
         <main>
+
             <!--<div id="bodo">
                 <div class="slider">
                     <div class="slides">
@@ -93,12 +98,12 @@
                         <div class="slide">
                             <img src="https://uploads.metropoles.com/wp-content/uploads/2023/05/03181206/Novo-Projeto-5-2-1024x683.jpg" alt="Imagem 4" />
                         </div>
-                        
+    
                     </div>
                 </div>
             </div>-->
 
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <!--<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -135,9 +140,9 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div>-->
 
-            <!--<div class="teste-filtro">
+            <div class="teste-filtro">
                 <div class="filtro">
                     <h1>Encontre o imóvel dos seus sonhos</h1>
                     <form class="form-filtro">
@@ -170,27 +175,44 @@
                         </div>
 
                         <div class="select">
-                            <i class="bi bi-cash" style="color: #f5f5f5;"></i>
                             <label class="label-select-valor" style="color: #f5f5f5;">
                                 <p>Imóvel até <i class="bi bi-chevron-down" style="color: #f5f5f5;"></i></p>
-
-                                
-                            <div class="dropdown">
-                                <div class="dropdown-select">
-                                    <span class="select-span">Escolha o valor</span>
+                                <div class="dropdown">
+                                    <div class="dropdown-select">
+                                        <span class="select-span">Escolha o valor</span>
+                                    </div>
+                                    <div class="dropdown-list">
+                                        <div class="dropdown-list-item">R$ 200.000</div>
+                                        <div class="dropdown-list-item">R$ 400.000</div>
+                                        <div class="dropdown-list-item">R$ 600.000</div>
+                                        <div class="dropdown-list-item">R$ 800.000</div>
+                                        <div class="dropdown-list-item">R$ 1.000.000</div>
+                                    </div>
                                 </div>
-                                <div class="dropdown-list">
-                                    <div class="dropdown-list-item">R$ 200.000</div>
-                                    <div class="dropdown-list-item">R$ 400.000</div>
-                                    <div class="dropdown-list-item">R$ 600.000</div>
-                                    <div class="dropdown-list-item">R$ 800.000</div>
-                                    <div class="dropdown-list-item">R$ 1.000.000</div>
-                                </div>
-                            </div>
                             </label>
                         </div>
 
                         <div class="select">
+                            <!--<i class="bi bi-cash" style="color: #f5f5f5;"></i>-->   
+                            <label class="label-select-valor" style="color: #f5f5f5;">
+                                <p>Quartos<i class="bi bi-chevron-down" style="color: #f5f5f5;"></i></p>
+                                <div class="dropdown">
+                                    <div class="dropdown-select">
+                                        <span class="select-span">Escolha o Nº de quartos</span>
+                                    </div>
+                                    <div class="dropdown-list">
+                                        <div class="dropdown-list-item">1</div>
+                                        <div class="dropdown-list-item">2</div>
+                                        <div class="dropdown-list-item">3</div>
+                                        <div class="dropdown-list-item">4</div>
+                                        <div class="dropdown-list-item">5+</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+
+                        <!--<div class="select">
                             
                             <label class="label-select-valor">
                                 <div class="div-label-select">
@@ -204,14 +226,14 @@
                                 <option value="4">3</option>
                                 <option value="5">4+</option>
                             </select>
-                        </div>
+                        </div>-->
 
-                        <button class="buscar" value="Buscar imóvel">Buscar imóvel</button>
+                        <a href=""><button class="buscar" value="Buscar imóvel">Buscar imóvel</button></a>
                     </form>
                 </div>
             </div>
             
-            <div class="wrapper">
+            <!--<div class="wrapper">
                 <div class="select-btn">
                     <span>Quartos</span>
                     <i class="uil uil-angle-down"></i>
@@ -225,41 +247,17 @@
                 </div>
             </div>-->
             
-            <!--<section class="cadastro-imovel">
+            <section class="cadastro-imovel">
                 <div class="cadastre-imovel">
                     <h1>Cadastre seu imóvel</h1>
-                    <p>Preencha o formulário ao lado e clique no botão cadastrar imóvel para <br> fazer parte do nosso time</p>
-                    <a href=""><button>Cadastrar imóvel</button></a>
+                    <p>Venha trabalhar conosco, cadastre seu imóvel e faça parte do time LSilva. Garantimos que faremos de tudo para que seu imóvel seja alugado ou comprado.</p>
+                    <a href="cadastreimovel.html"><button>Cadastrar imóvel</button></a>
                 </div>
 
                 <div class="form-cad-imovel">
-                    <form class="formulario-cadastro">
-                        <div class="form-header">
-                            <div class="title">
-                                <h1>Cadastrar</h1>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <div class="input-box">
-                                <label for="name">Nome</label>
-                                <input id="nome" type="text" name="nome" placeholder="Digite seu nome" required>
-                            </div>
-
-                            <div class="input-box">
-                                <label for="email">Email</label>
-                                <input id="email" type="email" name="email" placeholder="Digite seu email" required>
-                            </div>
-
-                            
-                            <div class="input-box">
-                                <label for="telefone">Telefone</label>
-                                <input id="telefone" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
-                            </div>
-                        </div>
-                    </form>
+                    
                 </div>
-            </section>-->
+            </section>
 
             <section>
                     <div class="titulo-categorias">
@@ -279,7 +277,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -290,7 +288,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -301,7 +299,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -319,7 +317,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -330,7 +328,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -341,7 +339,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -358,7 +356,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -369,7 +367,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -380,7 +378,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <a href="#" class="btn btn-primary">Ver imóvel</a>
                                             </div>
                                         </div>
     
@@ -540,6 +538,9 @@
                     </li>
                     <li>
                         <a class="footer-link" name="tel" style="color: #dddddd;">(11) 4719-6469</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 97299-8439</a>
                     </li>
                 </ul>
     
