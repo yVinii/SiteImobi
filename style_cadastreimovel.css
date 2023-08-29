@@ -38,6 +38,27 @@ section{
     padding: 20px 100px;
 }
 
-.row{
+.titulo-2{
     margin-top: 10%;
+    border-bottom: 1px solid var(--bg-nav-color);
+    display: flex;
+    justify-content: center;
 }
+
+.titulo-2 h2{
+    font-size: 30px;
+    font-weight: 300;
+}
+.rounded-md1{
+    border-radius: 5px;
+    background-color: var(--bg-nav-color);
+}
+
+.rounded-md1:hover{
+    background-color: var(--douradao-teste);
+}
+
+.rounded-md{
+    padding: 10px;
+}
+

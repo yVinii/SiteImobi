@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+        <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="style_cadastreimovel.css">
         <link rel="stylesheet" href="style_navbar.css">
         <link rel="stylesheet" href="style_footer.css">
@@ -21,18 +21,11 @@
             </div>
 
             <div class="input-header">
-                <input type="text" class="search-txt" placeholder="Busque seu imóvel" maxlength="22">
+                <input type="text" class="search-txt placeholder:text-white" placeholder="Busque seu imóvel" maxlength="22">
                 <div class="search-btn" href="">
                     <i class="bi bi-search"></i>
                 </div>
             </div>
-
-            <!--<div class="input-header">
-                <input class="search-txt" type="text" name="" placeholder="Busque seu imóvel" id="search-header" maxlength="35">
-                <a class="search-btn" href="=">
-                    <i class="bi bi-search"></i>
-                </a>
-            </div>-->
 
             <div class="navigation">
                 <ul class="menu">
@@ -74,51 +67,107 @@
 
         <main>
             <section>
-                <form class="row g-3">
-                    <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                    <div class="col-12">
-                      <label for="inputAddress" class="form-label">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="col-12">
-                      <label for="inputAddress2" class="form-label">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputCity" class="form-label">City</label>
-                      <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="col-md-4">
-                      <label for="inputState" class="form-label">State</label>
-                      <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col-md-2">
-                      <label for="inputZip" class="form-label">Zip</label>
-                      <input type="text" class="form-control" id="inputZip">
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Sign in</button>
-                    </div>
-                  </form>
-            </section>
+
+                <div class="titulo-2">
+                    <h2>Cadastre seu Imóvel</h2>
+                </div>
+                    <form>
+                        <div class="space-y-12">
+                        <div class="border-b border-gray-900/10 pb-12">
+                           
+                    
+                            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                <div class="sm:col-span-3">
+                                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Nome</label>
+                                    <div class="mt-2">
+                                    <input type="text" name="first-name" id="first-name"  placeholder="Nome" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                        
+                                <div class="sm:col-span-3">
+                                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Sobrenome</label>
+                                    <div class="mt-2">
+                                    <input type="text" name="last-name" id="last-name" placeholder="Sobrenome" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Telefone</label>
+                                    <div class="mt-2">
+                                    <input type="tel" name="last-name" id="last-name" placeholder="55 (xx) xxxx-xxxx" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+                        
+                                <div class="sm:col-span-3">
+                                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Endereço de Email</label>
+                                    <div class="mt-2">
+                                    <input id="email" name="email" type="email" autocomplete="email" placeholder="@email.com" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    </div>
+                                </div>
+
+                           
+                                <div class="sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Tipo do imóvel</label>
+                                    <div class="mt-2">
+                                        <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                            <option disabled>Selecione</option>
+                                            <option>Apartamento</option>
+                                            <option>Casa</option>
+                                            <option>Comercial</option>
+                                            <option>Galpão</option>
+                                            <option>Rural</option>
+                                            <option>Terreno</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Tipo de Negociação</label>
+                                    <div class="mt-2">
+                                    <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option disabled>Selecione</option>
+                                        <option>Venda</option>
+                                        <option>Locação</option>
+                                        <option>Venda ou Locação</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-span-full">
+                                <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Sobre o imóvel</label>
+                                <div class="mt-2">
+                                <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                </div>
+                                <p class="mt-3 text-sm leading-6 text-gray-600">Escreva as informações do imóvel.</p>
+                            </div>
+                    
+                            <div class="col-span-full">
+                                <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Fotos do imóvel</label>
+                                <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                <div class="text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                                    <label for="file-upload" class="relative cursor-pointer  bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                                        <span>Anexe as fotos aqui</span>
+                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                    </label>
+                                    <p class="pl-1">ou arraste e solte.</p>
+                                    </div>
+                                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF até 10MB</p>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-center justify-end gap-x-6">
+                        <button type="submit" class="rounded-md1 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enviar</button>
+                        </div>
+                    </form>
+  
         </main>
 
 

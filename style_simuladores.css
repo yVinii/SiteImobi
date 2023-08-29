@@ -39,7 +39,7 @@ section{
 }
 
 .titulo{
-    margin-top: 130px;
+    margin-top: 20px;
     border-bottom: 1px solid var(--bg-nav-color);
     display: flex;
     justify-content: center;
@@ -101,13 +101,21 @@ section{
     background-color: var(--bg-nav-color);
 }
 
+.tabela-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 table, th, td{
-    border: 1px solid var(--bg-nav-color);
+    /*width: 1200px;*/
+    border: 2px solid var(--bg-nav-color);
     border-collapse: collapse;
     padding: 15px;
 }
 
 .titulo-2{
+    margin-top: 120px;
     border-bottom: 1px solid var(--bg-nav-color);
     display: flex;
     justify-content: center;
@@ -117,6 +125,62 @@ table, th, td{
     font-weight: 300;
 }
 
-.simuladores{
-    background-color: var(--bg-nav-color);
+#simuladores{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: space-around;
+}
+
+#simuladores a{
+    text-decoration: none;
+}
+
+#simuladores i{
+    font-size: 5rem;
+}
+
+#simuladores .simu-bancos img{
+    width: 5rem;
+}
+
+#simuladores .simu-bancos.bd-caixa img{
+    width: 6rem;
+}
+
+#simuladores .simu-bancos{
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s;
+}
+
+#simuladores .simu-bancos:hover{
+    opacity: 0.8;
+}
+
+#banco-brasil{
+    background: #F9DD16;
+    color: #0038A8;
+}
+
+#caixa{
+    background: #1c60ab;
+    color: white;
+}
+
+#bradesco{
+    background: color-mix(in srgb, #cc092f 80%, #633280 20%);
+}
+
+#santander{
+    background: color-mix(in srgb, #ec0000 70%, #333333 30%);
+    color: white;
+}
+
+#itau{
+    background: #FF7200;
+    color: #140083;
 }

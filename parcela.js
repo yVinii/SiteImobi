@@ -4,6 +4,7 @@ export class Parcela{
     #juros;
     #amortizacao;
     #saldo;
+
     constructor (numero,valor,juros,amortizacao,saldo){
         this.#numero = numero;
         this.#valor = valor;
@@ -11,7 +12,7 @@ export class Parcela{
         this.#amortizacao = amortizacao;
         this.#saldo = saldo;
     }
-    
+
     getSaldo() {
         return this.#saldo;
     }

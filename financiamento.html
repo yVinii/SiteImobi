@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/matheuscuba/icones-bancos-brasileiros@1.1/dist/all.css">
     <link rel="stylesheet" href="style_simuladores.css">
     <link rel="stylesheet" href="style_navbar.css">
     <link rel="stylesheet" href="style_footer.css">
@@ -15,7 +16,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#"><img src="img/completo.png" alt="Logo Lsilva"></a>
+            <a href="index.html"><img src="img/completo.png" alt="Logo Lsilva"></a>
         </div>
 
         <div class="input-header">
@@ -73,6 +74,36 @@
     <main>
 
         <section>
+            <div class="titulo-2">
+                <h2>Simuladores</h2>
+            </div>
+
+            <div id="simuladores">
+                <a href="https://www42.bb.com.br/portalbb/imobiliario/creditoimobiliario/simular,802,2250,2250.bbx" target="_blank" class="simu-bancos" id="banco-brasil">
+                    <i class="ibb-banco-brasil"></i>
+                </a>  
+
+                <a href="https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso" target="_blank" class="simu-bancos bd-caixa" id="caixa">
+                    <img src="img/caixa.png" alt="">
+                    <!--<i class="ibb-caixa"></i>-->
+                </a>
+
+                <a href="https://banco.bradesco/html/classic/produtos-servicos/emprestimo-e-financiamento/encontre-seu-credito/simuladores-imoveis.shtm" target="_blank" class="simu-bancos" id="bradesco">
+                    <img src="img/bradesco.png" alt="">
+                </a>
+
+                <a href="https://www.santander.com.br/br/resolva-on-line/simuladores/credito-imobiliario" target="_blank" class="simu-bancos" id="santander">
+                    <i class="ibb-santander"></i>
+                </a>
+
+                <a href="https://www.itau.com.br/emprestimos-financiamentos/credito-imobiliario/simulador/" target="_blank" class="simu-bancos" id="itau">
+                    <i class="ibb-itau"></i>
+                </a>
+            </div>
+        </section>
+
+        
+        <section>
             <div class="titulo">
                 <h2>Simulador de financiamento (SAC)</h2>
             </div>
@@ -96,37 +127,21 @@
                 <button id="botaoCalcular">Calcular</button>
             </div>
             <p></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nº de Parcelas</th>
-                        <th>Valor da Parcela</th>
-                        <th>Amortização</th>
-                        <th>Juros</th>
-                        <th>Saldo Devedor</th>
-                    </tr>
-                </thead>
-                <tbody id="corpoTabela">
-
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <div class="titulo-2">
-                <h2>Outros Simuladores</h2>
-            </div>
-
-            <div id="simuladores">
-                <a href=""></a>  
-
-                <a href=""></a>
-
-                <a href=""></a>
-
-                <a href=""></a>
-
-                <a href=""></a>
+            <div class="tabela-info">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nº de Parcelas</th>
+                            <th>Valor da Parcela</th>
+                            <th>Amortização</th>
+                            <th>Taxa de Juros</th>
+                            <th>Saldo Devedor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela">
+    
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
@@ -214,7 +229,8 @@
     </footer>
 
 
-    <script type="module" src="simuladores.js"></script>
+    <script type="module" src="pag_simuladores.js"></script>
+    <script src="inicio.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <noscript>You neeed enable JavaScript to view the full site.</noscript>
 </body>

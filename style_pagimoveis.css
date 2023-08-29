@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+:root{
+    --bg-nav-color:#23252B;
+    --text1-nav-color:#fff;
+    --text2-nav-color:#d0aa20;
+    --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
+    --bd-color:#747474;
+
+    --douradao-teste: #CBB26A;
+}
+
+::-webkit-scrollbar{
+    background: var(--bg-nav-color);
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#f5f5f5;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#CBB26A;
+}
+
+section{
+    padding: 20px 100px;
+}
+
+.imoveis{
+    margin-top: 10%;
+    margin-bottom: 10px;
+}
+
+.imoveis-titulo{
+    display: flex;
+    justify-content: left;
+}
+
+.imoveis-titulo h2{
+    font-weight: 200;
+}
+
+/* Resultados da busca */
+
+.resultados-da-busca{
+    margin-top: 15px;
+    display: flex;
+    gap: 40px;
+    margin-bottom: 10px;
+}
+
+.resultados-da-busca h2{
+    font-weight: 200;
+}
+
+.resultados-da-busca a{
+    margin-top: 1%;
+}
+
+.select-valor{
+    margin-bottom: 10px;
+}
+
+/* Resultados da busca */
+
+/* Modal */
+
+.popup-filtro{
+    margin-bottom: 10px;
+}
+
+/* Paginação */
+
+.page-link{
+    color: var(--bg-nav-color);
+}
+
+.page-link:hover{
+    background-color: var(--bg-nav-color);
+    color: var(--douradao-teste);
+}
+
+/* Cards */
+
+.card-imoveis{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.image-wrapper{
+    height: 22vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img{
+    min-width: 100%;
+    height: 100%;
+}
+
+.card{
+    margin: 0 .5em;
+    width: calc(100%/3);
+}
+
+.card-body{
+    background: var(--bg-nav-color);
+}
+
+.card-title{
+    color: var(--text1-nav-color);
+}
+
+.card-text{
+    color: var(--text1-nav-color);
+}
+
+.btn.btn-primary{
+    border: none;
+    border-radius: 20px ;
+    background: linear-gradient(to right, #ffc917b4, #f5d56cc4);;
+    color: var(--copyrigth-color);
+}
+
+/* Cards fim */
