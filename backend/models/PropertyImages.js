@@ -9,9 +9,11 @@ const PropertyImages = sequelize.define('PropertyImages', {
   },
 }, { timestamps: false });
 
+// Defina a entidade Properties
+const Properties = require('./Properties');
+
+// Associe PropertyImages com Properties
+//Properties.hasMany(PropertyImages, { foreignKey: 'propertyId' });
+//PropertyImages.belongsTo(Properties, { foreignKey: 'propertyId' });
+
 module.exports = PropertyImages;
-
-const PropertyImages = require('./PropertyImages');
-
-Properties.hasMany(PropertyImages, { foreignKey: 'propertyId' });
-PropertyImages.belongsTo(Properties, { foreignKey: 'propertyId' });

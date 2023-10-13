@@ -20,7 +20,11 @@ require('./db/syncDatabase');
 
 //rotas - endpoints
 const UserRoutes = require('./routes/UserRoutes')
+const PropertiesRoutes = require('./routes/PropertiesRoutes')
+const BrokerRoutes = require('./routes/BrokerRoutes')
 
 app.use('/users', UserRoutes)
+app.use('/properties', PropertiesRoutes)
+app.use('/broker', BrokerRoutes)
 
 app.listen(5000)

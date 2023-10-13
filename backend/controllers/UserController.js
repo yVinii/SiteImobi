@@ -11,7 +11,8 @@ const getUserByToken = require('../helpers/get-user-by-token')
 module.exports = class UserController {
 
     static async register(req, res){
-       const {email ,name ,phone ,password ,active ,confirmpassword } = req.body
+       const {email ,name ,phone ,password ,confirmpassword } = req.body
+       const active = true
 
        //validation 
        if(!name){
