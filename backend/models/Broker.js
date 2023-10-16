@@ -24,8 +24,5 @@ const Broker = sequelize.define('Broker', {
   },
 }, { timestamps: true });
 
-const Properties = require('./Properties');
-Broker.hasMany(Properties, { foreignKey: 'propertiesId' });
-Properties.belongsTo(Broker, { foreignKey: 'propertiesId' });
 
 module.exports = Broker;

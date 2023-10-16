@@ -9,6 +9,8 @@ module.exports = class PropertiesController {
 
         const { typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
         const active = true
+        // Obtenha as URLs das imagens do array de arquivos carregados
+       const images = req.files.map(file => file.filename);
 
         //image upload
 
@@ -89,11 +91,14 @@ module.exports = class PropertiesController {
 
         // Verificar se o corretor foi encontrado
         if (!broker) {
-                        return res.status(404).json({ message: 'Corretor não encontrado' });
+                return res.status(404).json({ message: 'Corretor não encontrado' });
             }
-
+      
+        if(images.length === 0){
+            return res.status(422).json({message: 'A imagem é obrigatória!'})
+        }
         //create a property
-        const property = new Properties({
+        const newProperty= await broker.createProperty({
             typeofsale, 
             address, 
             city, 
@@ -109,19 +114,10 @@ module.exports = class PropertiesController {
             nvacancies, 
             nbathrooms, 
             register,
-            propertyImages: {
-                propertyImages: []
-            },
-             broker: {
-                _id: broker._id,
-                name: broker.name,
-                phone: broker.phone,
-                email: broker.email,
-            },
+            images,
         })
         
         try{
-            const newProperty = await property.save()
             res.status(201).json({
                 message: 'Propriedade cadastrada com Sucesso',
                 newProperty,
@@ -133,7 +129,74 @@ module.exports = class PropertiesController {
         }
     }
 
-    /* Filtrando por Bairro
+    // TRAZ TODAS PROPRIEDADES
+    static async getAll(req, res) {
+        try {
+            const properties = await Properties.findAll({
+                where: { active: true },
+                order: [['createdAt', 'DESC']] // Ordenar por createdAt em ordem decrescente
+            });
+    
+            res.status(200).json({
+                properties: properties,
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+
+    // RECEBE UM ID E TRAZ UMA PROPRIEDADE DETALHADA
+    static async getPropertiesById(req, res) {
+        const id = req.params.id;
+    
+        try {
+            
+            const property = await Properties.findOne({
+                where: { id, active: true }, // Adicionando a condição para propriedades ativas
+            });
+    
+            if (!property) {
+                return res.status(404).json({ message: 'Propriedade não cadastrada ou inativa' });
+            }
+    
+            // Se a propriedade for encontrada e ativa, responder com os dados da propriedade
+            res.status(200).json({ property });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    
+    // EXCLUI UMA PROPRIEDADE
+    static async removePropertiesById(req, res){
+        const id = req.params.id;
+    
+        try {
+            const property = await Properties.findByPk(id);
+    
+            if (!property) {
+                return res.status(404).json({ message: 'Propriedade não cadastrada' });
+            }
+    
+            // Altera o valor da coluna 'active' para false
+            property.active = false;
+    
+            // Salva a alteração no banco de dados
+            await property.save();
+    
+            res.status(200).json({ message: 'Propriedade marcada como inativa com sucesso!' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    
+
+
+    
+
+    ///Filtrando por Bairro
     static async getByNeighborhood(req, res) {
         const { neighborhood } = req.query;
         const properties = await Properties.findAll({
@@ -143,7 +206,34 @@ module.exports = class PropertiesController {
         });
         res.json(properties);
     }
+//Filtrando por Corretor
+static async getAllBrokerProperties(req, res) {
+    try {
+        // Extraia o idBroker da requisição ou de onde você o obtém
+        const idBroker = req.params.id; // Use req.params se estiver na URL
 
+        // Verifique se o corretor com esse ID existe
+        const broker = await Broker.findByPk(idBroker);
+
+        if (!broker) {
+            return res.status(404).json({ message: 'Corretor não encontrado' });
+        }
+
+        // Consulta para encontrar propriedades associadas a este corretor
+        const properties = await Properties.findAll({
+            where: {
+                idBroker: broker.id
+            }
+        });
+
+        res.status(200).json({ properties });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro interno do servidor' });
+    }
+}
+
+/*
     // Filtrando por Cidade
     static async getByCity(req, res) {
         const { city } = req.query;

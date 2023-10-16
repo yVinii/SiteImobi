@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = require('../db/conn'); // Importando a conexão Sequelize
+const Broker = require('./Broker');
 
 const Properties = sequelize.define('Properties', {
   typeofsale: {
@@ -62,16 +63,29 @@ const Properties = sequelize.define('Properties', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  images: {
+    type: DataTypes.JSON, // Pode usar TEXT se preferir
+    allowNull: false,
+    get() {
+      // Aqui você pode personalizar como as imagens são recuperadas
+      const images = this.getDataValue('images');
+      return images ? JSON.parse(images) : [];
+    },
+    set(images) {
+      // Aqui você pode personalizar como as imagens são armazenadas
+      this.setDataValue('images', JSON.stringify(images));
+    },
+  },
 }, { timestamps: true });
 
-// Definindo a associação
-Properties.associate = models => {
-  // Properties pertence a um Broker
-  Properties.belongsTo(models.Broker, {
-    foreignKey: 'brokerId', // A chave estrangeira que será adicionada à tabela Properties
-    as: 'broker', // Alias para a relação
-  });
-};
+Properties.belongsTo(Broker, {
+  constraints: true,
+  foreignKey:  'idBroker'
+})
+
+Broker.hasMany(Properties,{
+  foreignKey: 'idBroker'
+})
 
 
 module.exports = Properties;

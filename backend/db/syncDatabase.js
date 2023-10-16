@@ -5,6 +5,7 @@ const User = require('../models/User'); // Importando o modelo User
 const Properties = require('../models/Properties'); // Importando o modelo Properties
 
 //Sincronizar todos os modelos com o banco de dados
+
 sequelize.sync()
   .then(() => {
     console.log('Tabelas sincronizadas com sucesso!');
@@ -14,6 +15,7 @@ sequelize.sync()
   });
 /*
  //REFAZ O BANCO DE DADOS
+ 
   sequelize.sync({ force: true })
   .then(() => {
     console.log('Tabelas redefinidas com sucesso!');
