@@ -70,6 +70,7 @@ module.exports = class UserController {
       }
     }
 
+    // lOGIN USUARIO
     static async login(req, res){
       const{email, password} = req.body
 
@@ -146,6 +147,7 @@ module.exports = class UserController {
 
   }
 
+  // UPDATE USUARIO
   static async editUser(req, res){
     const id = req.params.id
 
