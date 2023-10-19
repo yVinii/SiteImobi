@@ -41,7 +41,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e4d095;
+    background-color: #444444 /* #e4d095 */;
     padding: 1rem;
 }
 

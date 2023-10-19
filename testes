@@ -24,49 +24,6 @@
                 </div>
             </div>-->
 
-            <!--<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="https://blog.cesarrego.com.br/wp-content/uploads/2018/07/213195-descubra-as-vantagens-de-comprar-um-imovel-na-planta.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>First slide label</h5>
-                      <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://www.tarjab.com.br/wp-content/uploads/2023/02/iStock-1207038160-scaled.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second slide label</h5>
-                      <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://uploads.metropoles.com/wp-content/uploads/2023/05/03181206/Novo-Projeto-5-2-1024x683.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Third slide label</h5>
-                      <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-            </div>-->
-
-
-
-
-
  <!--<div class="select">
                             
                             <label class="label-select-valor">
@@ -83,11 +40,6 @@
                             </select>
                         </div>-->
 
-
-
-
-
-
 <!--<div class="wrapper">
                 <div class="select-btn">
                     <span>Quartos</span>
@@ -101,3 +53,277 @@
                     <ul class="options"></ul>
                 </div>
             </div>-->
+
+
+
+
+
+
+           <div class="select">
+              <div id="category-select">
+                  <label for="options-view-button">Tipo de imóvel</label>
+                  <input type="checkbox" id="options-view-button">
+
+                  <div id="select-button">
+                      <div id="select-value">Selecione uma opção</div>
+
+                      <div id="chevrons">
+                          <i data-lucide="chevron-down"></i>
+                          <i data-lucide="chevron-up"></i>
+                      </div>
+                  </div>
+              </div>
+              <ul id="options">
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="apartamentos"
+                          data-label="Apartamento"
+                      >
+
+                      <i data-lucide="building"></i>
+                      <span class="label">Apartamento</span>
+                      <i data-lucide="check"></i>
+                  </li>
+
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="casas"
+                          data-label="Casa"
+                      >
+
+                      <i data-lucide="home"></i>
+                      <span class="label">Casas</span>
+                      <i data-lucide="check"></i>
+                  </li>
+
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="comercial"
+                          data-label="Comercial"
+                      >
+
+                      <i data-lucide="store"></i>
+                      <span class="label">Comercial</span>
+                      <i data-lucide="check"></i>
+                  </li>
+
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="galpoes"
+                          data-label="Galpoes"
+                      >
+
+                      <i data-lucide="warehouse"></i>
+                      <span class="label">Galpões</span>
+                      <i data-lucide="check"></i>
+                  </li>
+
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="rural"
+                          data-label="Rural"
+                      >
+
+                      <i data-lucide="tractor"></i>
+                      <span class="label">Rural</span>
+                      <i data-lucide="check"></i>
+                  </li>
+
+                  <li class="option">
+                      <input 
+                          type="radio"
+                          name="category"
+                          value="terreno"
+                          data-label="Terreno"
+                      >
+
+                      <i data-lucide="land-plot"></i>
+                      <span class="label">Terreno</span>
+                      <i data-lucide="check"></i>
+                  </li>
+              </ul>
+           </div>
+
+
+/* Select */
+
+.select {
+    padding: 6rem;
+}
+
+#category-select label {
+    font-size: 0.75rem;
+    letter-spacing: 0.0225rem;
+}
+
+#select-button {
+    margin-top: .5rem;
+    display: flex;
+    padding: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: .375rem;
+    border: 1px solid #252529;
+    background-color: #17171A;
+}
+
+#select-value {
+    color: #eeeeee75;
+    font-size: 0.875rem;
+    letter-spacing: 0.02625rem;
+}
+
+#chevrons svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+#chevrons {
+    color: #eeeeee75;
+}
+
+#chevrons [data-lucide="chevron-up"] {
+    display: none;
+}
+
+#options-view-button:focus + #select-button,
+#options-view-button:checked + #select-button {
+    outline: 1px solid #A881E6;
+}
+
+#category-xelect:has(#options-view-button:checked) label,
+#options-view-button:checked + #select-button #chevrons {
+    color: #A881E6;
+}
+
+#options-view-button:checked + #select-button #chevrons
+[data-lucide="chevron-down"] {
+    display: none;
+}
+
+#options-view-button:checked + #select-button #chevrons
+[data-lucide="chevron-up"] {
+    display: block;
+}
+
+#category-select {
+    position: relative;
+}
+
+#options-view-button {
+    all: unset;
+
+    position: absolute;
+    inset: 0;
+
+    cursor: pointer;
+    z-index: 3;
+}
+
+#options {
+    margin-top: .25rem;
+
+    border-radius: .375rem;
+    border: 1px solid #252529;
+    background: #17171A;
+
+    display: none;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    padding: .75rem;
+
+    width: 100%;
+    border-bottom: 1px solid #252529;
+
+    position: relative;
+}
+
+.option label {
+    color: #FBF9FE;
+}
+
+.option svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.option svg:last-child {
+    margin-left: auto;
+    color: #A881E6;
+    display: none;
+}
+
+.option:has(input:checked),
+.option:hover {
+    border-bottom: 1px solid #252529;
+    background: #252529;
+}
+
+.option.option:has(input:focus) {
+    outline: 1px solid #A881E6;
+}
+
+.option:has(input:checked) [data-lucide="check"] {
+    display: block;
+}
+
+.option input[type="radio"] {
+    all: unset;
+
+    position: absolute;
+    inset: 0;
+
+    cursor: pointer;
+}
+
+.option:nth-child(1){
+    color: #f5f5f5;
+}
+
+.option:nth-child(2){
+    color: #f5f5f5;
+}
+
+.option:nth-child(3){
+    color: #f5f5f5;
+}
+
+.option:nth-child(4){
+    color: #f5f5f5;
+}
+
+.option:nth-child(5){
+    color: #f5f5f5;
+}
+
+.option:nth-child(6){
+    color: #f5f5f5;
+}
+
+#category-select:has(#options-view-button:checked) + #options {
+    display: block;
+}
+
+.select:has(.option input:checked) #category-select label{
+    color: #A881E6;
+}
+
+.select:has(.option input:checked) #category-select {
+    color: #FBF9FE;
+}
