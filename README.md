@@ -1,151 +1,220 @@
-Site Imobiliária LSILVA
+<a name="Site Imobiliária LSILVA"></a>
+# Site Imobiliária LSILVA
+
+
 Versão: 1.0
-Status do Projeto: ⚠️Em Andamento
 
 
-🔹Descrição do projeto
+<a name="Status do Projeto"></a>
+## 🔹 Status do Projeto : 
+
+
+⚠️Em Andamento
+
+
+<a name="Descrição do Projeto"></a>
+## 🔹 Descrição do Projeto :
+
 
 O projeto consiste em uma plataforma web dedicada a oferecer uma experiência intuitiva e abrangente para clientes específicos em propriedades nas regiões de São Roque, Ibiúna, Mairinque e Alumínio. Com um foco especial nessas localidades, a plataforma fornecerá aos usuários uma visão detalhada e atrativa das propriedades disponíveis, facilitando a busca por residências, terrenos ou investimentos.
 
-🔹Recursos Principais:
 
-Página Inicial:
+
+<a name="Recursos Principais"></a>
+## 🔹 Recursos Principais :
+
+**Página Inicial :** :globe_with_meridians:
 
 Destaques das propriedades mais recentes ou em destaque.
 Navegação fácil para diferentes categorias (venda, aluguel).
 
-Visualização de Propriedades:
+
+**Visualização de Propriedades :** :mag:
+
 Descrições completas, incluindo características, extensão, número de quartos/banheiros etc.
 Galeria de fotos de alta qualidade.
 Localização no mapa.
 
-Área de Contato:
+**Área de Contato :** :busts_in_silhouette:
+
 Formulário para contato direto com a imobiliária ou corretores associados.
 Informações de contato claramente visíveis.
-Login do Administrador:
+
+
+**Login do Administrador :** :lock:
 
 Área restrita para o administrador, permitindo:
 Cadastro de novas propriedades.
 Associação de propriedades a corretores.
 Gerenciamento completo do catálogo.
 
-Corretores:
+
+**Corretores :**  💼
+
 Perfil individual para cada corretor com informações de contato.
 Associação dinâmica entre corretores e propriedades.
 
-Solicitação de Cadastro de Propriedade:
+
+**Solicitação de Cadastro de Propriedade :**  🏡
+
+
 Formulário para proprietários específicos em cadastrar suas propriedades.
 Processo de revisão antes da inclusão no catálogo.
 
-Objetivo: 
+
+**Objetivo :** :chart_with_upwards_trend:
+
 Facilitar o processo de busca por propriedades para potenciais compradores ou locatários, oferecendo informações fornecidas e meios diretos de contato. Ao mesmo tempo, fornecer uma ferramenta eficaz para uma equipe administrativa e expandir o catálogo de propriedades de forma eficiente.
 
-🔹Benefícios:
 
-Facilidade de Uso: Interface intuitiva para navegação rápida e eficiente.
-Informações úteis: Descrições completas e galerias de fotos para uma decisão informada.
-Comunicação Direta: Contato direto com a imobiliária e corretores associados.
-Ampla Cobertura: Foco específico nas regiões de São Roque, Ibiúna, Mairinque e Alumínio.
+<a name="Benefícios"></a>
+## 🔹Benefícios :
+
+**Facilidade de Uso :**  🆓
+
+Interface intuitiva para navegação rápida e eficiente.
+
+**Informações úteis :**  :mag:
+
+Descrições completas e galerias de fotos para uma decisão informada.
+
+**Comunicação Direta :**  📞
+
+Contato direto com a imobiliária e corretores associados.
+
+**Ampla Cobertura :**  🥇
+
+Foco específico nas regiões de São Roque, Ibiúna, Mairinque e Alumínio.
 Com essa proposta, o site da imobiliária será uma referência confiável para aqueles que buscam propriedades nessas localidades, promovendo uma experiência positiva tanto para os clientes quanto para a equipe administrativa.
 
-🔹 Pré-requisitos
+<a name="Pré-requisitos"></a>
+## 🔹 Pré-requisitos :
 
 Antes de iniciar a implementação e utilização do projeto, certifique-se de que os seguintes pré-requisitos foram atendidos:
 
-Node.js e npm:
-Certifique-se de ter o Node.js instalado. Você pode baixá-lo em https://nodejs.org/.
+**Node.js e npm :**  💻
+
+Certifique-se de ter o Node.js instalado. 
+
+Você pode baixá-lo em [NodeJS](https://nodejs.org/.) ,
 O npm (Node Package Manager) também é necessário para gerenciar as dependências. Ele é geralmente incluído na instalação do Node.js.
 
-Banco de Dados:
+**Banco de Dados :**  🏦
+
+
 Configure um banco de dados para armazenar as propriedades, corretores e outras informações relevantes.
 Recomendado: Utilize um banco de dados relacional, como MySQL ou PostgreSQL.
 
-Express.js e Framework Web:
-O projeto utiliza o framework web Express.js. Instale-o usando o seguinte comando:
-npm install express
 
-Gerenciador de Pacotes:
+**Express.js e Framework Web :**  💻
+
+
+O projeto utiliza o framework web Express.js. Instale-o usando o seguinte comando:
+> npm install express
+
+
+**Gerenciador de Pacotes :**  📦
+
 Garanta que um gerenciador de pacotes seja utilizado para manter as dependências do projeto. O npm é recomendado e geralmente já está instalado com o Node.js.
 
-Git (Opcional):
-Para colaboração e controle de versão, é útil ter o Git instalado. Você pode baixá-lo em https://git-scm.com/.
+**Git (Opcional):**  :octocat:
 
-Configuração do Ambiente:
+
+Para colaboração e controle de versão, é útil ter o Git instalado. Você pode baixá-lo em [git](https://git-scm.com/.)
+
+
+**Configuração do Ambiente :**  🖥️
+
+
 Configure as variáveis de ambiente necessárias, como as credenciais do banco de dados e outras informações sensíveis.
-
 Certifique-se de seguir as instruções de instalação específicas do projeto no README para garantir uma configuração adequada.
 
-🔹 Como rodar a aplicação
+<a name="Como rodar a aplicação"></a>
+## 🔹 Como rodar a aplicação :
 
-Para rodar a aplicação Imobiliária LSILVA localmente, siga estas instruções:
 
-Pré-requisitos ⚠️
-Node.js e npm:
+### Para rodar a aplicação Imobiliária LSILVA localmente, siga estas instruções ⚠️
 
-Certifique-se de ter o Node.js instalado.
 
-Banco de Dados:
-Configure um banco de dados relacional (por exemplo, MySQL ou PostgreSQL).
-Configuração Inicial
+**Clone este repositório : :octocat:**
 
-Clone este repositório:
-git clone https://github.com/yVinii/SiteImobi.git
+
+git clone [Site Imobiliaria](https://github.com/yVinii/SiteImobi.git)
 
 Navegue até o diretório do projeto:
-cd SiteImobi
+
+
+>cd SiteImobi
 
 Instale as dependências:
-npm install
+
+>npm install
 
 Configure as variáveis de ambiente:
-Crie um arquivo .env na raiz do projeto e defina as variáveis necessárias, como as credenciais do banco de dados.
 
-Inicialize o Banco de Dados:
-Execute os scripts SQL fornecidos no diretório database-scripts para criar as tabelas necessárias.
+
+>Altere o arquivo na raiz do projeto no arquivo conn.js e defina as variáveis necessárias, como as credenciais do banco de dados.
 
 Executando a Aplicação
-npm start
+>npm start
 
 Acesse a aplicação no navegador:
-http://localhost:3000
 
-Observações
+>http://localhost:3000
+
+### Observações:
+
 Certifique-se de ter o banco de dados configurado corretamente antes de iniciar a aplicação.
-Modifique as configurações no arquivo .env conforme necessário para o seu ambiente.
+Modifique as configurações no arquivo conn.js conforme necessário para o seu ambiente.
 Consulte a documentação do projeto para informações específicas sobre a configuração.
 
-🔹Testes realizados
+<a name="Testes realizados"></a>
+## 🔹 Testes realizados : 
 
 O projeto passou por uma rigorosa bateria de testes para garantir a robustez e o correto funcionamento de suas funcionalidades no backend. A API, construída em Node.js, utiliza rotas específicas para realizar operações CRUD (Create, Read, Update, Delete) nas entidades do sistema. Abaixo está uma descrição detalhada de como os testes foram conduzidos usando o Postman.
 
-Ambiente de Desenvolvimento:
+**Ambiente de Desenvolvimento :** 💻
 
-Node.js: Certificamos-nos de ter o Node.js instalado localmente para executar o servidor backend.
-Postman: Utilizamos o Postman como uma ferramenta de teste de API para criar, organizar e executar testes nas rotas da aplicação.
 
-Configuração do Projeto:
-Instalação de Dependências:
+**Node.js :** 💠
+
+Certificamos-nos de ter o Node.js instalado localmente para executar o servidor backend.
+
+**Postman :** 🚀
+
+Utilizamos o Postman como uma ferramenta de teste de API para criar, organizar e executar testes nas rotas da aplicação.
+
+## Configuração do Projeto :
+**Instalação de Dependências :** ☄️
 
 Utilizamos o npm para instalar todas as dependências necessárias do projeto. O comando npm install garantiu que todas as bibliotecas estivessem presentes.
 
-Execução do Servidor:
+**Execução do Servidor :** 🌐
+
 Iniciamos o servidor Node.js usando o comando npm start. Isso permitiu que a API estivesse acessível em http://localhost:3000, por exemplo.
 
-Testes com Postman:
-Criação de Coleções:
+### Testes com Postman : 🚀
+
+**Criação de Coleções:**
+
 No Postman, organizamos nossos testes criando coleções. Cada coleção reflete um conjunto de rotas relacionadas a uma entidade específica.
 
-Requisições CRUD:
-GET: Testamos as rotas de leitura (GET) para garantir que os dados fossem recuperados corretamente.
+### Requisições CRUD:
+GET: Testamos as rotas de leitura (GET) para garantir que os dados fossem recuperados corretamente. 
+
 POST: Validamos a funcionalidade de criação (POST) de novas entidades, fornecendo os parâmetros necessários no corpo da requisição.
+
 PUT/PATCH: Testamos as rotas de atualização (PUT/PATCH) para garantir que as alterações nos dados fossem refletidas adequadamente no sistema.
+
 DELETE: Verificamos a funcionalidade de exclusão (DELETE) para garantir que as entidades fossem removidas conforme esperado.
 ![Exemplo de rotas do projeto](<Exemplo de rotas - API.JPG>)
 
-Testes Automatizados:
+### Testes Automatizados:
+
 Utilizamos os recursos de teste automático do Postman para verificar automaticamente se as respostas da API estavam corretas, como códigos de status e estrutura de dados.
 
-Testes de Casos de Borda:
+### Testes de Casos de Borda:
+
 Exploramos situações de limite, como dados inválidos ou ausentes, para garantir que a API respondesse apropriadamente.
 
 Documentação no Postman:
@@ -155,10 +224,13 @@ Documentamos todas as nossas requisições e testes no próprio Postman. Exporta
 Conclusão:
 Os testes do backend garantiram que a API Node.js estava totalmente funcional, manipulando corretamente as entidades do sistema. Asseguramos que todas as rotas respondessem conforme esperado, proporcionando uma base sólida para o desenvolvimento e a entrega bem-sucedidos do projeto.
 
-🔹Banco de Dados 🗂️
+<a name="Banco de Dados"></a>
+## 🔹 Banco de Dados 🗂️
+
 O banco de dados utilizado no projeto foi o MySQL versão 8.0.34 3256917 CE(64 bits)
 
-🔹 Linguagens, dependências e bibliotecas utilizadas 📚
+<a name="Linguagens, dependências e bibliotecas utilizadas"></a>
+## 🔹 Linguagens, dependências e bibliotecas utilizadas 📚
 
 O Backend foi desenvolvido utilizando um conjunto específico de tecnologias, linguagens, dependências e bibliotecas. Abaixo está uma descrição detalhada desses componentes:
 
@@ -251,7 +323,8 @@ Conclusão:
 O frontend foi construído com HTML, CSS e JavaScript, aproveitando frameworks e bibliotecas populares para acelerar o desenvolvimento e garantir uma experiência visual moderna e responsiva. O Bootstrap proporcionou uma base sólida para o design, enquanto o jQuery simplificou a manipulação do DOM. A inclusão de Font Awesome contribuiu para a estética do projeto, adicionando ícones estilizados. O Visual Studio Code serviu como ambiente de desenvolvimento eficiente, oferecendo ferramentas robustas para a criação e manutenção do código. O resultado é uma interface web atraente e funcional, projetada para atender às necessidades dos usuários finais.
 
 
-🔹 Novas Recursos
+<a name="Novas Recursos"></a>
+## 🔹 Novas Recursos : 
 
 O projeto foi continuamente aprimorado com a introdução de novos recursos e melhorias. Abaixo estão alguns dos recursos recentemente adicionados:
 
@@ -274,23 +347,25 @@ Testes Abrangentes:
 Descrição: Uma bateria abrangente de testes foi implementada para garantir a robustez das funcionalidades do backend. Testes unitários e de integração foram realizados, cobrindo operações CRUD e garantindo a estabilidade do sistema.
 Esses novos recursos foram projetados para enriquecer a experiência dos usuários finais, oferecendo mais opções, transparência e interação. O projeto continua evoluindo, incorporando feedbacks de usuários e mantendo-se alinhado com as necessidades do mercado imobiliário local.
 
-🔹 Resolvendo problemas
+<a name="Resolvendo problemas"></a>
+## 🔹 Resolvendo problemas : 
 
 
 
-🔹 Desenvolvedores/Contribuintes
-- David Lucas https://github.com/dvdlucas
-- Vinicius Fabrini https://github.com/yVinii
-- Arthur Bechir https://github.com/ArthurBechir
-- Kauan Souza https://github.com/KauanS0uza
+<a name="Desenvolvedores/Contribuintes"></a>
+## 🔹 Desenvolvedores/Contribuintes : 
+- [David Lucas](https://github.com/dvdlucas)
+- [Vinicius Fabrini](https://github.com/yVinii)
+- [Arthur Bechir](https://github.com/ArthurBechir)
+- [Kauan Souza](https://github.com/KauanS0uza)
 
-🔹 Informações Extras
+<a name="Informações Extras"></a>
+## 🔹 Informações Extras : 
 
 
 
-Insira os tópicos do README em links para facilitar a navegação do leitor
-
-Funcionalidades ⚙️
+<a name="Funcionalidades"></a>
+## Funcionalidades ⚙️
 
 ✔️ Autenticação de Administrador:
     Login seguro para o administrador acessar o sistema.
@@ -337,7 +412,8 @@ Funcionalidades ⚙️
     Essas funcionalidades são projetadas para oferecer uma experiência completa para administradores, corretores e clientes, abrangendo desde o gerenciamento interno até a interação externa e a inclusão ativa de clientes no processo de anúncio de propriedades.
 
 
-Distribuição (Pré-Lançamento):
+<a name="Distribuição"></a>
+## 🔹 Distribuição (Pré-Lançamento) :
 
 Acesso Antecipado:
 
@@ -380,7 +456,8 @@ O sistema é distribuído sob uma licença de código aberto para promover a tra
 Este é um estágio inicial de distribuição, permitindo que a comunidade de desenvolvedores e entusiastas interaja com o sistema antes do lançamento oficial. O feedback e as contribuições são bem-vindos para enriquecer o projeto e garantir um lançamento robusto no futuro.
 
 
-Recursos de inserção 🧰
+<a name="Recursos de inserção"></a>
+## Recursos de inserção 🧰
 Se para o caso, liste tarefas/funcionalidades que ainda precisam ser inovadoras em sua aplicação, insira fotos da tela do app.
 
 📝 Tarefa 1
