@@ -90,6 +90,7 @@ module.exports = class UserController {
       if(!user){
         res
         .status(422).json({
+            errorType: 'UserNotFound',
             message: 'Usuário não cadastrado, Por favor verifique os dados e tente novamente!',
         })
         return
@@ -100,11 +101,17 @@ module.exports = class UserController {
       if(!checkPassword){
         res
         .status(422).json({
+            errorType: 'SenhaNotFound',
             message: 'Senha do Usuário Incorreta, Por favor verifique os dados e tente novamente!',
         })
         return
       }
       await createUserToken(user, req, res)
+      return res.status(200).json({
+        success: true,
+        message: 'Login bem-sucedido!',
+      
+      });
   }
   
   static async checkUser(req, res){
@@ -134,6 +141,7 @@ module.exports = class UserController {
     if(!user){
       res
       .status(422).json({
+          errorType: 'UserNotFound',
           message: 'Usuário não encontrado, Por favor verifique os dados e tente novamente!',
       })
       return
@@ -142,7 +150,9 @@ module.exports = class UserController {
     res.status(200).json({user})
     }catch(error){
       console.error(error);
-        res.status(500).json({ message: 'Erro ao buscar usuário.' });
+        res.status(500).json({ 
+          errorType: 'UserNotFound',
+          message: 'Erro ao buscar usuário.' });
     }
 
   }

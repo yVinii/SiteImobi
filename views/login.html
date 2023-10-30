@@ -29,7 +29,7 @@
                 <img src="../css/css_pages/css_imgs/undraw_working_remotely_re_6b3a (1).svg" alt="">
             </div>
             <div class="form">
-                <form action="">
+                <form id="loginForm">
                     <div class="form-header">
                         <div class="title">
                             <h1>Entrar</h1>
@@ -38,21 +38,66 @@
 
                     <div class="input-group">
                         <div class="input-box">
-                            <label for="usuario">Usuário</label>
-                            <input type="text" id="usuario" name="usuario" placeholder="Digite o usuário" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Digite o Email" required>
                         </div>
 
                         <div class="input-box">
                             <label for="password">Senha</label>
-                            <input type="text" id="password" name="password" placeholder="Digite a senha" required>
+                            <input type="password" id="password" name="password" placeholder="Digite a senha" required>
                         </div>
                     </div>
 
                     <div class="envie-button">
-                        <button><a href="#">Enviar</a></button>
+                        <button type="button" onclick="enviarDados()">Enviar</button>
                     </div>
                 </form>
             </div>
        </div>
 </body>
+
+<script>
+    async function enviarDados() {
+    try {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const dados = {
+            email: email,
+            password: password
+        };
+
+        const response = await fetch('http://localhost:5502/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache',
+            },
+            body: JSON.stringify(dados),
+        });
+
+        const responseData = await response.json();
+
+        if (response.ok) {
+            // Processar a resposta da API se necessário
+            console.log('Login bem-sucedido!');
+        } else {
+            // Exibir mensagem de erro no frontend
+            if (responseData.errorType === 'UserNotFound') {
+                alert(responseData.message);
+            } else if (responseData.message === 'SenhaNotFound') {
+                alert(responseData.message)
+            } else {
+                console.error('Erro ao realizar o login:', responseData.message);
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+</script>
+
+
 </html>
