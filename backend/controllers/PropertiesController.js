@@ -7,7 +7,7 @@ module.exports = class PropertiesController {
     //create a property
     static async create(req, res){
 
-        const { typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
+        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
         const active = true
         // Recebendo as URLs das imagens do array de arquivos carregados
        const images = req.files.map(file => file.filename);
@@ -15,6 +15,11 @@ module.exports = class PropertiesController {
         //image upload
 
         //validations
+        if(!title){
+            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
+            return
+        }
+
         if(!typeofsale){
             res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
             return
@@ -84,7 +89,7 @@ module.exports = class PropertiesController {
             res.status(422).json({message: "O número do imóvel é obrigadório"})
             return
         }
-        const brokerId = "2";
+        const brokerId = "1";
 
         // Verificando se o corretor com esse ID existe
         const broker = await Broker.findByPk(brokerId);
@@ -99,6 +104,7 @@ module.exports = class PropertiesController {
         }
         //create a property
         const newProperty= await broker.createProperty({
+            title,
             typeofsale, 
             address, 
             city, 
@@ -195,7 +201,7 @@ module.exports = class PropertiesController {
     // UPDATE EM PROPRIEDADE
     static async updateProperty(req, res){
         const id = req.params.id
-        const { typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
+        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
         const imagesFiles = req.files
 
         try{
@@ -211,6 +217,10 @@ module.exports = class PropertiesController {
         let updateData = {};
 
         //validations
+        if(!title){
+            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
+            return
+        }
 
         if(!typeofsale){
             res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
@@ -312,6 +322,7 @@ module.exports = class PropertiesController {
 
          // Update data object
           updateData = {
+            title,
             typeofsale,
             address,
             city,
@@ -328,7 +339,7 @@ module.exports = class PropertiesController {
             register,
         };
        
-        const brokerId = "2";
+        const brokerId = "1";
         // Verificando se o corretor com esse ID existe
         const broker = await Broker.findByPk(brokerId);
 

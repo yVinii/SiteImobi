@@ -76,7 +76,7 @@ Interface intuitiva para navegação rápida e eficiente.
 
 **Informações úteis :**  :mag:
 
-Descrições completas e galerias de fotos para uma decisão informada.
+Descrições completas e galerias de fotos para uma visualização eficaz dos imóveis.
 
 **Comunicação Direta :**  📞
 

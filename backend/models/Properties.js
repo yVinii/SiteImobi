@@ -4,6 +4,10 @@ const sequelize = require('../db/conn'); // Importando a conexão Sequelize
 const Broker = require('./Broker');
 
 const Properties = sequelize.define('Properties', {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   typeofsale: {
     type: DataTypes.STRING,
     allowNull: false,
