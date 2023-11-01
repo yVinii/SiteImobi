@@ -24,13 +24,15 @@ app.use(express.static('public'))
 require('./db/syncDatabase');
 
 //rotas - endpoints
-const UserRoutes = require('./routes/UserRoutes')
-const PropertiesRoutes = require('./routes/PropertiesRoutes')
-const BrokerRoutes = require('./routes/BrokerRoutes')
+const UserRoutes = require('./routes/UserRoutes');
+const PropertiesRoutes = require('./routes/PropertiesRoutes');
+const BrokerRoutes = require('./routes/BrokerRoutes');
+const TemplatesRoutes = require('./routes/TemplateRoutes');
 
 app.use('/users', UserRoutes)
 app.use('/properties', PropertiesRoutes)
 app.use('/broker', BrokerRoutes)
+app.use('/templates', TemplatesRoutes)
 
 const PORT = 5502;
 

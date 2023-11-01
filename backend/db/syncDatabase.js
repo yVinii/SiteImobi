@@ -3,6 +3,8 @@
 const sequelize = require('./conn'); // Importando a conexão Sequelize
 const User = require('../models/User'); // Importando o modelo User
 const Properties = require('../models/Properties'); // Importando o modelo Properties
+const Broker = require('../models/Broker');
+const Template = require('../models/Templates');
 
 //Sincronizar todos os modelos com o banco de dados
 
@@ -23,5 +25,5 @@ sequelize.sync()
   .catch((error) => {
     console.error('Erro ao redefinir tabelas:', error);
   });
-*/
 
+*/
