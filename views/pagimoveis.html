@@ -41,9 +41,9 @@
                         <li class="menu-item">
                             <a class="sub-btn" href="#">Serviços <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
-                                <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
-                                <li class="sub-item"><a href="#">Nós encontramos</a></li>
-                                <li class="sub-item"><a href="financiamento.html">Simuladores</a></li>
+                                <li class="sub-item"><a href="/views/cadastreimovel.html">Cadastre seu imóvel</a></li>
+                                <li class="sub-item"><a href="/views/pagimoveis.html">Nós encontramos</a></li>
+                                <li class="sub-item"><a href="/views/simuladores.html">Simuladores</a></li>
                             </ul>
                         </li>
                         <li class="menu-item">
@@ -132,15 +132,15 @@
                         <div class="card-imoveis">  
                             <div class="card">
                                 <a href="">
-                                    <div class="image-wrapper">
-                                        <img src="https://b6d3c5t3.rocketcdn.me/wp-content/uploads/2019/11/Espetacular-casa-moderna-a-venda-Vilas-do-Atl%C3%A2ntico-26.jpg" alt="...">
+                                    <div class="image-wrapper" id="images">
+                                        <img src="" alt="...">
                                     </div>
                                 </a>
                                 
                                 <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Vila Aguiar - São Roque - SP</h5>
-                                    <p class="card-text">Quartos: 3 / Banheiros: 2 / Garagem: 2 / Área: 100m²</p>
-                                    <p class="card-text">Venda: R$ 620.000,00</p>
+                                    <h5 class="card-title" id="propertyTitle"></h5>
+                                    <p class="card-text" id="propertyDetails"></p>
+                                    <p class="card-text" id="propertyPrice"></p>
                                     <a href="#" class="btn btn-primary">Ver imóvel</a>
                                 </div>
                             </div>
@@ -327,66 +327,27 @@
         <script src="../javascript/inicio.js"></script>
 
         <script>
-            // Função para carregar propriedades e preencher as cartas
-async function carregarPropriedades() {
+    async function carregarPropriedades() {
     try {
         const response = await fetch('http://localhost:5502/properties/');
-        const properties = await response.json();
-
+        const data = await response.json();
+        console.log(data)
+        
         if (response.ok) {
-            properties.forEach(property => {
-                const cardWrapper = document.createElement('div');
-                cardWrapper.classList.add('card-imoveis');
+                const property = data.properties[0];
+                const titleElement = document.getElementById('propertyTitle');
+                const detailsElement = document.getElementById('propertyDetails');
+                const priceElement = document.getElementById('propertyPrice');
+                const imageElement = document.getElementById('images');
+                
+                    titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
+                    detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
+                    priceElement.textContent = `${property.typeofsale}: R$ ${property.value.toFixed(2)}`;
 
-                const card = document.createElement('div');
-                card.classList.add('card');
-
-                const link = document.createElement('a');
-                link.href = ''; // Coloque a URL apropriada
-                link.classList.add('image-wrapper');
-
-                const img = document.createElement('img');
-                img.src = property.images; // Substitua pelo atributo real
-                img.alt = 'Imagem da propriedade';
-
-                link.appendChild(img);
-
-                const cardBody = document.createElement('div');
-                cardBody.classList.add('card-body');
-
-                const title = document.createElement('h5');
-                title.classList.add('card-title');
-                title.innerHTML = `Casa <br> ${property.address} - ${property.city} - ${property.neighborhoods}`;
-
-                const details = document.createElement('p');
-                details.classList.add('card-text');
-                details.innerHTML = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`; 
-
-                const price = document.createElement('p');
-                price.classList.add('card-text');
-                price.innerHTML = `Venda: R$ ${property.value.toFixed(2)}`;
-
-                const viewButton = document.createElement('a');
-                viewButton.href = '#';
-                viewButton.classList.add('btn', 'btn-primary');
-                viewButton.textContent = 'Ver imóvel';
-
-                // Adicionar elementos ao DOM
-                cardBody.appendChild(title);
-                cardBody.appendChild(description);
-                cardBody.appendChild(price);
-                cardBody.appendChild(viewButton);
-
-                card.appendChild(link);
-                card.appendChild(cardBody);
-
-                cardWrapper.appendChild(card);
-
-                // Adicionar à página
-                document.body.appendChild(cardWrapper);
-            });
-
-            console.log('Propriedades carregadas com sucesso!');
+        if (property.images.length > 0) {
+            imageElement.src = `backend/public/images/PropertyImages${property.images[0]}`;
+        }
+           console.log('Propriedades carregadas com sucesso!');
         } else {
             console.error('Erro ao obter propriedades:', response.statusText);
         }

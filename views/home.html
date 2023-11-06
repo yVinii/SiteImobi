@@ -32,21 +32,21 @@
                 <div class="navigation">
                     <ul class="menu">
                         <div class="close-btn"></div>
-                            <li class="menu-item"><a href="#">Início</a></li>
+                            <li class="menu-item"><a href="/views/home.html">Início</a></li>
                             <li class="menu-item">
                                 <a class="sub-btn" href="#">Imóveis <i class="fas fa-angle-down"></i></a>
                                 <ul class="sub-menu">
-                                    <li class="sub-item"><a href="#">Venda</a></li>
-                                    <li class="sub-item"><a href="#">Locação</a></li>
-                                    <li class="sub-item"><a href="#">Lançamentos</a></li>
+                                    <li class="sub-item"><a href="/views/pagimoveis.html">Venda</a></li>
+                                    <li class="sub-item"><a href="/views/pagimoveis.html">Locação</a></li>
+                                    <li class="sub-item"><a href="/views/pagimoveis.html">Lançamentos</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item">
                                 <a class="sub-btn" href="#">Serviços <i class="fas fa-angle-down"></i></a>
                                 <ul class="sub-menu">
-                                    <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
-                                    <li class="sub-item"><a href="#">Nós encontramos</a></li>
-                                    <li class="sub-item"><a href="financiamento.html">Simuladores</a></li>
+                                    <li class="sub-item"><a href="/views/cadastreimovel.html">Cadastre seu imóvel</a></li>
+                                    <li class="sub-item"><a href="/views/pagimoveis.html">Nós encontramos</a></li>
+                                    <li class="sub-item"><a href="/views/simuladores.html">Simuladores</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item">
@@ -148,7 +148,7 @@
                 <div class="cadastre-imovel">
                     <h1>Cadastre seu imóvel</h1>
                     <p>Venha trabalhar conosco, cadastre seu imóvel e faça parte do time LSilva. Garantimos que faremos de tudo para que seu imóvel seja alugado ou comprado.</p>
-                    <a href="cadastreimovel.html"><button>Cadastrar imóvel</button></a>
+                    <a href="/views/cadastreimovel.html"><button>Cadastrar imóvel</button></a>
                 </div>
 
                 <div class="form-cad-imovel">
@@ -363,7 +363,7 @@
                         </div>
                         <h3>Fale conosco</h3>
                         <p>Entre em contato caso tenha qualquer dúvida.</p>
-                        <a href=""><button>Contato</button></a>
+                        <a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es"><button>Contato</button></a>
                     </section>
 
                     <section class="card-2 simulador">
@@ -372,7 +372,7 @@
                        </div>
                         <h3>Simuladores</h3>
                         <p>Faça uma simulação para adquirir seu imóvel.</p>
-                        <a href=""><button>Simular</button></a>
+                        <a href="/views/simuladores.html"><button>Simular</button></a>
                     </section>
 
                     <section class="card-2 cad-imovel">
@@ -381,7 +381,7 @@
                         </div>
                         <h3>Cadastrar imóvel</h3>
                         <p>Cadastre seu imóvel e garanta bons negócios.</p>
-                        <a href="#"><button>Cadastrar</button></a>
+                        <a href="/views/cadastreimovel.html"><button>Cadastrar</button></a>
                     </section>
             </section>
         </main>
@@ -492,7 +492,7 @@
                 imageWrapper.classList.add('image-wrapper');
 
                 const img = document.createElement('img');
-                img.src = property.images; // Corrigido para property.images
+                img.src = property.images;
                 img.alt = 'Imagem da propriedade';
 
                 imageWrapper.appendChild(img);
