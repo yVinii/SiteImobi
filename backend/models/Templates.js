@@ -1,56 +1,53 @@
+// Importando o Sequelize e a conexão com o banco de dados
 const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../db/conn');
 
-const sequelize = require('../db/conn'); // Importando a conexão Sequelize
-
-const Templates = sequelize.define(
-    'Templates',
-{
+// Definição do modelo Templates com seus atributos e configurações
+const Templates = sequelize.define('Templates', {
     owner: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      emailOwner: {
+    },
+    emailOwner: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      phone: {
+    },
+    phone: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      propertytype: {
+    },
+    propertytype: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      city: {
+    },
+    city: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      typeofsale: {
+    },
+    typeofsale: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      description: {
+    },
+    description: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      active: {
+    },
+    active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
-      images: {
-        type: DataTypes.JSON, // Pode usar TEXT se preferir
+    },
+    images: {
+        type: DataTypes.JSON, // ou TEXT, dependendo da preferência
         allowNull: false,
         get() {
-          // Aqui você pode personalizar como as imagens são recuperadas
-          const images = this.getDataValue('images');
-          return images ? JSON.parse(images) : [];
+            const images = this.getDataValue('images');
+            return images ? JSON.parse(images) : [];
         },
         set(images) {
-          // Aqui você pode personalizar como as imagens são armazenadas
-          this.setDataValue('images', JSON.stringify(images));
+            this.setDataValue('images', JSON.stringify(images));
         },
-      },
+    },
 }, { timestamps: true });
 
-
+// Exportando o modelo Templates para ser usado em outras partes da aplicação
 module.exports = Templates;

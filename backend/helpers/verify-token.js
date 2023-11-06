@@ -1,28 +1,32 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const getTokenFunction = require('./get-token');
 
-const getTokenFunction = require('./get-token')
-
-//middleware to validate token
+// Middleware para validar o token de autenticação
 const checkToken = (req, res, next) => {
-    if(!req.headers.authorization){
-        return res.status(401).json({message: 'Acesso Negado!'})
+    // Verifica se o cabeçalho de autorização está presente na requisição
+    if (!req.headers.authorization) {
+        return res.status(401).json({ message: 'Acesso Negado!' });
     }
-    const token = getTokenFunction(req)
 
-    if(!token){
-        return res.status(401).json({message: 'Acesso Negado!'})
+    // Obtém o token do cabeçalho da requisição
+    const token = getTokenFunction(req);
+
+    // Verifica se o token está presente na requisição
+    if (!token) {
+        return res.status(401).json({ message: 'Acesso Negado!' });
     }
 
     try {
+        // Verifica se o token é válido usando a chave secreta ('nossosecret')
+        const verified = jwt.verify(token, 'nossosecret');
+        
+        // Se o token for válido, atribui as informações do usuário verificado ao objeto de requisição (req)
+        req.user = verified;
+        next(); // Chama a próxima função no pipeline de requisições
 
-        const verified = jwt.verify(token, 'nossosecret')
-        req.user = verified
-        next()
+    } catch (error) {
+        return res.status(400).json({ message: 'Token Inválido!' });
+    }
+};
 
-        } 
-        catch (error){
-            return res.status(400).json({message: 'Token Inválido!'})
-        }
-}
-
-module.exports = checkToken
+module.exports = checkToken;

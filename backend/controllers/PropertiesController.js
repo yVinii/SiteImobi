@@ -1,333 +1,49 @@
-const getUserByToken = require("../helpers/get-user-by-token")
-const getToken = require("../helpers/get-token")
-const Properties = require("../models/Properties")
+const getUserByToken = require("../helpers/get-user-by-token");
+const getToken = require("../helpers/get-token");
+const Properties = require("../models/Properties");
 const Broker = require('../models/Broker');
 
 module.exports = class PropertiesController {
-    //create a property
-    static async create(req, res){
+    /**
+     * Cria uma propriedade.
+     */
+    static async create(req, res) {
+        // Extrai os dados da requisição
+        const { title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register } = req.body;
 
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
-        const active = true
-        // Recebendo as URLs das imagens do array de arquivos carregados
-       const images = req.files.map(file => file.filename);
+        // Ativa a propriedade por padrão
+        const active = true;
 
-        //image upload
+        // Recebe as URLs das imagens do array de arquivos carregados
+        const images = req.files.map(file => file.filename);
 
-        //validations
-        if(!title){
-            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
-            return
+        // Validações dos campos obrigatórios
+        if (!title || !typeofsale || !address || !city || !neighborhood || !value || !nbedrooms || !propertytype || !buildm2 || !groundm2 || !description || !nsuites || !nvacancies || !nbathrooms || !register) {
+            return res.status(422).json({ message: "Preencha todos os campos obrigatórios!" });
         }
 
-        if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
-            return
-        }
-
-        if(!address){
-            res.status(422).json({message: "O Endereço do imóvel é obrigadório"})
-            return
-        }
-
-        if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
-            return
-        }
-
-        if(!neighborhood){
-            res.status(422).json({message: "O Bairro do imóvel é obrigadório"})
-            return
-        }
-
-        if(!value){
-            res.status(422).json({message: "O Valor do imóvel é obrigadório"})
-            return
-        }
-
-        if(!nbedrooms){
-            res.status(422).json({message: "O número de quartos do imóvel é obrigadório"})
-            return
-        }
-
-        if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
-            return
-        }
-
-        if(!buildm2){
-            res.status(422).json({message: "O tamanho construído do imóvel é obrigadório"})
-            return
-        }
-
-        if(!groundm2){
-            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigadório"})
-            return
-        }
-
-        if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
-            return
-        }
-
-        if(!nsuites){
-            res.status(422).json({message: "O número de suites do imóvel é obrigadório"})
-            return
-        }
-
-        if(!nvacancies){
-            res.status(422).json({message: "O número de vagas do imóvel é obrigadório"})
-            return
-        }
-
-        if(!nbathrooms){
-            res.status(422).json({message: "O número de banheiros do imóvel é obrigadório"})
-            return
-        }
-
-        if(!register){
-            res.status(422).json({message: "O número do imóvel é obrigadório"})
-            return
-        }
+        // Encontra o corretor pelo ID
         const brokerId = "1";
-
-        // Verificando se o corretor com esse ID existe
         const broker = await Broker.findByPk(brokerId);
 
-        // Verificando se o corretor foi encontrado
         if (!broker) {
-                return res.status(404).json({ message: 'Corretor não encontrado' });
-            }
-      
-        if(images.length === 0){
-            return res.status(422).json({message: 'A imagem é obrigatória!'})
-        }
-        //create a property
-        const newProperty= await broker.createProperty({
-            title,
-            typeofsale, 
-            address, 
-            city, 
-            neighborhood, 
-            value,
-            active: true, 
-            nbedrooms, 
-            propertytype, 
-            buildm2, 
-            groundm2, 
-            description, 
-            nsuites, 
-            nvacancies, 
-            nbathrooms, 
-            register,
-            images,
-        })
-        
-        try{
-            res.status(201).json({
-                message: 'Propriedade cadastrada com Sucesso',
-                newProperty,
-            })
-
-        } catch(error){
-
-            res.status(500).json({message: error})
-        }
-    }
-
-    // TRAZ TODAS PROPRIEDADES
-    static async getAll(req, res) {
-        try {
-            const properties = await Properties.findAll({
-                where: { active: true },
-                order: [['createdAt', 'DESC']] // Ordenar por createdAt em ordem decrescente
-            });
-    
-            res.status(200).json({
-                properties: properties,
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
-        }
-    }
-
-    // RECEBE UM ID E TRAZ UMA PROPRIEDADE DETALHADA
-    static async getPropertiesById(req, res) {
-        const id = req.params.id;
-    
-        try {
-            
-            const property = await Properties.findOne({
-                where: { id, active: true }, // Adicionando a condição para propriedades ativas
-            });
-    
-            if (!property) {
-                return res.status(404).json({ message: 'Propriedade não cadastrada ou inativa' });
-            }
-    
-            // Se a propriedade for encontrada e ativa, responder com os dados da propriedade
-            res.status(200).json({ property });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
-        }
-    }
-    
-    // EXCLUI UMA PROPRIEDADE
-    static async removePropertiesById(req, res){
-        const id = req.params.id;
-    
-        try {
-            const property = await Properties.findByPk(id);
-    
-            if (!property) {
-                return res.status(404).json({ message: 'Propriedade não cadastrada' });
-            }
-    
-            // Altera o valor da coluna 'active' para false
-            property.active = false;
-    
-            // Salva a alteração no banco de dados
-            await property.save();
-    
-            res.status(200).json({ message: 'Propriedade marcada como inativa com sucesso!' });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
-        }
-    }
-    
-    // UPDATE EM PROPRIEDADE
-    static async updateProperty(req, res){
-        const id = req.params.id
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
-        const imagesFiles = req.files
-
-        try{
-        //check if property exists
-       
-         const property = await Properties.findOne({
-            where: { id, active: true }, // Adicionando a condição para propriedades ativas
-        });
-        if (!property) {
-            return res.status(404).json({ message: 'Propriedade não cadastrada ou inativa' });
+            return res.status(404).json({ message: 'Corretor não encontrado' });
         }
 
-        let updateData = {};
-
-        //validations
-        if(!title){
-            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
-            return
+        // Verifica se imagens foram carregadas
+        if (images.length === 0) {
+            return res.status(422).json({ message: 'É obrigatório carregar ao menos uma imagem!' });
         }
 
-        if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.typeofsale = typeofsale
-        }
-
-        if(!address){
-            res.status(422).json({message: "O Endereço do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.address = address
-        }
-
-        if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.city = city
-        }
-
-        if(!neighborhood){
-            res.status(422).json({message: "O Bairro do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.neighborhood = neighborhood
-        }
-
-        if(!value){
-            res.status(422).json({message: "O Valor do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.value = value
-        }
-
-        if(!nbedrooms){
-            res.status(422).json({message: "O número de quartos do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.nbedrooms = nbedrooms
-        }
-
-        if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.propertytype = propertytype
-        }
-
-        if(!buildm2){
-            res.status(422).json({message: "O tamanho construído do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.buildm2 = buildm2
-        }
-
-        if(!groundm2){
-            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.groundm2 = groundm2
-        }
-
-        if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.description = description
-        }
-
-        if(!nsuites){
-            res.status(422).json({message: "O número de suites do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.nsuites = nsuites
-        }
-
-        if(!nvacancies){
-            res.status(422).json({message: "O número de vagas do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.nvacancies = nvacancies
-        }
-
-        if(!nbathrooms){
-            res.status(422).json({message: "O número de banheiros do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.nbathrooms = nbathrooms
-        }
-
-        if(!register){
-            res.status(422).json({message: "O número do imóvel é obrigadório"})
-            return
-        }else {
-            updateData.register = register
-        }
-
-         // Update data object
-          updateData = {
+        // Cria a propriedade associada ao corretor
+        const newProperty = await broker.createProperty({
             title,
             typeofsale,
             address,
             city,
             neighborhood,
             value,
+            active,
             nbedrooms,
             propertytype,
             buildm2,
@@ -337,124 +53,221 @@ module.exports = class PropertiesController {
             nvacancies,
             nbathrooms,
             register,
-        };
-       
-        const brokerId = "1";
-        // Verificando se o corretor com esse ID existe
-        const broker = await Broker.findByPk(brokerId);
+            images,
+        });
 
-        // Verificando se o corretor foi encontrado
-        if (!broker) {
-                return res.status(404).json({ message: 'Corretor não encontrado' });
-            }
-      
-        if (imagesFiles.length === 0) {
-                return res.status(422).json({ message: 'A imagem é obrigatória!' });
-        } else {
-                // Mapeia os nomes dos arquivos das imagens e adiciona ao array images
-                const images = req.files.map(file => file.filename);
-            
-                // Adiciona as novas imagens ao array existente em updateData.images
-                updateData.images = images;
-        }
-        
-         // Atualizando a propriedade com os novos dados
-         await property.update(updateData);
-
-         res.status(200).json({
-             message: 'Propriedade atualizada com sucesso!',
-         });
+        try {
+            res.status(201).json({
+                message: 'Propriedade cadastrada com sucesso',
+                newProperty,
+            });
         } catch (error) {
-         console.error(error);
-         res.status(500).json({ message: 'Erro interno do servidor' });
-     }}
-      
-
-
-// Método para obter todos os bairros únicos
- static async getUniqueNeighborhoods(req, res) {
-    try {
-        const neighborhoods = await Properties.findAll({
-            attributes: ['neighborhood'], // Seleciona apenas a coluna neighborhood
-            group: ['neighborhood'], // Agrupa pelos diferentes bairros
-            raw: true, // Retorna apenas os dados brutos, sem instâncias do modelo
-        });
-
-        const uniqueNeighborhoods = neighborhoods.map(property => property.neighborhood);
-
-        res.json({ neighborhoods: uniqueNeighborhoods });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro interno do servidor' });
-    }
-}
-
-
-
-
-
-//Filtrando por Corretor
-static async getAllBrokerProperties(req, res) {
-    try {
-        // Recebendo o id do corretor
-        const idBroker = req.params.id;
-
-        // Verificando se o corretor com esse ID existe
-      const broker = await Broker.findByPk(idBroker);
-
-        if (!broker) {
-           return res.status(404).json({ message: 'Corretor não encontrado' });
+            res.status(500).json({ message: 'Erro ao cadastrar a propriedade', error });
         }
+    }
 
-        // Consulta para encontrar propriedades associadas a este corretor
-        const properties = await Properties.findAll({
-            where: {
-                idBroker: broker.id
+    /**
+     * Obtém todas as propriedades ativas ordenadas por data de criação.
+     */
+    static async getAll(req, res) {
+        try {
+            const properties = await Properties.findAll({
+                where: { active: true },
+                order: [['createdAt', 'DESC']]
+            });
+
+            res.status(200).json({
+                properties,
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }
+
+    /**
+     * Obtém uma propriedade detalhada com base no ID.
+     */
+    static async getPropertiesById(req, res) {
+        const id = req.params.id;
+
+        try {
+            const property = await Properties.findOne({
+                where: { id, active: true },
+            });
+
+            if (!property) {
+                return res.status(404).json({ message: 'Propriedade não encontrada ou inativa' });
             }
-        });
 
-        
-        // Verificando se há propriedades associadas a este corretor
-        if (!properties || properties.length === 0) {
-            return res.status(404).json({ message: 'Nenhuma propriedade encontrada para este corretor' });
+            res.status(200).json({ property });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
         }
-
-        res.status(200).json({ properties });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro interno do servidor' });
     }
-}
 
+    /**
+     * Desativa uma propriedade com base no ID.
+     */
+    static async removePropertiesById(req, res) {
+        const id = req.params.id;
 
+        try {
+            const property = await Properties.findByPk(id);
 
-  // Método para obter todas cidades
- static async getUniqueCity(req, res) {
-    try {
-        const city = await Properties.findAll({
-            attributes: ['city'], // Seleciona apenas a coluna da cidade
-            group: ['city'], // Agrupa por diferentes cidades
-            raw: true, // Retorna apenas os dados brutos, sem instâncias do modelo
-        });
+            if (!property) {
+                return res.status(404).json({ message: 'Propriedade não encontrada' });
+            }
 
-        const uniqueCity = city.map(property => property.city);
+            property.active = false;
 
-        res.json({ city: uniqueCity });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro interno do servidor' });
+            await property.save();
+
+            res.status(200).json({ message: 'Propriedade marcada como inativa com sucesso!' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
     }
-}
 
-    // Filtrando por Tipo de Venda
+    /**
+     * Atualiza uma propriedade com base no ID.
+     */
+    static async updateProperty(req, res) {
+        const id = req.params.id;
+        const { title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register } = req.body;
+        const imagesFiles = req.files;
+
+        try {
+            const property = await Properties.findOne({
+                where: { id, active: true },
+            });
+
+            if (!property) {
+                return res.status(404).json({ message: 'Propriedade não encontrada ou inativa' });
+            }
+
+            // Validação dos campos obrigatórios
+            if (!title || !typeofsale || !address || !city || !neighborhood || !value || !nbedrooms || !propertytype || !buildm2 || !groundm2 || !description || !nsuites || !nvacancies || !nbathrooms || !register) {
+                return res.status(422).json({ message: "Preencha todos os campos obrigatórios!" });
+            }
+
+            // Atualiza os dados da propriedade
+            const updateData = {
+                title,
+                typeofsale,
+                address,
+                city,
+                neighborhood,
+                value,
+                nbedrooms,
+                propertytype,
+                buildm2,
+                groundm2,
+                description,
+                nsuites,
+                nvacancies,
+                nbathrooms,
+                register,
+            };
+
+            // Atualiza a propriedade no banco de dados
+            await property.update(updateData);
+
+            res.status(200).json({
+                message: 'Propriedade atualizada com sucesso!',
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }
+
+    /**
+     * Obtém todos os bairros únicos das propriedades.
+     */
+    static async getUniqueNeighborhoods(req, res) {
+        try {
+            const neighborhoods = await Properties.findAll({
+                attributes: ['neighborhood'],
+                group: ['neighborhood'],
+                raw: true,
+            });
+
+            const uniqueNeighborhoods = neighborhoods.map(property => property.neighborhood);
+
+            res.json({ neighborhoods: uniqueNeighborhoods });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }
+
+    /**
+     * Obtém todas as cidades únicas das propriedades.
+     */
+    static async getUniqueCity(req, res) {
+        try {
+            const city = await Properties.findAll({
+                attributes: ['city'],
+                group: ['city'],
+                raw: true,
+            });
+
+            const uniqueCity = city.map(property => property.city);
+
+            res.json({ city: uniqueCity });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }
+
+    /**
+     * Filtra propriedades por tipo de venda.
+     */
     static async getByTypeOfSale(req, res) {
         const { typeofsale } = req.query;
-        const properties = await Properties.findAll({
-            where: {
-                typeofsale: typeofsale,
-            },
-        });
-        res.json(properties);
-    }
-}
 
+        try {
+            const properties = await Properties.findAll({
+                where: { typeofsale },
+            });
+
+            res.json(properties);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }
+    
+    /**
+     * Obtém propriedades associadas a um corretor específico.
+     */
+    static async getAllBrokerProperties(req, res) {
+        try {
+            const idBroker = req.params.id;
+            const broker = await Broker.findByPk(idBroker);
+
+            if (!broker) {
+                return res.status(404).json({ message: 'Corretor não encontrado' });
+            }
+
+            const properties = await Properties.findAll({
+                where: { idBroker: broker.id },
+            });
+
+            if (!properties || properties.length === 0) {
+                return res.status(404).json({ message: 'Nenhuma propriedade encontrada para este corretor' });
+            }
+
+            res.status(200).json({ properties });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor', error });
+        }
+    }}
+
+    // Exporta as funções do controlador de propriedades
+    module.exports = PropertiesController;

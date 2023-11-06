@@ -1,147 +1,122 @@
-const Templates = require('../models/Templates');
+const Templates = require('../models/Templates'); // Importa o modelo de Templates
 
 module.exports = class TemplatesController {
-    //create a template
+    // Método para criar um novo template
     static async create(req, res){
+        // Extrai os dados do corpo da solicitação
+        const { owner, emailOwner, phone, city, propertytype, description, typeofsale } = req.body;
+        const active = true; // Define o template como ativo
 
-        const {owner, emailOwner, phone, city, propertytype, description, typeofsale} = req.body
-        const active = true
-        // Recebendo as URLs das imagens do array de arquivos carregados
-       const images = req.files.map(file => file.filename);
+        // Recebe as URLs das imagens do array de arquivos carregados
+        const images = req.files.map(file => file.filename);
 
-        //image upload
-
-        //validations
-        if(!owner){
-            res.status(422).json({message: "O nome do proprietário do do imóvel é obrigadório"})
-            return
+        // Validação dos campos
+        if (!owner || !emailOwner || !typeofsale || !city || !propertytype || !description || !phone) {
+            res.status(422).json({ message: "Campos obrigatórios faltando" });
+            return;
         }
 
-        if(!emailOwner){
-            res.status(422).json({message: "O email do proprietário do do imóvel é obrigadório"})
-            return
+        if (images.length === 0) {
+            res.status(422).json({ message: 'Pelo menos uma imagem é obrigatória!' });
+            return;
         }
 
+        try {
+            // Cria um novo template com os dados fornecidos
+            const template = await Templates.create({
+                owner,
+                emailOwner,
+                typeofsale,
+                city,
+                active,
+                propertytype,
+                description,
+                phone,
+                images,
+            });
 
-        if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
-            return
-        }
-
-
-        if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
-            return
-        }
-
-        if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
-            return
-        }
-
-        if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
-            return
-        }
-
-
-        if(!phone){
-            res.status(422).json({message: "O número de telefone é obrigadório"})
-            return
-        }
-       
-
-        if(images.length === 0){
-            return res.status(422).json({message: 'A imagem é obrigatória!'})
-        }
-        //create a templayr
-        const template = await Templates.create({
-            owner,
-            emailOwner,
-            typeofsale, 
-            city, 
-            active: true,
-            propertytype,
-            description,  
-            phone,
-            images,
-        });
-        
-        try{
+            // Responde com o novo template criado
             res.status(201).json({
-                message: 'Template cadastrado com Sucesso',
+                message: 'Template cadastrado com sucesso',
                 newTemplate: template,
             });
-
-        } catch(error){
-
-            res.status(500).json({message: error})
+        } catch(error) {
+            // Em caso de erro, envia uma resposta com o erro ocorrido
+            res.status(500).json({ message: error });
         }
     }
 
-    // TRAZ TODOS TEEMPLATES
+    // Método para obter todos os templates ativos
     static async getAll(req, res) {
         try {
+            // Busca todos os templates ativos, ordenados por data de criação decrescente
             const templates = await Templates.findAll({
                 where: { active: true },
-                order: [['createdAt', 'DESC']] // Ordenar por createdAt em ordem decrescente
+                order: [['createdAt', 'DESC']]
             });
     
-            res.status(200).json({
-                Templates: templates,
-            });
+            // Responde com a lista de templates encontrados
+            res.status(200).json({ Templates: templates });
         } catch (error) {
+            // Em caso de erro, envia uma resposta com o erro ocorrido
             console.error(error);
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
 
-    // RECEBE UM ID E TRAZ UM TEMPLATE DETALHADO
+    // Método para obter um template por ID
     static async getTemplateById(req, res) {
         const id = req.params.id;
-    
+
         try {
-            
+            // Busca um template ativo pelo ID fornecido
             const template = await Templates.findOne({
-                where: { id, active: true }, // Adicionando a condição para templates ativos
+                where: { id, active: true }
             });
-    
+
+            // Verifica se o template foi encontrado
             if (!template) {
-                return res.status(404).json({ message: 'Template não cadastrado ou inativo' });
+                res.status(404).json({ message: 'Template não encontrado ou inativo' });
+                return;
             }
-    
-            // Se o template for encontrado e ativo, responder com os dados do emplate
+
+            // Responde com os detalhes do template encontrado
             res.status(200).json({ template });
         } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
-        }
-    }
-    
-    // EXCLUI UM TEMPLATE
-    static async removeTemplateById(req, res){
-        const id = req.params.id;
-    
-        try {
-            const template = await Templates.findByPk(id);
-    
-            if (!template) {
-                return res.status(404).json({ message: 'Template não cadastrado' });
-            }
-    
-            // Altera o valor da coluna 'active' para false
-            template.active = false;
-    
-            // Salva a alteração no banco de dados
-            await template.save();
-    
-            res.status(200).json({ message: 'Template marcado como inativo com sucesso!' });
-        } catch (error) {
+            // Em caso de erro, envia uma resposta com o erro ocorrido
             console.error(error);
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
 
+    // Método para remover um template por ID
+    static async removeTemplateById(req, res){
+        const id = req.params.id;
+
+        try {
+            // Busca um template pelo ID fornecido
+            const template = await Templates.findByPk(id);
+
+            // Verifica se o template foi encontrado
+            if (!template) {
+                res.status(404).json({ message: 'Template não encontrado' });
+                return;
+            }
+
+            // Desativa o template (altera o campo 'active' para false)
+            template.active = false;
+
+            // Salva a alteração no banco de dados
+            await template.save();
+
+            // Responde com uma mensagem de sucesso
+            res.status(200).json({ message: 'Template marcado como inativo com sucesso!' });
+        } catch (error) {
+            // Em caso de erro, envia uma resposta com o erro ocorrido
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
 }
 
 

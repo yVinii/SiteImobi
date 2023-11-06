@@ -1,14 +1,27 @@
-const router = require('express').Router()
+// Importando e configurando o módulo de roteamento do Express
+const router = require('express').Router();
 
-const BrokerController = require("../controllers/BrokerController")
+// Importando o controlador de corretores para lidar com as requisições
+const BrokerController = require('../controllers/BrokerController');
 
-//middlewares
-const verifyToken = require('../helpers/verify-token')
+// Importando middleware para verificar o token
+const verifyToken = require('../helpers/verify-token');
 
-router.post('/create', verifyToken, BrokerController.create)
+// Rotas para operações relacionadas a corretores
+router.post('/create', verifyToken, BrokerController.create);
+// Rota para criar um novo corretor, com verificação de token
+
 router.get('/:id', BrokerController.getBrokerById);
-router.get('/',verifyToken, BrokerController.getAll);
-router.patch('/:id', verifyToken, BrokerController.updateBroker);
-router.delete('/:id', verifyToken, BrokerController.deleteBrokerById);
+// Rota para obter um corretor por ID
 
-module.exports = router
+router.get('/', verifyToken, BrokerController.getAll);
+// Rota para obter todos os corretores, com verificação de token
+
+router.patch('/:id', verifyToken, BrokerController.updateBroker);
+// Rota para atualizar um corretor por ID, com verificação de token
+
+router.delete('/:id', verifyToken, BrokerController.deleteBrokerById);
+// Rota para excluir um corretor por ID, com verificação de token
+
+// Exportando as rotas configuradas
+module.exports = router;

@@ -1,16 +1,19 @@
-const router = require('express').Router()
+// Importando e configurando o módulo de roteamento do Express
+const router = require('express').Router();
 
-const TemplatesController = require("../controllers/TemplatesController")
+// Importando o controlador de templates para lidar com as requisições
+const TemplatesController = require('../controllers/TemplatesController');
 
-//middlewares
-const { imageUpload } = require('../helpers/image-upload')
+// Importando middlewares
+const { imageUpload } = require('../helpers/image-upload');
 
-router.post('/create',
-imageUpload.array('images'), 
-TemplatesController.create)
+// Rotas para operações relacionadas a templates
+router.post('/create', imageUpload.array('images'), TemplatesController.create);
+// Rota para criar um novo template utilizando um middleware de upload de imagens
 
-router.get('/', TemplatesController.getAll);
-router.get('/:id', TemplatesController.getTemplateById);
-router.delete('/:id', TemplatesController.removeTemplateById);
+router.get('/', TemplatesController.getAll); // Rota para obter todos os templates
+router.get('/:id', TemplatesController.getTemplateById); // Rota para obter um template por ID
+router.delete('/:id', TemplatesController.removeTemplateById); // Rota para remover um template por ID
 
-module.exports = router
+// Exportando as rotas configuradas
+module.exports = router;
