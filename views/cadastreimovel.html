@@ -78,7 +78,11 @@
                                     <h1>Cadastre seu Imóvel</h1>
                                 </div>
                             </div>
-
+                            <div class="alert alert-success" role="alert"> 
+                                
+                            </div>
+                            <div class="alert alert-danger" role="alert">
+                            </div>
                             <div class="input-group">
                                 <div class="input-box">
                                     <label for="firstname">Nome Completo</label>
@@ -100,12 +104,12 @@
                                     <label for="tipoimovel">Tipo de imóvel</label>
                                     <select name="tipoimovel" id="tipoimovel">
                                         <option>Selecione</option>
-                                        <option value="1">Apartamento</option>
-                                        <option value="2">Casa</option>
-                                        <option value="3">Comercial</option>
-                                        <option value="4">Galpões</option>
-                                        <option value="5">Rural</option>
-                                        <option value="6">Terrenos</option>
+                                        <option value="Apartamento">Apartamento</option>
+                                        <option value="Casa">Casa</option>
+                                        <option value="Comercial">Comercial</option>
+                                        <option value="Galpões">Galpões</option>
+                                        <option value="Rural">Rural</option>
+                                        <option value="Terrenos">Terrenos</option>
                                     </select>
                                 </div>
 
@@ -113,11 +117,11 @@
                                     <label for="selctcdd">Cidade</label>
                                     <select name="selectcdd" id="selectcdd">
                                         <option>Selecione</option>
-                                        <option value="1">São Roque</option>
-                                        <option value="2">Mairinque</option>
-                                        <option value="3">Ibiúna</option>
-                                        <option value="4">Araçariguama</option>
-                                        <option value="5">Alumínio</option>
+                                        <option value="São Roque">São Roque</option>
+                                        <option value="Mairinque">Mairinque</option>
+                                        <option value="Ibiúna">Ibiúna</option>
+                                        <option value="Araçariguama">Araçariguama</option>
+                                        <option value="Alumínio">Alumínio</option>
                                     </select>
                                 </div>
 
@@ -126,9 +130,9 @@
                                     <label for="tipoimovel">Tipo de negociação</label>
                                     <select name="tipoimovel" id="tipo-negociacao">
                                         <option>Selecione</option>
-                                        <option value="1">Venda</option>
-                                        <option value="2">Locação</option>
-                                        <option value="3">Ambos</option>
+                                        <option value="Venda">Venda</option>
+                                        <option value="Locação">Locação</option>
+                                        <option value="Ambos">Ambos</option>
                                     </select>
                                 </div>
 
@@ -153,7 +157,7 @@
                                         </div>
                                         <div class="upload-area">
                                             <div class="upload-area-img">
-                                                <img src="../css/css_pages/css_imgs/upload.png" alt="">
+                                                <img src="../css/css_pages/css_imgs/aps.jpg" alt="">
                                             </div>
                                             <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
                                         </div>
@@ -277,45 +281,46 @@
     <script src="../javascript/upload.js"></script>
 
     <script>
-       async function enviarDados() {
-        try {
-            const firstname = document.getElementById('firstname').value;
-            const email = document.getElementById('email').value;
-            const number = document.getElementById('number').value;
-            const tipoimovel = document.getElementById('tipoimovel').value;
-            const selectcdd = document.getElementById('selectcdd').value;
-            const tipoNegociacao = document.getElementById('tipo-negociacao').value;
-            const infoadd = document.getElementById('infoadd').value;
-            const files = document.getElementById('upload-input').files;
+  async function enviarDados() {
+    try {
+        const firstname = document.getElementById('firstname').value;
+        const email = document.getElementById('email').value;
+        const number = document.getElementById('number').value;
+        const tipoimovel = document.getElementById('tipoimovel').value;
+        const selectcdd = document.getElementById('selectcdd').value;
+        const tipoNegociacao = document.getElementById('tipo-negociacao').value;
+        const infoadd = document.getElementById('infoadd').value;
+        const files = document.getElementById('upload-input').files;
 
-            const formData = new FormData();
-            formData.append('owner', firstname);
-            formData.append('emailOwner', email);
-            formData.append('phone', number);
-            formData.append('propertytype', tipoimovel);
-            formData.append('city', selectcdd);
-            formData.append('typeofsale', tipoNegociacao);
-            formData.append('description', infoadd);
+        const formData = new FormData();
+        formData.append('owner', firstname);
+        formData.append('emailOwner', email);
+        formData.append('phone', number);
+        formData.append('propertytype', tipoimovel);
+        formData.append('city', selectcdd);
+        formData.append('typeofsale', tipoNegociacao);
+        formData.append('description', infoadd);
 
-            for (const file of files) {
-                formData.append('images', file);
-            }
-
-            const response = await fetch('http://localhost:5502/templates/create', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log(responseData);
-            } else {
-                console.error('Erro ao enviar dados:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Erro na requisição:', error);
+        for (const file of files) {
+            formData.append('images', file);
         }
+
+        const response = await fetch('http://localhost:5502/templates/create', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            console.log(responseData);
+        } else {
+            console.error('Erro ao enviar dados:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erro na requisição:', error);
     }
+}
+
 
     </script>
 </body>
