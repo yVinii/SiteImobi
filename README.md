@@ -19,6 +19,18 @@ Versão: 1.0
 O projeto consiste em uma plataforma web dedicada a oferecer uma experiência intuitiva e abrangente para clientes específicos em propriedades nas regiões de São Roque, Ibiúna, Mairinque e Alumínio. Com um foco especial nessas localidades, a plataforma fornecerá aos usuários uma visão detalhada e atrativa das propriedades disponíveis, facilitando a busca por residências, terrenos ou investimentos.
 
 
+<a name="Documentação do Projeto"></a>
+## 🔹 Documentação do Projeto :
+
+
+Toda documentação está presente nessa pasta.
+
+
+**Plano de Testes e Documento de Requisitos com Diagramas do Projeto**
+
+
+![image](https://github.com/yVinii/SiteImobi/assets/117307556/cd6268fa-e696-4678-83f5-c58404e13bf3)
+
 
 <a name="Recursos Principais"></a>
 ## 🔹 Recursos Principais :
