@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="envie-button">
-                    <button type="submit" onclick="enviarDados()">Enviar</button>
+                    <button type="button" id="enviarBtn" onclick="enviarDados()">Enviar</button>
                 </div>
             </form>
         </div>
@@ -59,45 +59,58 @@
 </body>
 
 <script>
-    async function enviarDados() {
-        try {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
 
-            const dados = {
-                email: email,
-                password: password
-            };
+document.addEventListener('DOMContentLoaded', () => {
+    // Adicione um ouvinte de clique ao botão
+    document.getElementById('enviarBtn').addEventListener('click', enviarDados);
+});
 
-            const response = await fetch('http://localhost:5502/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Cache-Control': 'no-cache',
-                },
-                body: JSON.stringify(dados),
-            });
+  async function enviarDados() {
+    try {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
+        const dados = {
+            email: email,
+            password: password
+        };
+
+        const response = await fetch('http://localhost:5502/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache',
+            },
+            body: JSON.stringify(dados),
+        });
+
+        // Verificar se a resposta foi bem-sucedida (status 2xx)
+        if (response.ok) {
             const responseData = await response.json();
-
-            if (response.ok) {
-                // Processar a resposta da API se necessário
-                console.log('Login bem-sucedido!');
+            // Armazenar o token no localStorage
+            localStorage.setItem('token', responseData.token);
+            console.log("usuario logado", responseData);
+            // Redirecionar para a próxima página
+            window.location.href = 'createimovel.html';
+        } else {
+            // Se a resposta não foi bem-sucedida, tratar de acordo
+            const responseData = await response.json();
+            if (responseData.errorType === 'UserNotFound') {
+                console.log(responseData.message);
+            } else if (responseData.errorType === 'SenhaNotFound') {
+                console.log(responseData.message);
+            } else if (responseData.errorType === 'EmailNotFound') {
+                console.log(responseData.message);
             } else {
-                // Exibir mensagem de erro no frontend
-                if (responseData.errorType === 'UserNotFound') {
-                    alert(responseData.message);
-                } else if (responseData.message === 'SenhaNotFound') {
-                    alert(responseData.message)
-                } else {
-                    console.error('Erro ao realizar o login:', responseData.message);
-                }
+                console.log('Erro ao realizar o login:', responseData.message);
             }
-        } catch (error) {
-            console.error(error);
         }
+    } catch (error) {
+        console.log(error);
     }
+}
+
 
 </script>
 

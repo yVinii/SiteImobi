@@ -7,7 +7,7 @@ module.exports = class PropertiesController {
     //create a property
     static async create(req, res){
 
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
+        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register,brokerId} = req.body
         const active = true
         // Recebendo as URLs das imagens do array de arquivos carregados
        const images = req.files.map(file => file.filename);
@@ -89,15 +89,14 @@ module.exports = class PropertiesController {
             res.status(422).json({message: "O número do imóvel é obrigadório"})
             return
         }
-        const brokerId = "1";
+        
+         // Verificando se o corretor com esse ID existe
+         const broker = await Broker.findByPk(brokerId);
 
-        // Verificando se o corretor com esse ID existe
-        const broker = await Broker.findByPk(brokerId);
-
-        // Verificando se o corretor foi encontrado
-        if (!broker) {
-                return res.status(404).json({ message: 'Corretor não encontrado' });
-            }
+         // Verificando se o corretor foi encontrado
+         if (!broker) {
+                 return res.status(404).json({ message: 'Corretor não encontrado' });
+             }
       
         if(images.length === 0){
             return res.status(422).json({message: 'A imagem é obrigatória!'})
@@ -121,6 +120,7 @@ module.exports = class PropertiesController {
             nbathrooms, 
             register,
             images,
+            broker,
         })
         
         try{

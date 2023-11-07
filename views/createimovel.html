@@ -21,41 +21,14 @@
             <a href="#"><img src="../img/completo.png" alt="Logo Lsilva"></a>
         </div>
 
-        <div class="input-header">
-            <input type="text" class="search-txt placeholder:text-white" placeholder="Busque seu imóvel" maxlength="22">
-            <div class="search-btn" href="">
-                <i class="bi bi-search"></i>
-            </div>
-        </div>
 
         <div class="navigation">
             <ul class="menu">
                 <div class="close-btn"></div>
                 <li class="menu-item"><a href="/views/home.html">Início</a></li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Imóveis <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Venda</a></li>
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Locação</a></li>
-                        <li class="sub-item"><a href="/views/home.html">Lançamentos</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Serviços <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="/views/cadastreimovel.html">Cadastre seu imóvel</a></li>
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Nós encontramos</a></li>
-                        <li class="sub-item"><a href="/views/simuladores.html">Simuladores</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Contato <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="telacontato.html">Email</a></li>
-                        <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
-                        <li class="sub-item"><a href="#tel">Telefones</a></li>
-                    </ul>
-                </li>
+
+                <li class="menu-item"><a href="#" id="user-info"></a></li>
+
                 <li class="menu-item">
                     <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
                 </li>
@@ -75,7 +48,7 @@
                         <form action="" id="form-data">
                             <div class="form-header">
                                 <div class="title">
-                                    <h1>Cadastre seu Imóvel</h1>
+                                    <h1>Cadastrar nova Propriedade</h1>
                                 </div>
                             </div>
                             <div class="alert alert-success" role="alert"> 
@@ -85,21 +58,26 @@
                             </div>
                             <div class="input-group">
                                 <div class="input-box">
-                                    <label for="firstname">Nome Completo</label>
-                                    <input type="text" id="firstname" name="firstname" placeholder="Digite seu nome completo" required>
+                                    <label for="title">Titulo da Propriedade</label>
+                                    <input type="text" id="title" name="title" placeholder="Digite o titulo da propriedade" required>
                                 </div>
 
                                 <div class="input-box">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                                    <label for="address">Endereço</label>
+                                    <input type="text" id="address" name="address" placeholder="Digite a Cidade, Bairro, Rua e etc" required>
                                 </div>
-
+                                
                                 <div class="input-box">
-                                    <label for="number">Celular</label>
-                                    <input type="tel" id="number" name="number" placeholder="(xx) xxxx-xxxx" required>
+                                    <label for="tipoimovel">Tipo de negociação</label>
+                                    <select name="tipoimovel" id="tipo-negociacao">
+                                        <option>Selecione</option>
+                                        <option value="Venda">Venda</option>
+                                        <option value="Locação">Locação</option>
+                                        <option value="Ambos">Ambos</option>
+                                    </select>
                                 </div>
-
-                                <!--Será um select tipo de imóvel-->
+                            
+                               
                                 <div class="input-box">
                                     <label for="tipoimovel">Tipo de imóvel</label>
                                     <select name="tipoimovel" id="tipoimovel">
@@ -114,8 +92,8 @@
                                 </div>
 
                                 <div class="input-box">
-                                    <label for="selctcdd">Cidade</label>
-                                    <select name="selectcdd" id="selectcdd">
+                                    <label for="city">Cidade</label>
+                                    <select name="city" id="city">
                                         <option>Selecione</option>
                                         <option value="São Roque">São Roque</option>
                                         <option value="Mairinque">Mairinque</option>
@@ -124,24 +102,66 @@
                                         <option value="Alumínio">Alumínio</option>
                                     </select>
                                 </div>
-
-                                <!--Será um select tipo de negociação-->
+                                
                                 <div class="input-box">
-                                    <label for="tipoimovel">Tipo de negociação</label>
-                                    <select name="tipoimovel" id="tipo-negociacao">
+                                    <label for="neighborhood">Bairro</label>
+                                    <input type="text" id="neighborhood" name="neighborhood" placeholder="Digite o bairro" required>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <label for="value">Valor do Imóvel</label>
+                                    <input type="number" id="value" name="value" placeholder="Digite o valor do imóvel" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="nbedrooms">Número de quartos</label>
+                                    <input type="number" id="nbedrooms" name="nbedrooms" placeholder="Digite o número de quartos" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="buildm2">Metragem construída</label>
+                                    <input type="number" id="buildm2" name="buildm2" placeholder="Digite o m2 de área construída" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="groundm2">Área total</label>
+                                    <input type="number" id="groundm2" name="groundm2" placeholder="Digite o m2 de área total" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="nsuites">Suítes</label>
+                                    <input type="number" id="nsuites" name="nsuites" placeholder="Digite o número de suítes" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="nvacancies">Vagas de carro</label>
+                                    <input type="number" id="nvacancies" name="nvacancies" placeholder="Digite o número de vagas disponíveis" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="nbathrooms">Banheiros</label>
+                                    <input type="number" id="nbathrooms" name="nbathrooms" placeholder="Digite o número de banheiros" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="register">Registro da Propriedade</label>
+                                    <input type="number" id="register" name="register" placeholder="Digite o número de registro" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="broker">Corretor</label>
+                                    <select name="broker" id="broker">
                                         <option>Selecione</option>
-                                        <option value="Venda">Venda</option>
-                                        <option value="Locação">Locação</option>
-                                        <option value="Ambos">Ambos</option>
                                     </select>
                                 </div>
 
+
                                 <div class="input-box info-add">
-                                    <label for="infoadd">Dados do imóvel</label>
-                                    <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
+                                    <label for="description">Descrição do imóvel</label>
+                                    <textarea id="description" name="description" placeholder="Digite uma Descrição chamativa" required rows="3"></textarea>
                                 </div>
                             </div>
-
+                        
                             <!--Uploud teste -->
 
                             <div class='wrapper'>
@@ -166,28 +186,12 @@
                                 </div>
                             </div>
 
-                            <!--<div class="gender-inputs">
-                                    <div class="gender-title">
-                                        <h6>Você é:</h6>
-                                    </div>
-            
+                            <!--
                                     <div class="gender-group">
                                         <div class="gender-input">
                                             <input type="radio" id="proprietario" name="gender">
                                              <label for="proprietario">Proprietário</label>
-                                        </div>
-            
-                                        <div class="gender-input">
-                                            <input type="radio" id="representante" name="gender">
-                                            <label for="representante">Representante</label>
-                                        </div>
-            
-                                        <div class="gender-input">
-                                            <input type="radio" id="corretor" name="gender">
-                                            <label for="corretor">Corretor</label>
-                                        </div>
-                                    </div>
-                                </div>-->
+                                        </div>-->
 
                             <div class="envie-button">
                                 <button type="button" id="enviarBtn" onclick="enviarDados()">Enviar</button>
@@ -281,38 +285,98 @@
     <script src="../javascript/upload.js"></script>
 
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('form-data').addEventListener('submit', function(event) {
-            event.preventDefault();
-            enviarDados();
-         });
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('form-data').addEventListener('submit', function(event) {
+        event.preventDefault();
+        enviarDados();
         });
+    });
+
+
+async function carregarCorretores() {
+    try {
+        const response = await fetch('http://localhost:5502/broker/');
+        const data = await response.json();
+
+        if (response.ok) {
+            const brokers = data.broker;
+            const selectElement = document.getElementById('broker');
+          
+            selectElement.innerHTML = '';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Selecione';
+            selectElement.appendChild(defaultOption);
+
+            
+            brokers.forEach((broker) => {
+                const option = document.createElement('option');
+                option.value = broker.id; 
+                option.text = broker.name;
+                selectElement.appendChild(option);
+            });
+
+            console.log('Corretores carregados com sucesso!');
+        } else {
+            console.error('Erro ao obter corretores:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    carregarCorretores();
+});
+
+
+
 
   async function enviarDados() {
     try {
-        const firstname = document.getElementById('firstname').value;
-        const email = document.getElementById('email').value;
-        const number = document.getElementById('number').value;
+        const title = document.getElementById('title').value;
+        const address = document.getElementById('address').value;
+        const value = document.getElementById('value').value;
         const tipoimovel = document.getElementById('tipoimovel').value;
-        const selectcdd = document.getElementById('selectcdd').value;
+        const bairro = document.getElementById('neighborhood').value;
+        const banheiros = document.getElementById('nbathrooms').value;
+        const vagas = document.getElementById('nvacancies').value;
+        const registro = document.getElementById('register').value;
+        const suites = document.getElementById('nsuites').value;
+        const area = document.getElementById('groundm2').value;
+        const construido = document.getElementById('buildm2').value;
+        const quartos = document.getElementById('nbedrooms').value;
+        const city = document.getElementById('city').value;
+        const corretor = document.getElementById('broker').value;
         const tipoNegociacao = document.getElementById('tipo-negociacao').value;
-        const infoadd = document.getElementById('infoadd').value;
+        const infoadd = document.getElementById('description').value;
         const files = document.getElementById('upload-input').files;
 
         const formData = new FormData();
-        formData.append('owner', firstname);
-        formData.append('emailOwner', email);
-        formData.append('phone', number);
+        formData.append('title', title);
+        formData.append('address', address);
+        formData.append('value', value);
         formData.append('propertytype', tipoimovel);
-        formData.append('city', selectcdd);
+        formData.append('city', city);
         formData.append('typeofsale', tipoNegociacao);
         formData.append('description', infoadd);
+        formData.append('brokerId',corretor);
+        formData.append('neighborhood', bairro);
+        formData.append('nbedrooms', quartos);
+        formData.append('buildm2', construido);
+        formData.append('groundm2', area);
+        formData.append('nsuites', suites);
+        formData.append('nvacancies', vagas);
+        formData.append('nbathrooms', banheiros);
+        formData.append('register', registro);
+        
 
         for (const file of files) {
             formData.append('images', file);
         }
 
-        const response = await fetch('http://localhost:5502/templates/create', {
+        const response = await fetch('http://localhost:5502/properties/create', {
             method: 'POST',
             body: formData,
         });

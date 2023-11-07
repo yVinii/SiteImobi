@@ -72,46 +72,46 @@ module.exports = class UserController {
 
     // lOGIN USUARIO
     static async login(req, res){
-      const{email, password} = req.body
-
+      const{email, password} = req.body //recebe o email e senha que o usuário insere nos campos da view
+      // verifica se foi inserido um email
       if(!email){
-        res.status(422).json({ message : 'o email é obrigatório'})
+        res.status(422).json({ message : 'o email é obrigatório'}) //retorna mensagem de erro caso não tem email na requisição
         return 
       }
-
+      //verifica se foi inserida uma senha
       if(!password){
-        res.status(422).json({ message : 'a senha é obrigatória'})
+        res.status(422).json({ message : 'a senha é obrigatória'}) // retorna mensagem de erro caso não tenha senha na requisição
         return 
       }
-      const user = await User.findOne({
-        where: { email: email.trim().toLowerCase() }
-      }); 
-
-      if(!user){
+       //verifico se o email inserido pertence a algum usuário
+        const user = await User.findOne({
+        where: { email: email.trim().toLowerCase() } // transforma o email em caixa alta para ter problema de comparação
+      });      
+      if(!user){ // se não tiver usuário no sistema com esse email entra aqui
         res
         .status(422).json({
-            errorType: 'UserNotFound',
-            message: 'Usuário não cadastrado, Por favor verifique os dados e tente novamente!',
+            errorType : 'EmailNotFound' ,
+            message: 'Não existe usuário cadastrado com esse email!', // retorna mensagem de erro não foi encontrado no banco nenhum usuário com esse email
+            
         })
         return
       }
-      // check if password match with db password
+     
+      //verifico se a senha inserida bate com a do email cadastrado no meu banco
       const checkPassword = await bcrypt.compare(password, user.password)
-
-      if(!checkPassword){
+     
+      if(!checkPassword){ // se a senha inserida estiver errada entra aqui
         res
         .status(422).json({
-            errorType: 'SenhaNotFound',
+            errorType: 'SenhaNotFound',  // retorna a mensagem de erro
             message: 'Senha do Usuário Incorreta, Por favor verifique os dados e tente novamente!',
         })
         return
       }
-      await createUserToken(user, req, res)
-      return res.status(200).json({
-        success: true,
-        message: 'Login bem-sucedido!',
+      // criando token, garante a segurança e confiabilidade do nosso sistema
+      // nesse cenário apenas usuários logados(com o token) tem acesso as paginas de edição do nosso site
+      await createUserToken(user, req, res) // se deu tudo certo ele cria um token para esse usuário para ser usado nas sessões nas views
       
-      });
   }
   
   static async checkUser(req, res){
