@@ -97,6 +97,23 @@ async function enviarDadosTemplate() {
         const infoadd = document.getElementById('infoadd').value;
         const files = document.getElementById('upload-input').files;
 
+        // Verificar se o valor selecionado não é o valor padrão
+        if (tipoimovel === 'Selecione') {
+            toggleMessage("Por favor, selecione um tipo de imóvel válido.");
+            return;
+        }
+        // Verificar se o valor selecionado não é o valor padrão
+        if (selectcdd === 'Selecione') {
+            toggleMessage("Por favor, selecione uma cidade válida.");
+            return;
+        }
+        // Verificar se o valor selecionado não é o valor padrão
+        if (tipoNegociacao === 'Selecione') {
+            toggleMessage("Por favor, selecione uma opção tipo de negociação.");
+            return;
+        }
+
+
         const formData = new FormData();
         formData.append('owner', firstname);
         formData.append('emailOwner', email);
