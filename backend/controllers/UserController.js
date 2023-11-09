@@ -91,7 +91,7 @@ module.exports = class UserController {
         res
         .status(422).json({
             errorType : 'EmailNotFound' ,
-            message: 'Não existe usuário cadastrado com esse email!', // retorna mensagem de erro não foi encontrado no banco nenhum usuário com esse email
+            message: 'Não existe usuário cadastrado com esse email, Por favor verifique os dados e Tente Novamente!', // retorna mensagem de erro não foi encontrado no banco nenhum usuário com esse email
             
         })
         return

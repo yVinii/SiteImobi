@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/javascript/script.js" defer></script>
     <title>LSilva - Login</title>
 </head>
 
@@ -36,14 +38,26 @@
                     <div class="title">
                         <h1>Entrar</h1>
                     </div>
-                </div>
-
+                </div> 
                 <div class="input-group">
                     <div class="input-box">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Digite o Email" required>
                     </div>
-
+                    <div id="fade" class="hide">
+                        <div class="spinner-border text-info hide" id="loader" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        <div id="message" class="hide">
+                           <div class="alert alert-light" role="alert">
+                                <h4>Imobiliária LSilva</h4>
+                                <p></p>
+                                <button id="close-btn" type="button" class="btn btn-secondary">
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="input-box">
                         <label for="password">Senha</label>
                         <input type="password" id="password" name="password" placeholder="Digite a senha" required>
@@ -51,68 +65,10 @@
                 </div>
 
                 <div class="envie-button">
-                    <button type="button" id="enviarBtn" onclick="enviarDados()">Enviar</button>
+                    <button type="button" id="enviarBtn" onclick="enviarDadosLogin()">Enviar</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
-
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Adicione um ouvinte de clique ao botão
-    document.getElementById('enviarBtn').addEventListener('click', enviarDados);
-});
-
-  async function enviarDados() {
-    try {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        const dados = {
-            email: email,
-            password: password
-        };
-
-        const response = await fetch('http://localhost:5502/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Cache-Control': 'no-cache',
-            },
-            body: JSON.stringify(dados),
-        });
-
-        // Verificar se a resposta foi bem-sucedida (status 2xx)
-        if (response.ok) {
-            const responseData = await response.json();
-            // Armazenar o token no localStorage
-            localStorage.setItem('token', responseData.token);
-            console.log("usuario logado", responseData);
-            // Redirecionar para a próxima página
-            window.location.href = 'createimovel.html';
-        } else {
-            // Se a resposta não foi bem-sucedida, tratar de acordo
-            const responseData = await response.json();
-            if (responseData.errorType === 'UserNotFound') {
-                console.log(responseData.message);
-            } else if (responseData.errorType === 'SenhaNotFound') {
-                console.log(responseData.message);
-            } else if (responseData.errorType === 'EmailNotFound') {
-                console.log(responseData.message);
-            } else {
-                console.log('Erro ao realizar o login:', responseData.message);
-            }
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-</script>
-
-
 </html>

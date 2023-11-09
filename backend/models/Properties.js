@@ -25,7 +25,7 @@ const Properties = sequelize.define('Properties', {
     allowNull: false,
   },
   value: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
   active: {
@@ -65,6 +65,14 @@ const Properties = sequelize.define('Properties', {
   },
   register: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  owner: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  ownerPhone: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   images: {

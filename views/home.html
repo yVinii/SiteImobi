@@ -19,7 +19,7 @@
 
         <header>
                 <div class="logo">
-                    <a href="index.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
+                    <a href="home.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
                 </div>
 
                 <div class="input-header">
@@ -471,56 +471,18 @@
         <script src="../javascript/inicio.js"></script>
  
         <script>
-    async function carregarPropriedades() {
+ async function carregarPropriedades() {
     try {
         const response = await fetch('http://localhost:5502/properties/');
-
-        if (!response.ok) {
-            console.error('Erro na requisição:', response.statusText);
-            return;
-        }
-        const properties = await response.json();
+        const data = await response.json();
 
         if (response.ok) {
-            const cardWrapper = document.querySelector('.cards-wrapper');
+            const properties = data.properties;
+            const cardsContainer = document.getElementById('cardsContainer');
 
-            properties.forEach(property => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-
-                const imageWrapper = document.createElement('div');
-                imageWrapper.classList.add('image-wrapper');
-
-                const img = document.createElement('img');
-                img.src = property.images;
-                img.alt = 'Imagem da propriedade';
-
-                imageWrapper.appendChild(img);
-
-                const cardBody = document.createElement('div');
-                cardBody.classList.add('card-body');
-
-                const title = document.createElement('h5');
-                title.classList.add('card-title');
-                title.textContent = property.title;
-
-                const description = document.createElement('p');
-                description.classList.add('card-text');
-                description.textContent = property.description;
-
-                const link = document.createElement('a');
-                link.href = '#';
-                link.classList.add('btn', 'btn-primary');
-                link.textContent = 'Ver imóvel';
-
-                cardBody.appendChild(title);
-                cardBody.appendChild(description);
-                cardBody.appendChild(link);
-
-                card.appendChild(imageWrapper);
-                card.appendChild(cardBody);
-
-                cardWrapper.appendChild(card);
+            properties.forEach((property, index) => {
+                const card = criarCard(property, index);
+                cardsContainer.appendChild(card);
             });
 
             console.log('Propriedades carregadas com sucesso!');
@@ -532,7 +494,49 @@
     }
 }
 
+function criarCard(property, index) {
+    const card = document.createElement('div');
+    card.classList.add('card-imoveis');
+
+    const cardContent = `
+        <div class="card">
+            <a href="#">
+                <div class="image-wrapper" id="images${index}">
+                    <img src="" alt="...">
+                </div>
+            </a>
+            <div class="card-body">
+                <h5 class="card-title" id="propertyTitle${index}"></h5>
+                <p class="card-text" id="propertyDetails${index}"></p>
+                <p class="card-text" id="propertyPrice${index}"></p>
+                <a href="#" class="btn btn-primary">Ver imóvel</a>
+            </div>
+        </div>
+    `;
+
+    card.innerHTML = cardContent;
+
+    const titleElement = document.getElementById(`propertyTitle${index}`);
+    const detailsElement = document.getElementById(`propertyDetails${index}`);
+    const priceElement = document.getElementById(`propertyPrice${index}`);
+    const imageElement = document.getElementById(`images${index}`);
+
+    titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
+    detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
+    priceElement.textContent = `${property.typeofsale}: R$ ${property.value.toFixed(2)}`;
+
+    if (property.images && property.images.length > 0) {
+        const imagesArray = JSON.parse(property.images);
+        if (imagesArray.length > 0) {
+            imageElement.querySelector('img').src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
+        }
+    }
+
+    return card;
+}
+
 carregarPropriedades();
+
 
 
 
