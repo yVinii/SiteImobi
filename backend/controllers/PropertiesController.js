@@ -7,7 +7,7 @@ module.exports = class PropertiesController {
     //create a property
     static async create(req, res){
 
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register,brokerId} = req.body
+        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId} = req.body
         const active = true
         // Recebendo as URLs das imagens do array de arquivos carregados
        const images = req.files.map(file => file.filename);
@@ -16,77 +16,87 @@ module.exports = class PropertiesController {
 
         //validations
         if(!title){
-            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
+            res.status(422).json({message: "O titulo do imóvel é obrigatório"})
             return
         }
 
         if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo de venda do imóvel é obrigatório"})
             return
         }
 
         if(!address){
-            res.status(422).json({message: "O Endereço do imóvel é obrigadório"})
+            res.status(422).json({message: "O Endereço do imóvel é obrigatório"})
             return
         }
 
         if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
+            res.status(422).json({message: "A cidade do imóvel é obrigatório"})
             return
         }
 
         if(!neighborhood){
-            res.status(422).json({message: "O Bairro do imóvel é obrigadório"})
+            res.status(422).json({message: "O Bairro do imóvel é obrigatório"})
             return
         }
 
         if(!value){
-            res.status(422).json({message: "O Valor do imóvel é obrigadório"})
+            res.status(422).json({message: "O Valor do imóvel é obrigatório"})
             return
         }
 
         if(!nbedrooms){
-            res.status(422).json({message: "O número de quartos do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de quartos do imóvel é obrigatório"})
             return
         }
 
         if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo do imóvel é obrigatório"})
             return
         }
 
         if(!buildm2){
-            res.status(422).json({message: "O tamanho construído do imóvel é obrigadório"})
+            res.status(422).json({message: "O tamanho construído do imóvel é obrigatório"})
             return
         }
 
         if(!groundm2){
-            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigadório"})
+            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigatório"})
             return
         }
 
         if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
+            res.status(422).json({message: "A descrição do imóvel é obrigatório"})
             return
         }
 
         if(!nsuites){
-            res.status(422).json({message: "O número de suites do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de suites do imóvel é obrigatório"})
             return
         }
 
         if(!nvacancies){
-            res.status(422).json({message: "O número de vagas do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de vagas do imóvel é obrigatório"})
             return
         }
 
         if(!nbathrooms){
-            res.status(422).json({message: "O número de banheiros do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de banheiros do imóvel é obrigatório"})
             return
         }
 
         if(!register){
-            res.status(422).json({message: "O número do imóvel é obrigadório"})
+            res.status(422).json({message: "O número do imóvel é obrigatório"})
+            return
+        }
+        
+        if(!owner){
+            res.status(422).json({message: "O nome do Proprietário do imóvel é obrigatório"})
+            return
+        }
+
+        if(!ownerPhone){
+            res.status(422).json({message: "O Telefone do Proprietário do imóvel é obrigatório"})
             return
         }
         
@@ -119,6 +129,8 @@ module.exports = class PropertiesController {
             nvacancies, 
             nbathrooms, 
             register,
+            owner,
+            ownerPhone,
             images,
             broker,
         })
@@ -201,7 +213,7 @@ module.exports = class PropertiesController {
     // UPDATE EM PROPRIEDADE
     static async updateProperty(req, res){
         const id = req.params.id
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register} = req.body
+        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerphone, brokerId} = req.body
         const imagesFiles = req.files
 
         try{
@@ -218,107 +230,130 @@ module.exports = class PropertiesController {
 
         //validations
         if(!title){
-            res.status(422).json({message: "O titulo do imóvel é obrigadório"})
+            res.status(422).json({message: "O titulo do imóvel é obrigatório"})
             return
         }
 
         if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo de venda do imóvel é obrigatório"})
             return
         }else {
             updateData.typeofsale = typeofsale
         }
 
         if(!address){
-            res.status(422).json({message: "O Endereço do imóvel é obrigadório"})
+            res.status(422).json({message: "O Endereço do imóvel é obrigatório"})
             return
         }else {
             updateData.address = address
         }
 
         if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
+            res.status(422).json({message: "A cidade do imóvel é obrigatório"})
             return
         }else {
             updateData.city = city
         }
 
         if(!neighborhood){
-            res.status(422).json({message: "O Bairro do imóvel é obrigadório"})
+            res.status(422).json({message: "O Bairro do imóvel é obrigatório"})
             return
         }else {
             updateData.neighborhood = neighborhood
         }
 
         if(!value){
-            res.status(422).json({message: "O Valor do imóvel é obrigadório"})
+            res.status(422).json({message: "O Valor do imóvel é obrigatório"})
             return
         }else {
             updateData.value = value
         }
 
         if(!nbedrooms){
-            res.status(422).json({message: "O número de quartos do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de quartos do imóvel é obrigatório"})
             return
         }else {
             updateData.nbedrooms = nbedrooms
         }
 
         if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo do imóvel é obrigatório"})
             return
         }else {
             updateData.propertytype = propertytype
         }
 
         if(!buildm2){
-            res.status(422).json({message: "O tamanho construído do imóvel é obrigadório"})
+            res.status(422).json({message: "O tamanho construído do imóvel é obrigatório"})
             return
         }else {
             updateData.buildm2 = buildm2
         }
 
         if(!groundm2){
-            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigadório"})
+            res.status(422).json({message: "O tamanho do terreno do imóvel é obrigatório"})
             return
         }else {
             updateData.groundm2 = groundm2
         }
 
         if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
+            res.status(422).json({message: "A descrição do imóvel é obrigatório"})
             return
         }else {
             updateData.description = description
         }
 
         if(!nsuites){
-            res.status(422).json({message: "O número de suites do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de suites do imóvel é obrigatório"})
             return
         }else {
             updateData.nsuites = nsuites
         }
 
         if(!nvacancies){
-            res.status(422).json({message: "O número de vagas do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de vagas do imóvel é obrigatório"})
             return
         }else {
             updateData.nvacancies = nvacancies
         }
 
         if(!nbathrooms){
-            res.status(422).json({message: "O número de banheiros do imóvel é obrigadório"})
+            res.status(422).json({message: "O número de banheiros do imóvel é obrigatório"})
             return
         }else {
             updateData.nbathrooms = nbathrooms
         }
 
         if(!register){
-            res.status(422).json({message: "O número do imóvel é obrigadório"})
+            res.status(422).json({message: "O número do imóvel é obrigatório"})
             return
         }else {
             updateData.register = register
         }
+
+        if(!ownerphone){
+            res.status(422).json({message: "O Telefone do Proprietário do imóvel é obrigatório"})
+            return
+        }else {
+            updateData.typeofsale = typeofsale
+        }
+
+        if(!owner){
+            res.status(422).json({message: "O Proprietário do imóvel é obrigatório"})
+            return
+        }else {
+            updateData.owner = owner
+        }
+          // Verificando se o corretor com esse ID existe
+          const broker = await Broker.findByPk(brokerId);
+
+          // Verificando se o corretor foi encontrado
+          if (!broker) {
+                  return res.status(404).json({ message: 'Corretor não encontrado' });
+              } else {
+                updateData.broker = broker
+              }
 
          // Update data object
           updateData = {
@@ -334,20 +369,14 @@ module.exports = class PropertiesController {
             groundm2,
             description,
             nsuites,
+            owner,
+            ownerphone,
             nvacancies,
             nbathrooms,
             register,
+            broker,
         };
        
-        const brokerId = "1";
-        // Verificando se o corretor com esse ID existe
-        const broker = await Broker.findByPk(brokerId);
-
-        // Verificando se o corretor foi encontrado
-        if (!broker) {
-                return res.status(404).json({ message: 'Corretor não encontrado' });
-            }
-      
         if (imagesFiles.length === 0) {
                 return res.status(422).json({ message: 'A imagem é obrigatória!' });
         } else {

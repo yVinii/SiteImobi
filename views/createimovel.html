@@ -155,6 +155,15 @@
                                     </select>
                                 </div>
 
+                                <div class="input-box">
+                                    <label for="owner">Proprietário</label>
+                                    <input type="text" id="owner" name="owner" placeholder="Digite o nome do Proprietário" required>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="ownerPhone">Telefone Proprietário</label>
+                                    <input type="phone" id="ownerPhone" name="ownerPhone" placeholder="Digite o Telefone do Proprietário" required>
+                                </div>
 
                                 <div class="input-box info-add">
                                     <label for="description">Descrição do imóvel</label>
@@ -350,6 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const city = document.getElementById('city').value;
         const corretor = document.getElementById('broker').value;
         const tipoNegociacao = document.getElementById('tipo-negociacao').value;
+        const owner = document.getElementById('owner').value;
+        const ownerPhone = document.getElementById('ownerPhone').value;
         const infoadd = document.getElementById('description').value;
         const files = document.getElementById('upload-input').files;
 
@@ -368,6 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('groundm2', area);
         formData.append('nsuites', suites);
         formData.append('nvacancies', vagas);
+        formData.append('owner', owner);
+        formData.append('ownerPhone', ownerPhone);
         formData.append('nbathrooms', banheiros);
         formData.append('register', registro);
         

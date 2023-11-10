@@ -174,7 +174,7 @@
                                     <a href="#" class="btn btn-primary">Ver imóvel</a>
                                 </div>
                             </div>
-
+                        </div>
                         <div class="card-imoveis">
 
                             <div class="card">
@@ -221,7 +221,7 @@
                                     <a href="#" class="btn btn-primary">Ver imóvel</a>
                                 </div>
                             </div>
-
+                        </div>
 
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-end">
@@ -328,7 +328,7 @@
         <script src="../javascript/inicio.js"></script>
 
         <script>
-    async function carregarPropriedades() {
+async function carregarPropriedades() {
     try {
         const response = await fetch('http://localhost:5502/properties/');
         const data = await response.json();
@@ -344,7 +344,7 @@
 
                 titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
                 detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
-                priceElement.textContent = `${property.typeofsale}: R$ ${property.value.toFixed(2)}`;
+                priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
 
                 if (property.images && property.images.length > 0) {
                     const imagesArray = JSON.parse(property.images);
@@ -365,6 +365,7 @@
 }
 
 carregarPropriedades();
+
 
         </script>
 
