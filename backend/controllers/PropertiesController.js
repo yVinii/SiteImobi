@@ -2,12 +2,14 @@ const getUserByToken = require("../helpers/get-user-by-token")
 const getToken = require("../helpers/get-token")
 const Properties = require("../models/Properties")
 const Broker = require('../models/Broker');
+const PropertyType = require("../models/PropertyType");
+const City = require("../models/City");
 
 module.exports = class PropertiesController {
     //create a property
     static async create(req, res){
 
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId} = req.body
+        const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId} = req.body
         const active = true
         // Recebendo as URLs das imagens do array de arquivos carregados
        const images = req.files.map(file => file.filename);
@@ -30,11 +32,6 @@ module.exports = class PropertiesController {
             return
         }
 
-        if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigatório"})
-            return
-        }
-
         if(!neighborhood){
             res.status(422).json({message: "O Bairro do imóvel é obrigatório"})
             return
@@ -47,11 +44,6 @@ module.exports = class PropertiesController {
 
         if(!nbedrooms){
             res.status(422).json({message: "O número de quartos do imóvel é obrigatório"})
-            return
-        }
-
-        if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigatório"})
             return
         }
 
@@ -107,6 +99,22 @@ module.exports = class PropertiesController {
          if (!broker) {
                  return res.status(404).json({ message: 'Corretor não encontrado' });
              }
+
+         // Verificando se a cidade com esse ID existe
+         const city = await City.findByPk(cityId);
+
+         // Verificando se a cidade foi encontrado
+         if (!city) {
+                 return res.status(404).json({ message: 'Cidade não encontrado' });
+             }
+
+        // Verificando se a cidade com esse ID existe
+        const propertytype = await PropertyType.findByPk(propertyTypeId);
+
+        // Verificando se a cidade foi encontrado
+           if (!propertytype) {
+                   return res.status(404).json({ message: 'Tipo de Propriedade não encontrado' });
+               }
       
         if(images.length === 0){
             return res.status(422).json({message: 'A imagem é obrigatória!'})
@@ -115,13 +123,11 @@ module.exports = class PropertiesController {
         const newProperty= await broker.createProperty({
             title,
             typeofsale, 
-            address, 
-            city, 
+            address,
             neighborhood, 
             value,
             active: true, 
             nbedrooms, 
-            propertytype, 
             buildm2, 
             groundm2, 
             description, 
@@ -134,6 +140,11 @@ module.exports = class PropertiesController {
             images,
             broker,
         })
+        // Associa a cidade à propriedade
+        await newProperty.setCity(city);
+
+        // Associa o tipo de propriedade à propriedade
+        await newProperty.setPropertyType(propertytype);
         
         try{
             res.status(201).json({
@@ -213,7 +224,7 @@ module.exports = class PropertiesController {
     // UPDATE EM PROPRIEDADE
     static async updateProperty(req, res){
         const id = req.params.id
-        const {title, typeofsale, address, city, neighborhood, value, nbedrooms, propertytype, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerphone, brokerId} = req.body
+        const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerphone, brokerId} = req.body
         const imagesFiles = req.files
 
         try{
@@ -248,13 +259,6 @@ module.exports = class PropertiesController {
             updateData.address = address
         }
 
-        if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigatório"})
-            return
-        }else {
-            updateData.city = city
-        }
-
         if(!neighborhood){
             res.status(422).json({message: "O Bairro do imóvel é obrigatório"})
             return
@@ -274,13 +278,6 @@ module.exports = class PropertiesController {
             return
         }else {
             updateData.nbedrooms = nbedrooms
-        }
-
-        if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigatório"})
-            return
-        }else {
-            updateData.propertytype = propertytype
         }
 
         if(!buildm2){
@@ -346,14 +343,33 @@ module.exports = class PropertiesController {
             updateData.owner = owner
         }
           // Verificando se o corretor com esse ID existe
-          const broker = await Broker.findByPk(brokerId);
-
+            const broker = await Broker.findByPk(brokerId);
           // Verificando se o corretor foi encontrado
-          if (!broker) {
-                  return res.status(404).json({ message: 'Corretor não encontrado' });
+            if (!broker){
+                    res.status(404).json({ message: 'Corretor não encontrado' });
+                    return
               } else {
                 updateData.broker = broker
               }
+
+             // Verificando se a cidade com esse ID existe
+            const city = await City.findByPk(cityId);
+                if(!city){
+                    res.status(422).json({message: "A cidade do imóvel é obrigatório"})
+                    return
+            }else {
+                updateData.city = city
+            }
+
+           // Verificando se a cidade com esse ID existe
+            const propertytype = await PropertyType.findByPk(propertyTypeId);
+                if(!propertytype){
+                res.status(422).json({message: "O tipo do imóvel é obrigatório"})
+                return
+            }else {
+                updateData.propertytype = propertytype
+            }
+        
 
          // Update data object
           updateData = {
@@ -455,25 +471,42 @@ static async getAllBrokerProperties(req, res) {
     }
 }
 
-
-
-  // Método para obter todas cidades
- static async getUniqueCity(req, res) {
+//Filtrando por Cidade
+static async getAllCityProperties(req, res) {
     try {
-        const city = await Properties.findAll({
-            attributes: ['city'], // Seleciona apenas a coluna da cidade
-            group: ['city'], // Agrupa por diferentes cidades
-            raw: true, // Retorna apenas os dados brutos, sem instâncias do modelo
+        // Recebendo o id da cidade
+        const idCidade = req.params.id;
+
+        // Verificando se a cidade com esse ID existe
+      const city = await City.findByPk(idCidade);
+
+        if (!city) {
+           return res.status(404).json({ message: 'Cidade não encontrado' });
+        }
+
+        // Consulta para encontrar propriedades associadas a este corretor
+        const properties = await Properties.findAll({
+            where: {
+                idCity: city.id
+            }
         });
 
-        const uniqueCity = city.map(property => property.city);
+        
+        // Verificando se há propriedades associadas a esta cidade
+        if (!properties || properties.length === 0) {
+            return res.status(404).json({ message: 'Nenhuma propriedade encontrada nessa cidade' });
+        }
 
-        res.json({ city: uniqueCity });
+        res.status(200).json({ properties });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Erro interno do servidor' });
     }
 }
+
+
+
+
 
     // Filtrando por Tipo de Venda
     static async getByTypeOfSale(req, res) {

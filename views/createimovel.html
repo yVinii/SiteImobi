@@ -79,27 +79,16 @@
                             
                                
                                 <div class="input-box">
-                                    <label for="tipoimovel">Tipo de imóvel</label>
-                                    <select name="tipoimovel" id="tipoimovel">
+                                    <label for="Tipo d Propriedade">Tipo de Propriedade</label>
+                                    <select name="propertyType" id="propertytype">
                                         <option>Selecione</option>
-                                        <option value="Apartamento">Apartamento</option>
-                                        <option value="Casa">Casa</option>
-                                        <option value="Comercial">Comercial</option>
-                                        <option value="Galpões">Galpões</option>
-                                        <option value="Rural">Rural</option>
-                                        <option value="Terrenos">Terrenos</option>
                                     </select>
                                 </div>
 
                                 <div class="input-box">
                                     <label for="city">Cidade</label>
-                                    <select name="city" id="city">
+                                    <select name="city" id="cidade">
                                         <option>Selecione</option>
-                                        <option value="São Roque">São Roque</option>
-                                        <option value="Mairinque">Mairinque</option>
-                                        <option value="Ibiúna">Ibiúna</option>
-                                        <option value="Araçariguama">Araçariguama</option>
-                                        <option value="Alumínio">Alumínio</option>
                                     </select>
                                 </div>
                                 
@@ -186,7 +175,7 @@
                                         </div>
                                         <div class="upload-area">
                                             <div class="upload-area-img">
-                                                <img src="../css/css_pages/css_imgs/aps.jpg" alt="">
+                                                <img src="../img/upload.png" alt="">
                                             </div>
                                             <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
                                         </div>
@@ -301,6 +290,75 @@
         });
     });
 
+    async function carregarCidades() {
+    try {
+        const response = await fetch('http://localhost:5502/city/');
+        const data = await response.json();
+
+        if (response.ok) {
+            const cidades = data.city;
+            const selectElement = document.getElementById('cidade');
+          
+            selectElement.innerHTML = '';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Selecione';
+            selectElement.appendChild(defaultOption);
+
+            
+            cidades.forEach((city) => {
+                const option = document.createElement('option');
+                option.text = city.name;
+                option.value = city.id;
+                selectElement.appendChild(option);
+            });
+
+            console.log('Cidades carregadas com sucesso!');
+        } else {
+            console.log('Erro ao obter cidades:', response.statusText);
+        }
+    } catch (error) {
+        console.log('Erro na requisição:', error);
+    }
+}
+
+
+async function carregarTipoPropriedade() {
+    try {
+        const response = await fetch('http://localhost:5502/propertytype/');
+        const data = await response.json();
+
+        if (response.ok) {
+            const tipo = data.propertytype;
+            const selectElement = document.getElementById('propertytype');
+          
+            selectElement.innerHTML = '';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Selecione';
+            selectElement.appendChild(defaultOption);
+
+            
+            tipo.forEach((propertytype) => {
+                const option = document.createElement('option');
+                option.text = propertytype.name;
+                option.value = propertytype.id;
+                selectElement.appendChild(option);
+            });
+
+            console.log('Tipo carregados com sucesso!');
+        } else {
+            console.log('Erro ao obter tipo:', response.statusText);
+        }
+    } catch (error) {
+        console.log('Erro na requisição:', error);
+    }
+}
+
+
+
 
 async function carregarCorretores() {
     try {
@@ -337,6 +395,8 @@ async function carregarCorretores() {
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarCorretores();
+    carregarCidades();
+    carregarTipoPropriedade();
 });
 
 
@@ -347,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = document.getElementById('title').value;
         const address = document.getElementById('address').value;
         const value = document.getElementById('value').value;
-        const tipoimovel = document.getElementById('tipoimovel').value;
+        const tipoimovel = document.getElementById('propertytype').value;
         const bairro = document.getElementById('neighborhood').value;
         const banheiros = document.getElementById('nbathrooms').value;
         const vagas = document.getElementById('nvacancies').value;
@@ -356,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const area = document.getElementById('groundm2').value;
         const construido = document.getElementById('buildm2').value;
         const quartos = document.getElementById('nbedrooms').value;
-        const city = document.getElementById('city').value;
+        const city = document.getElementById('cidade').value;
         const corretor = document.getElementById('broker').value;
         const tipoNegociacao = document.getElementById('tipo-negociacao').value;
         const owner = document.getElementById('owner').value;
@@ -368,8 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('title', title);
         formData.append('address', address);
         formData.append('value', value);
-        formData.append('propertytype', tipoimovel);
-        formData.append('city', city);
+        formData.append('propertyTypeId', tipoimovel);
+        formData.append('cityId', city);
         formData.append('typeofsale', tipoNegociacao);
         formData.append('description', infoadd);
         formData.append('brokerId',corretor);
@@ -398,7 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseData = await response.json();
             console.log(responseData);
         } else {
-            console.error('Erro ao enviar dados:', response.statusText);
+            const errorData = await response.json();
+            console.error('Erro ao enviar dados:', response.status, errorData.message);
         }
     } catch (error) {
         console.error('Erro na requisição:', error);

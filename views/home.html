@@ -85,7 +85,11 @@
                                     <div class="div-label-cidade">
                                         <p>Cidade</p>
                                     </div>
-                                    <input class="inp-cidade" type="search" placeholder="Busque por cidade">
+                                     <div class="input-box">
+                                        <select name="cidade" id="cidade">
+                                            <option>Selecione</option>
+                                        </select>
+                                    </div>
                                 </label>
                             </div>
                         </div>
@@ -139,7 +143,7 @@
                             </label>
                         </div>
 
-                        <a href=""><button class="buscar" value="Buscar imóvel">Buscar imóvel</button></a>
+                        <a href="" id="buscarimovel"><button class="buscar" value="Buscar imóvel" id="buscarimovel">Buscar imóvel</button></a>
                     </form>
                 </div>
             </div>
@@ -478,8 +482,42 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../javascript/inicio.js"></script>
- 
+
         <script>
+
+async function carregarCidades() {
+    try {
+        const response = await fetch('http://localhost:5502/city/');
+        const data = await response.json();
+
+        if (response.ok) {
+            const cidades = data.city;
+            const selectElement = document.getElementById('cidade');
+          
+            selectElement.innerHTML = '';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Selecione';
+            selectElement.appendChild(defaultOption);
+
+            
+            cidades.forEach((city) => {
+                const option = document.createElement('option');
+                option.text = city.name;
+                option.value = city.id;
+                selectElement.appendChild(option);
+            });
+
+            console.log('Cidades carregadas com sucesso!');
+        } else {
+            console.log('Erro ao obter cidades:', response.statusText);
+        }
+    } catch (error) {
+        console.log('Erro na requisição:', error);
+    }
+}
+
 async function carregarPropriedades() {
     try {
         const response = await fetch('http://localhost:5502/properties/');
@@ -488,13 +526,23 @@ async function carregarPropriedades() {
         if (response.ok) {
             const properties = data.properties;
 
+            const cityPromises = [];
+
             properties.forEach((property, index) => {
+
+                cityPromises.push(
+                    fetch(`http://localhost:5502/city/${property.idCity}`)
+                        .then(cityResponse => cityResponse.json())
+                        .then(cityData => {
+                            const cityName = cityData;
                 const titleElement = document.getElementById(`propertyTitle${index + 1}`);
                 const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
                 const priceElement = document.getElementById(`propertyPrice${index + 1}`);
                 const imageElement = document.getElementById(`images${index + 1}`);
 
-                titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
+              
+
+                titleElement.textContent = `${property.title} - ${cityData.city.name} - ${property.neighborhood}`;
                 detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
                 priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
 
@@ -505,8 +553,11 @@ async function carregarPropriedades() {
                         imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
                     }
                 }
-            });
-
+            })
+        );
+    });
+            
+        await Promise.all(cityPromises);
             console.log('Propriedades carregadas com sucesso!');
         } else {
             console.error('Erro ao obter propriedades:', response.statusText);
@@ -516,15 +567,27 @@ async function carregarPropriedades() {
     }
 }
 
+document.getElementById('buscarimovel').addEventListener('click', function(event) {
+    event.preventDefault()
+
+    const cityId = document.getElementById('cidade').value;
+    window.location.href = `pagimoveis.html?cityId=${cityId}`;
+});
+
+
+
+
+
+
+
+
+
 carregarPropriedades();
-
-
-
-
+carregarCidades();
 
         </script>
 
-        
-        <noscript>You neeed enable JavaScript to view the full site.</noscript>
-    </body>
+          
+    <noscript>You neeed enable JavaScript to view the full site.</noscript>
+        </body>
 </html>

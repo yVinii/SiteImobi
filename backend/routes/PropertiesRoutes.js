@@ -16,6 +16,6 @@ router.get('/:id', PropertiesController.getPropertiesById);
 router.delete('/:id', verifyToken, PropertiesController.removePropertiesById);
 router.patch('/:id', verifyToken, imageUpload.array('images'), PropertiesController.updateProperty);
 router.get('/unique-neighborhoods', PropertiesController.getUniqueNeighborhoods);
-router.get('/unique-city', PropertiesController.getUniqueCity);
+router.get('/city/:id', PropertiesController.getAllCityProperties);
 
 module.exports = router

@@ -336,13 +336,23 @@ async function carregarPropriedades() {
         if (response.ok) {
             const properties = data.properties;
 
+            const cityPromises = [];
+
             properties.forEach((property, index) => {
+
+                cityPromises.push(
+                    fetch(`http://localhost:5502/city/${property.idCity}`)
+                        .then(cityResponse => cityResponse.json())
+                        .then(cityData => {
+                            const cityName = cityData;
                 const titleElement = document.getElementById(`propertyTitle${index + 1}`);
                 const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
                 const priceElement = document.getElementById(`propertyPrice${index + 1}`);
                 const imageElement = document.getElementById(`images${index + 1}`);
 
-                titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
+              
+
+                titleElement.textContent = `${property.title} - ${cityData.city.name} - ${property.neighborhood}`;
                 detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
                 priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
 
@@ -353,8 +363,11 @@ async function carregarPropriedades() {
                         imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
                     }
                 }
-            });
-
+            })
+        );
+    });
+            
+        await Promise.all(cityPromises);
             console.log('Propriedades carregadas com sucesso!');
         } else {
             console.error('Erro ao obter propriedades:', response.statusText);
@@ -363,6 +376,16 @@ async function carregarPropriedades() {
         console.error('Erro na requisição:', error);
     }
 }
+
+function obterParametroURL(parametro) {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    return urlSearchParams.get(parametro);
+}
+
+const cityId = obterParametroURL('cityId');
+
+
+
 
 carregarPropriedades();
 

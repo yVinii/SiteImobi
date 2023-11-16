@@ -28,11 +28,15 @@ const UserRoutes = require('./routes/UserRoutes');
 const PropertiesRoutes = require('./routes/PropertiesRoutes');
 const BrokerRoutes = require('./routes/BrokerRoutes');
 const TemplatesRoutes = require('./routes/TemplateRoutes');
+const CityRoutes = require('./routes/CityRoutes');
+const PropertyTypeRoutes = require('./routes/PropertyTypeRoutes');
 
-app.use('/users', UserRoutes)
-app.use('/properties', PropertiesRoutes)
-app.use('/broker', BrokerRoutes)
-app.use('/templates', TemplatesRoutes)
+app.use('/users', UserRoutes);
+app.use('/properties', PropertiesRoutes);
+app.use('/broker', BrokerRoutes);
+app.use('/templates', TemplatesRoutes);
+app.use('/city', CityRoutes);
+app.use('/propertyType', PropertyTypeRoutes);
 
 const PORT = 5502;
 
