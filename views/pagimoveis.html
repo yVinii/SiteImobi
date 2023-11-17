@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../css/css_assets/style_footer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        
         <title> LSilva negócios imobiliários </title>
     </head>
     <body>
@@ -328,66 +329,70 @@
         <script src="../javascript/inicio.js"></script>
 
         <script>
+async function fetchData(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!response.ok) {
+        console.error(`Erro ao obter dados de ${url}: ${response.statusText}`);
+        return null;
+    }
+
+    return data;
+}
+
+function populatePropertyCard(property, index, cityData) {
+    const titleElement = document.getElementById(`propertyTitle${index + 1}`);
+    const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
+    const priceElement = document.getElementById(`propertyPrice${index + 1}`);
+    const imageElement = document.getElementById(`images${index + 1}`);
+
+    titleElement.textContent = `${property.title} - ${cityData.city.name} - ${property.neighborhood}`;
+    detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
+    priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
+
+    if (property.images && property.images.length > 0) {
+        const imagesArray = JSON.parse(property.images);
+        if (imagesArray.length > 0) {
+            const imageElement = document.querySelector(`#images${index + 1} img`);
+            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
+        }
+    }
+}
+
 async function carregarPropriedades() {
     try {
-        const response = await fetch('http://localhost:5502/properties/');
-        const data = await response.json();
+        const urlSearchParams = new URLSearchParams(window.location.search);
 
-        if (response.ok) {
-            const properties = data.properties;
+        let propertiesUrl = 'http://localhost:5502/properties/';
+        if (urlSearchParams.has('cityId')) {
+            const cityId = urlSearchParams.get('cityId');
+            propertiesUrl = `http://localhost:5502/properties/city/${cityId}`;
+        }
+        if(urlSearchParams.has('propertyTypeId')){
+            const propertyTypeId = urlSearchParams.get('propertyTypeId');
+            propertiesUrl = `http://localhost:5502/properties/propertyType/${propertyTypeId}`
+        }
 
-            const cityPromises = [];
+        const propertiesData = await fetchData(propertiesUrl);
 
-            properties.forEach((property, index) => {
+        if (propertiesData) {
+            const properties = propertiesData.properties;
+            const cityPromises = properties.map((property, index) =>
+                fetchData(`http://localhost:5502/city/${property.idCity}`)
+                    .then(cityData => populatePropertyCard(property, index, cityData))
+            );
 
-                cityPromises.push(
-                    fetch(`http://localhost:5502/city/${property.idCity}`)
-                        .then(cityResponse => cityResponse.json())
-                        .then(cityData => {
-                            const cityName = cityData;
-                const titleElement = document.getElementById(`propertyTitle${index + 1}`);
-                const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
-                const priceElement = document.getElementById(`propertyPrice${index + 1}`);
-                const imageElement = document.getElementById(`images${index + 1}`);
-
-              
-
-                titleElement.textContent = `${property.title} - ${cityData.city.name} - ${property.neighborhood}`;
-                detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
-                priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
-
-                if (property.images && property.images.length > 0) {
-                    const imagesArray = JSON.parse(property.images);
-                    if (imagesArray.length > 0) {
-                        const imageElement = document.querySelector(`#images${index + 1} img`);
-                        imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
-                    }
-                }
-            })
-        );
-    });
-            
-        await Promise.all(cityPromises);
+            await Promise.all(cityPromises);
             console.log('Propriedades carregadas com sucesso!');
-        } else {
-            console.error('Erro ao obter propriedades:', response.statusText);
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
 }
 
-function obterParametroURL(parametro) {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    return urlSearchParams.get(parametro);
-}
-
-const cityId = obterParametroURL('cityId');
-
-
-
-
 carregarPropriedades();
+
 
 
         </script>

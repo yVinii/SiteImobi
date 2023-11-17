@@ -216,7 +216,7 @@
     
                                         <div class="card">
                                             <div class="image-wrapper" id="images4">
-                                                <img src="img/chacarateste.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>                                           
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle4"></h5>
@@ -228,7 +228,7 @@
     
                                         <div class="card">
                                             <div class="image-wrapper" id="images5">
-                                                <img src="../img/apartamentoteste.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle5"></h5>
@@ -240,7 +240,7 @@
     
                                         <div class="card">
                                             <div class="image-wrapper" id="images6">
-                                                <img src="../img/testecasa.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle6"></h5>
@@ -258,7 +258,7 @@
                                         
                                         <div class="card">
                                             <div class="image-wrapper" id="images7">
-                                                <img src="https://www.chavesnamao.com.br/imn/0358X0250/N/imoveis/336189/15070762/ba-entre-rios-centro-casa-a-venda-3-quartos-6499a6ee-1.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle7"></h5>
@@ -270,7 +270,7 @@
     
                                         <div class="card">
                                             <div class="image-wrapper" id="images8">
-                                                <img src="https://imgs2.cdn-imobibrasil.com.br/imagens/imoveis/20230216143013517.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle8"></h5>
@@ -282,7 +282,7 @@
     
                                         <div class="card">
                                             <div class="image-wrapper" id="images9">
-                                                <img src="https://b6d3c5t3.rocketcdn.me/wp-content/uploads/2019/11/Espetacular-casa-moderna-a-venda-Vilas-do-Atl%C3%A2ntico-26.jpg" alt="...">
+                                                <img src="" alt="...">
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title" id="propertyTitle9"></h5>
@@ -321,7 +321,7 @@
                                 <h2>Casas</h2>
                                 <p>Encontre a casa ideal para você</p>
                                 <div class="button-categoria btn-1">
-                                    <a href=""><button>Ver casas</button></a>
+                                    <a><button class="buscartipo" value="3">Ver casas</button></a>
                                 </div>
                             </section>
         
@@ -329,7 +329,7 @@
                                 <h2>Apartamentos</h2>
                                 <p>Encontre o apartamento ideal para você</p>
                                 <div class="button-categoria">
-                                    <a href=""><button>Ver apartamentos</button></a>
+                                    <a><button class="buscartipo" value="5">Ver apartamentos</button></a>
                                 </div>
                             </section>
         
@@ -337,7 +337,7 @@
                                 <h2>Terrenos</h2>
                                 <p>Encontre o terreno ideal para você</p>
                                 <div class="button-categoria btn-1">
-                                    <a href=""><button>Ver terrenos</button></a>
+                                    <a><button class="buscartipo" value="2">Ver terrenos</button></a>
                                 </div>
                             </section>
 
@@ -345,7 +345,7 @@
                                 <h2>Rural</h2>
                                 <p>Encontre a propriedade rural ideal para você</p>
                                 <div class="button-categoria">
-                                    <a href=""><button>Ver todos</button></a>
+                                    <a><button class="buscartipo" value="4">Ver todos</button></a>
                                 </div>
                             </section>
 
@@ -353,7 +353,7 @@
                                 <h2>Galpões</h2>
                                 <p>Encontre o galpão ideal para seu negócio</p>
                                 <div class="button-categoria">
-                                    <a href=""><button>Ver Galpões</button></a>
+                                    <a><button class="buscartipo" value="1">Ver Galpões</button></a>
                                 </div>
                             </section>
 
@@ -361,7 +361,7 @@
                                 <h2>Comercial</h2>
                                 <p>Encontre o imóvel ideal para seu comércio</p>
                                 <div class="button-categoria">
-                                    <a href=""><button>Ver todos</button></a>
+                                    <a><button class="buscartipo" value="6">Ver todos</button></a>
                                 </div>
                             </section>
                         </section>
@@ -573,6 +573,17 @@ document.getElementById('buscarimovel').addEventListener('click', function(event
     const cityId = document.getElementById('cidade').value;
     window.location.href = `pagimoveis.html?cityId=${cityId}`;
 });
+
+
+const buttons = document.querySelectorAll('.buscartipo');
+buttons.forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const propertyTypeId = button.value;
+        window.location.href = `pagimoveis.html?propertyTypeId=${propertyTypeId}`;
+    });  
+});
+
 
 
 

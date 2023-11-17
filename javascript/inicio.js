@@ -27,7 +27,7 @@ window.addEventListener("scroll", function(){
 
 //javscript slider
 let count = 1;
-document.getElementById("radio1").checked = true;
+//document.getElementById("radio1").checked = true;
 
 setInterval( function(){
     nextImage();
@@ -39,11 +39,11 @@ function nextImage(){
         count = 1;
    }
 
-   document.getElementById("radio"+count).checked = true;
+ //  document.getElementById("radio"+count).checked = true;
 }
 
 const wrapper = document.querySelector(".wrapper"),
-selectBtn = wrapper.querySelector(".select-btn"),
+//selectBtn = wrapper.querySelector(".select-btn"),
 searchInp = wrapper.querySelector("input"),
 options = wrapper.querySelector(".options"); 
 

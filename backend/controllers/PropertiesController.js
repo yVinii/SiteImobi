@@ -504,7 +504,39 @@ static async getAllCityProperties(req, res) {
     }
 }
 
+// Filtro por tipo de Propriedade
 
+static async getAllTypeProperties(req, res){
+    try {
+        // Recebendo o id 
+        const idPropertyType = req.params.id;
+
+        // Verificando se o tipo com esse ID existe
+      const propertyType = await PropertyType.findByPk(idPropertyType);
+
+        if (!propertyType) {
+           return res.status(404).json({ message: 'Tipo de propriedade não encontrado' });
+        }
+
+        // Consulta para encontrar propriedades do tipo selecionado
+        const properties = await Properties.findAll({
+            where: {
+                idPropertyType: propertyType.id
+            }
+        });
+
+        
+        // Verificando se há propriedades do tipo selecionado
+        if (!properties || properties.length === 0) {
+            return res.status(404).json({ message: 'Nenhuma propriedade encontrada' });
+        }
+
+        res.status(200).json({ properties });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro interno do servidor' });
+    }
+}
 
 
 
