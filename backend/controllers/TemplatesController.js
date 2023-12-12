@@ -13,40 +13,40 @@ module.exports = class TemplatesController {
 
         //validations
         if(!owner){
-            res.status(422).json({message: "O nome do proprietário do do imóvel é obrigadório"})
+            res.status(422).json({message: "O nome do proprietário do imóvel é obrigatório"})
             return
         }
 
         if(!emailOwner){
-            res.status(422).json({message: "O email do proprietário do do imóvel é obrigadório"})
+            res.status(422).json({message: "O email do proprietário do imóvel é obrigatório"})
             return
         }
 
 
         if(!typeofsale){
-            res.status(422).json({message: "O tipo de venda do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo de venda do imóvel é obrigatório"})
             return
         }
 
 
         if(!city){
-            res.status(422).json({message: "A cidade do imóvel é obrigadório"})
+            res.status(422).json({message: "A cidade do imóvel é obrigatório"})
             return
         }
 
         if(!propertytype){
-            res.status(422).json({message: "O tipo do imóvel é obrigadório"})
+            res.status(422).json({message: "O tipo do imóvel é obrigatório"})
             return
         }
 
         if(!description){
-            res.status(422).json({message: "A descrição do imóvel é obrigadório"})
+            res.status(422).json({message: "A descrição do imóvel é obrigatório"})
             return
         }
 
 
         if(!phone){
-            res.status(422).json({message: "O número de telefone é obrigadório"})
+            res.status(422).json({message: "O número de telefone é obrigatório"})
             return
         }
        
@@ -54,7 +54,7 @@ module.exports = class TemplatesController {
         if(images.length === 0){
             return res.status(422).json({message: 'A imagem é obrigatória!'})
         }
-        //create a templayr
+        //create a template
         const template = await Templates.create({
             owner,
             emailOwner,
@@ -69,7 +69,7 @@ module.exports = class TemplatesController {
         
         try{
             res.status(201).json({
-                message: 'Template cadastrado com Sucesso',
+                message: 'Propriedade cadastrada com Sucesso',
                 newTemplate: template,
             });
 

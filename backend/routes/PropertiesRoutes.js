@@ -7,7 +7,6 @@ const verifyToken = require('../helpers/verify-token')
 const { imageUpload } = require('../helpers/image-upload')
 
 router.post('/create', 
-verifyToken, 
 imageUpload.array('images'), 
 PropertiesController.create)
 
@@ -17,6 +16,7 @@ router.get('/:id', PropertiesController.getPropertiesById);
 router.delete('/:id', verifyToken, PropertiesController.removePropertiesById);
 router.patch('/:id', verifyToken, imageUpload.array('images'), PropertiesController.updateProperty);
 router.get('/unique-neighborhoods', PropertiesController.getUniqueNeighborhoods);
-router.get('/unique-city', PropertiesController.getUniqueCity);
+router.get('/city/:id', PropertiesController.getAllCityProperties);
+router.get('/propertyType/:id', PropertiesController.getAllTypeProperties);
 
 module.exports = router

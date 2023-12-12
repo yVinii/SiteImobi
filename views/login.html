@@ -27,12 +27,26 @@
                         <h1>Entrar</h1>
                     </div>
                 </div> 
+                </div> 
                 <div class="input-group">
                     <div class="input-box">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Digite o Email" required>
                     </div>
                     <div id="fade" class="hide">
+                        <div class="spinner-border text-info hide" id="loader" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        <div id="message" class="hide">
+                           <div class="alert alert-light" role="alert">
+                                <h4>Imobiliária LSilva</h4>
+                                <p></p>
+                                <button id="close-btn" type="button" class="btn btn-secondary">
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
+                    </div>                    <div id="fade" class="hide">
                         <div class="spinner-border text-info hide" id="loader" role="status">
                             <span class="visually-hidden">Loading...</span>
                           </div>
@@ -59,33 +73,4 @@
         </div>
     </div>
 </body>
-<script>
-    const fadeElement = document.querySelector("#fade");
-const closeButton = document.querySelector("#close-btn");
-// show or hide loader 
-const toggleLoader = () => {
-    const loaderElement = document.querySelector("#loader");
-
-    fadeElement.classList.toggle("hide");
-    loaderElement.classList.toggle("hide");
-};
-
-  // close message modal
-  closeButton.addEventListener("click", () => toggleMessage());
-
-// show or hide message
-const toggleMessage = (msg) => {
-
-    
-    const messageElement = document.querySelector("#message");
-
-    const messageElementText = document.querySelector("#message p");
-
-    messageElementText.innerText = msg;
-    
-    fadeElement.classList.toggle("hide");
-    messageElement.classList.toggle("hide");
-}
-
-</script>
 </html>

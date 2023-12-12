@@ -2,6 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = require('../db/conn'); // Importando a conexão Sequelize
 const Broker = require('./Broker');
+const City = require('./City');
+const PropertyType = require('./PropertyType');
 
 const Properties = sequelize.define('Properties', {
   title: {
@@ -16,16 +18,12 @@ const Properties = sequelize.define('Properties', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  city: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   neighborhood: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   value: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
   active: {
@@ -33,10 +31,6 @@ const Properties = sequelize.define('Properties', {
   },
   nbedrooms: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  propertytype: {
-    type: DataTypes.STRING,
     allowNull: false,
   },
   buildm2: {
@@ -67,6 +61,14 @@ const Properties = sequelize.define('Properties', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  owner: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  ownerPhone: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   images: {
     type: DataTypes.JSON, // Pode usar TEXT se preferir
     allowNull: false,
@@ -85,11 +87,29 @@ const Properties = sequelize.define('Properties', {
 Properties.belongsTo(Broker, {
   constraints: true,
   foreignKey:  'idBroker'
-})
+});
 
 Broker.hasMany(Properties,{
   foreignKey: 'idBroker'
-})
+});
+
+Properties.belongsTo(City, {
+  constraints: true,
+  foreignKey:  'idCity'
+});
+
+City.hasMany(Properties,{
+  foreignKey: 'idCity'
+});
+
+Properties.belongsTo(PropertyType, {
+  constraints: true,
+  foreignKey:  'idPropertyType'
+});
+
+PropertyType.hasMany(Properties,{
+  foreignKey: 'idPropertyType'
+});
 
 
 module.exports = Properties;
