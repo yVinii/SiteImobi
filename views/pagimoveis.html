@@ -4,237 +4,195 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+        <!-- CSS -->
         <link rel="stylesheet" href="../css/css_pages/style_pagimoveis.css">
         <link rel="stylesheet" href="../css/css_assets/style_navbar.css">
         <link rel="stylesheet" href="../css/css_assets/style_footer.css">
+
+        <!-- ICONS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+        <!-- JQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
         <title> LSilva negócios imobiliários </title>
     </head>
     <body>
         <header>
             <div class="logo">
-                <a href="index.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
-            </div>
-
-            <div class="input-header">
-                <input type="text" class="search-txt" placeholder="Busque seu imóvel" maxlength="22">
-                <div class="search-btn" href="">
-                    <i class="bi bi-search"></i>
-                </div>
+                <a href="home.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
             </div>
 
             <div class="navigation">
                 <ul class="menu">
                     <div class="close-btn"></div>
-                        <li class="menu-item"><a href="#">Início</a></li>
+                        <li class="menu-item"><a href="home.html">Início</a></li>
                         <li class="menu-item">
-                            <a class="sub-btn" href="#">Imóveis <i class="fas fa-angle-down"></i></a>
+                            <a class="sub-btn">Imóveis <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
-                                <li class="sub-item"><a href="#">Venda</a></li>
-                                <li class="sub-item"><a href="#">Locação</a></li>
-                                <li class="sub-item"><a href="#">Lançamentos</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Venda</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Locação</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Lançamentos</a></li>
                             </ul>
                         </li>
                         <li class="menu-item">
-                            <a class="sub-btn" href="#">Serviços <i class="fas fa-angle-down"></i></a>
+                            <a class="sub-btn">Serviços <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
-                                <li class="sub-item"><a href="/views/cadastreimovel.html">Cadastre seu imóvel</a></li>
-                                <li class="sub-item"><a href="/views/pagimoveis.html">Nós encontramos</a></li>
-                                <li class="sub-item"><a href="/views/simuladores.html">Simuladores</a></li>
+                                <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Nós encontramos</a></li>
+                                <li class="sub-item"><a href="simuladores.html">Simuladores</a></li>
                             </ul>
                         </li>
                         <li class="menu-item">
-                            <a class="sub-btn" href="#">Contato <i class="fas fa-angle-down"></i></a>
+                            <a class="sub-btn">Contato <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
                                 <li class="sub-item"><a href="telacontato.html">Email</a></li>
                                 <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
                                 <li class="sub-item"><a href="#tel">Telefones</a></li>
                             </ul>
                         </li>
+
+                        <div class="input-box-header">
+                            <input type="text-search" placeholder="Pesquisar...">
+                            <span class="icon-search">
+                                <i class="uil uil-search search-icon-header"></i>
+                            </span>
+                            <i class="uil uil-times close-icon-search"></i>
+                        </div>
+                        
                         <li class="menu-item">
                             <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
                         </li>
-                        
                     </div>
                 </ul>
             </div>
             <div class="menu-btn"></div>
         </header>
 
-
         <main>
             <section>
-
                 <div class="imoveis">
                     <div class="imoveis-titulo">
                         <h2>Imóveis</h2>
                     </div>
                     <hr>
+                    <div class="resultados">
+                        <div class="resultados-da-busca">
+                            <h2>Resultados da busca</h2>
+                            <a href="#">Voltar à lista completa</a>
+                        </div>
 
-                    <div class="resultados-da-busca">
-                        <h2>Resultados da busca</h2>
-                        <a href="#">Voltar à lista completa</a>
-
-                    <div class="select-valor">
-                        <p>Ordenar por</p>
-                        <select name="" id="">
-                            <option value="1">Menor Valor</option>
-                            <option value="2">Maior Valor</option>
-                        </select>
-                    </div>
-
-                    <div class="popup-filtro">
-                        <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Filtro
-                            </button>
-                            
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Filtro</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn btn-primary">Concluir</button>
-                                    </div>
-                                </div>
-                                </div>
+                        <div class="select">
+                            <div class="input-box">
+                                <label for="tipoimovel">Ordenar</label>
+                                <select name="ordenar" id="ordenar">
+                                    <option>Selecione</option>
+                                    <option value="Maior">Maior valor</option>
+                                    <option value="Menor">Menor valor</option>
+                                </select>
                             </div>
-                    </div>
+                        </div>
                     </div>
                     <hr>
 
                     <div class="parte-principal">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Voltar</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Próximo</a>
-                            </li>
-                            </ul>
-                        </nav>
+                        <div class="pagination">
+                            <ul> <!--pages or li are comes from javascript --> </ul>
+                        </div>
 
                         <div class="card-imoveis">  
-                            <div class="card">
-                                <a href="">
-                                    <div class="image-wrapper" id="images">
-                                        <img src="" alt="...">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
                                     </div>
-                                </a>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title" id="propertyTitle"></h5>
-                                    <p class="card-text" id="propertyDetails"></p>
-                                    <p class="card-text" id="propertyPrice"></p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <a href="">
-                                    <div class="image-wrapper">
-                                        <img src="../img/chacarateste.jpg" alt="...">
-                                    </div>    
-                                </a>
-                                                                    
-                                <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Bairro - São Roque - SP</h5>
-                                    <p class="card-text">Quartos:  / Banheiros:  / Garagem:  / Área: m²</p>
-                                    <p class="card-text">Venda: R$ 000.000,00</p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <a href="">
-                                    <div class="image-wrapper">
-                                        <img src="https://img.freepik.com/fotos-premium/bela-casa-moderna-exterior-com-grama-verde_293060-10085.jpg" alt="...">
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
                                     </div>
-                                </a>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
                         
-                                <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Bairro - São Roque - SP</h5>
-                                    <p class="card-text">Quartos:  / Banheiros:  / Garagem:  / Área: m²</p>
-                                    <p class="card-text">Venda: R$ 000.000,00</p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image">
+                                        <img src="../img/chacarateste.jpg" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name">Tipo de Propriedade</h2>
+                                    <h2 class="name">Endereço</h2>
+                                    <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                                    <button class="button">Ver imóvel</button>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card-imoveis">
-
-                            <div class="card">
-                                <a href="#" class="image-wrapper">
-                                    <img src="../img/apartamentoteste.jpg" alt="...">
-                                </a>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Bairro - São Roque - SP</h5>
-                                    <p class="card-text">Quartos:  / Banheiros:  / Garagem:  / Área: m²</p>
-                                    <p class="card-text">Venda: R$ 000.000,00</p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <a href="">
-                                    <div class="image-wrapper">
-                                        <img src="https://i.pinimg.com/originals/bb/40/9b/bb409b077213e7ebb33d5edc84a7f043.png" alt="...">
-                                    </div>
-                                </a>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Bairro - São Roque - SP</h5>
-                                    <p class="card-text">Quartos:  / Banheiros:  / Garagem:  / Área: m²</p>
-                                    <p class="card-text">Venda: R$ 000.000,00</p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <a href="">
-                                    <div class="image-wrapper">
-                                        <img src="../img/testecasa.jpg" alt="...">
-                                    </div>
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">Casa <br> Bairro - São Roque - SP</h5>
-                                    <p class="card-text">Quartos:  / Banheiros:  / Garagem:  / Área: m²</p>
-                                    <p class="card-text">Venda: R$ 000.000,00</p>
-                                    <a href="#" class="btn btn-primary">Ver imóvel</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-end">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Voltar</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Próximo</a>
-                            </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
                 <hr>
@@ -242,7 +200,6 @@
         </main>
 
         <footer>
-
             <div id="footer_content">
                 <div id="footer_contacts">
                 <h1><img src="../img/completo.png" alt=""></h1>
@@ -324,44 +281,17 @@
         </footer>
         
 
+        <!-- Search Js -->
+        <script src="../javascript/search.js"></script>
+
+        <!-- carregarPropriedades.js -->
+        <script src="../javascript/Fetchs/carregarPropriedades.js"></script>
+
+        <!-- inicio.js -->
         <script src="../javascript/inicio.js"></script>
 
-        <script>
-    async function carregarPropriedades() {
-    try {
-        const response = await fetch('http://localhost:5502/properties/');
-        const data = await response.json();
-        console.log(data)
-        
-        if (response.ok) {
-                const property = data.properties[0];
-                const titleElement = document.getElementById('propertyTitle');
-                const detailsElement = document.getElementById('propertyDetails');
-                const priceElement = document.getElementById('propertyPrice');
-                const imageElement = document.getElementById('images');
-                
-                    titleElement.textContent = `${property.title} - ${property.city} - ${property.neighborhood}`;
-                    detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
-                    priceElement.textContent = `${property.typeofsale}: R$ ${property.value.toFixed(2)}`;
-
-        if (property.images.length > 0) {
-            imageElement.src = `backend/public/images/PropertyImages${property.images[0]}`;
-        }
-           console.log('Propriedades carregadas com sucesso!');
-        } else {
-            console.error('Erro ao obter propriedades:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Erro na requisição:', error);
-    }
-}
-
-
-carregarPropriedades();
-
-        </script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Paginação -->
+        <script src="../javascript/pagination.js"></script>
         <noscript>You neeed enable JavaScript to view the full site.</noscript>
     </body>
 </html>

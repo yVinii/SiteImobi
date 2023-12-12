@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!----===== JQuery ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+    <title>Painel de Controle</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="imagens/035e6056-6275-4560-a32f-ada5a2c6d099-removebg-preview.png" alt="">
+                </span>
+                <div class="text logo-text">
+                    <span class="name">LSilva</span>
+                    <span class="profession">Negócios Imobiliários</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Buscar Imóveis</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Cadastrar Imóveis</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notificações</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Corretores</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Modo Escuro</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <section>
+            <div class="container">
+                <div class="form">
+                    <form action="">
+                        <div class="form-header">
+                            <div class="title">
+                                <h1>Cadastrar Imóvel</h1>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="titulo">Título</label>
+                                <input type="text" id="titulo" name="titulo" placeholder="Digite o título" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="firstname">Nome do Proprietário</label>
+                                <input type="text" id="firstname" name="firstname" placeholder="Digite o nome do proprietário" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="corretorl">Corretor</label>
+                                <select name="corretorl" id="corretorl">
+                                    <option>Selecione</option>
+                                    <option value="1">Adriano</option>
+                                    <option value="2">Maurício</option>
+                                    <option value="3">Vinícius</option>
+                                </select>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="cep">CEP</label>
+                                <input type="number" id="cep" name="cep" placeholder="Digite o CEP" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="selctcdd">Cidade</label>
+                                <select name="selectcdd" id="selectcdd">
+                                    <option>Selecione</option>
+                                    <option value="1">São Roque</option>
+                                    <option value="2">Mairinque</option>
+                                    <option value="3">Ibiúna</option>
+                                    <option value="4">Araçariguama</option>
+                                    <option value="5">Alumínio</option>
+                                </select>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="endereço">Endereço</label>
+                                <input type="text" id="endereço" name="endereço" placeholder="Digite o endereço" required>
+                            </div>
+
+                             <!--Select tipo de imóvel-->
+                            <div class="input-box">
+                                <label for="tipoimovel">Tipo de imóvel</label>
+                                <select name="tipoimovel" id="tipoimovel">
+                                    <option>Selecione</option>
+                                    <option value="1">Apartamento</option>
+                                    <option value="2">Casa</option>
+                                    <option value="3">Comercial</option>
+                                    <option value="4">Galpões</option>
+                                    <option value="5">Rural</option>
+                                    <option value="6">Terrenos</option>
+                                </select>
+                            </div>
+
+                            <!--Select tipo de negociação-->
+                            <div class="input-box">
+                                <label for="tipoimovel">Tipo de negociação</label>
+                                <select name="tipoimovel" id="tipo-negociacao">
+                                    <option>Selecione</option>
+                                    <option value="1">Venda</option>
+                                    <option value="2">Locação</option>
+                                    <option value="3">Ambos</option>
+                                </select>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="areaM">Área em m²</label>
+                                <input type="text" id="areaM" name="areaM" placeholder="Digite a área em m²" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="areaConstruida">Área Construída</label>
+                                <input type="text" id="areaConstruida" name="areaConstruida" placeholder="Digite a área construída" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="quartos">Quartos</label>
+                                <input type="number" id="quartos" name="quartos" placeholder="Número de quartos" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="banheiros">Banheiros</label>
+                                <input type="number" id="banheiros" name="banheiros" placeholder="Número de banheiros" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="garagem">Vagas de Garagem</label>
+                                <input type="number" id="garagem" name="garagem" placeholder="Número de vagas" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="registro">Registro</label>
+                                <input type="number" id="registro" name="registro" placeholder="Número de Registro" required>
+                            </div>
+
+                            <div class="input-box info-add">
+                                <label for="infoadd">Dados do imóvel</label>
+                                <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!--Uploud teste -->
+
+                        <div class='wrapper'>
+                            <div class="upload">
+                                <div class="upload-wrapper">
+                                    <div class="upload-img">
+                                        <!-- image here -->
+                                    </div>
+                                    <div class="upload-info">
+                                        <p>
+                                            <span class="upload-info-value">0</span> arquivos(s) selecionados.
+                                        </p>
+                                    </div>
+                                    <div class="upload-area">
+                                        <div class="upload-area-img">
+                                            <img src="/imagens/upload.png" alt="">
+                                        </div>
+                                        <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
+                                    </div>
+                                    <input type="file" class="visually-hidden" id="upload-input" multiple>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="envie-button">
+                            <button type="submit" onclick="enviarDados()">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script src="nav.js"></script>
+<script src="uploud.js"></script>
+</body>
+</html>

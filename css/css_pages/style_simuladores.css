@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins",sans-serif;
 }
 
-:root{
+:root {
     --bg-nav-color:#23252B;
     --text1-nav-color:#fff;
     --text2-nav-color:#d0aa20;
@@ -20,36 +20,36 @@
     --douradao-teste: #CBB26A;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     background: var(--bg-nav-color);
     width: 7px;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background:#f5f5f5;
     border-radius: 6px;
 }
 
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
     background:#CBB26A;
 }
 
-section{
+section {
     padding: 20px 100px;
 }
 
-.titulo{
+.titulo {
     margin-top: 20px;
     border-bottom: 1px solid var(--bg-nav-color);
     display: flex;
     justify-content: center;
 }
 
-.titulo h2{
+.titulo h2 {
     font-weight: 300;
 }
 
-.input-groups{
+.input-groups {
     margin-top: 30px;
     gap: 15px;
     position: relative;
@@ -57,7 +57,7 @@ section{
     justify-content: center;
 }
 
-.input-groups input{
+.input-groups input {
     background: var(--bg-nav-color);
     color: var(--text1-nav-color);
     height: 40px;
@@ -72,25 +72,25 @@ section{
     display: flex;
 }
 
-.btn-input-groups{
+.btn-input-groups {
     margin-top: 30px;
     gap: 15px;
     display: flex;
     justify-content: center;
 }
 
-.btn-input-groups p{
+.btn-input-groups p {
     margin-top: 17px;
 }
 
-.botao-calcular{
+.botao-calcular {
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.botao-calcular button{
+.botao-calcular button {
     width: 100px;
     height: 30px;   
     border: 2px solid var(--douradao-teste);
@@ -101,53 +101,53 @@ section{
     background-color: var(--bg-nav-color);
 }
 
-.tabela-info{
+.tabela-info {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-table, th, td{
+table, th, td {
     /*width: 1200px;*/
     border: 2px solid var(--bg-nav-color);
     border-collapse: collapse;
     padding: 15px;
 }
 
-.titulo-2{
+.titulo-2 {
     margin-top: 120px;
     border-bottom: 1px solid var(--bg-nav-color);
     display: flex;
     justify-content: center;
 }
 
-.titulo-2 h2{
+.titulo-2 h2 {
     font-weight: 300;
 }
 
-#simuladores{
+#simuladores {
     display: flex;
     margin-top: 1.5rem;
     justify-content: space-around;
 }
 
-#simuladores a{
+#simuladores a {
     text-decoration: none;
 }
 
-#simuladores i{
+#simuladores i {
     font-size: 5rem;
 }
 
-#simuladores .simu-bancos img{
+#simuladores .simu-bancos img {
     width: 5rem;
 }
 
-#simuladores .simu-bancos.bd-caixa img{
+#simuladores .simu-bancos.bd-caixa img {
     width: 6rem;
 }
 
-#simuladores .simu-bancos{
+#simuladores .simu-bancos {
     height: 8rem;
     width: 8rem;
     border-radius: 50%; 
@@ -157,30 +157,47 @@ table, th, td{
     transition: all 0.4s;
 }
 
-#simuladores .simu-bancos:hover{
+#simuladores .simu-bancos:hover {
     opacity: 0.8;
 }
 
-#banco-brasil{
+#banco-brasil {
     background: #F9DD16;
     color: #0038A8;
 }
 
-#caixa{
+#caixa {
     background: #1c60ab;
     color: white;
 }
 
-#bradesco{
+#bradesco {
     background: color-mix(in srgb, #cc092f 80%, #633280 20%);
 }
 
-#santander{
+#santander {
     background: color-mix(in srgb, #ec0000 70%, #333333 30%);
     color: white;
 }
 
-#itau{
+#itau {
     background: #FF7200;
     color: #140083;
+}
+
+/*====== Responsividade ======*/
+
+@media screen and (max-width: 880px) {  
+    .titulo-2 {
+        margin-top: 100px;
+        border-bottom: 1px solid var(--bg-nav-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    #simuladores {
+        display: grid;
+        gap: 30px;
+        margin-top: 1.2rem;
+    }
 }

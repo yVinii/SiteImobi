@@ -16,59 +16,60 @@
 
 <body>
 
+    <!-- NavBar -->
     <header>
         <div class="logo">
-            <a href="#"><img src="../img/completo.png" alt="Logo Lsilva"></a>
-        </div>
-
-        <div class="input-header">
-            <input type="text" class="search-txt placeholder:text-white" placeholder="Busque seu imóvel" maxlength="22">
-            <div class="search-btn" href="">
-                <i class="bi bi-search"></i>
-            </div>
+            <a href="index.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
         </div>
 
         <div class="navigation">
             <ul class="menu">
                 <div class="close-btn"></div>
-                <li class="menu-item"><a href="/views/home.html">Início</a></li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Imóveis <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Venda</a></li>
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Locação</a></li>
-                        <li class="sub-item"><a href="/views//home.html">Lançamentos</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Serviços <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="/views/cadastreimovel.html">Cadastre seu imóvel</a></li>
-                        <li class="sub-item"><a href="/views/pagimoveis.html">Nós encontramos</a></li>
-                        <li class="sub-item"><a href="/views/simuladores.html">Simuladores</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="#">Contato <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="telacontato.html">Email</a></li>
-                        <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
-                        <li class="sub-item"><a href="#tel">Telefones</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
-                </li>
+                    <li class="menu-item"><a href="home.html">Início</a></li>
+                    <li class="menu-item">
+                        <a class="sub-btn">Imóveis <i class="fas fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="pagimoveis.html">Venda</a></li>
+                            <li class="sub-item"><a href="pagimoveis.html">Locação</a></li>
+                            <li class="sub-item"><a href="pagimoveis.html">Lançamentos</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a class="sub-btn">Serviços <i class="fas fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
+                            <li class="sub-item"><a href="pagimoveis.html">Nós encontramos</a></li>
+                            <li class="sub-item"><a href="simuladores.html">Simuladores</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a class="sub-btn">Contato <i class="fas fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="telacontato.html">Email</a></li>
+                            <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
+                            <li class="sub-item"><a href="#tel">Telefones</a></li>
+                        </ul>
+                    </li>
 
-        </div>
-        </ul>
+                    <div class="input-box-header">
+                        <input type="text-search" placeholder="Pesquisar...">
+                        <span class="icon-search">
+                            <i class="uil uil-search search-icon-header"></i>
+                        </span>
+                        <i class="uil uil-times close-icon-search"></i>
+                    </div>
+                    
+                    <li class="menu-item">
+                        <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
+                    </li>
+                </div>
+            </ul>
         </div>
         <div class="menu-btn"></div>
     </header>
 
     <main>
         <section>
-
             <section>
                 <div class="container">
                     <div class="form">
@@ -142,8 +143,7 @@
                                 </div>
                             </div>
 
-                            <!--Uploud teste -->
-
+                            <!--Uploud -->
                             <div class='wrapper'>
                                 <div class="upload">
                                     <div class="upload-wrapper">
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="upload-area">
                                             <div class="upload-area-img">
-                                                <img src="../css/css_pages/css_imgs/aps.jpg" alt="">
+                                                <img src="../img/upload.png" alt="">
                                             </div>
                                             <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
                                         </div>
@@ -165,30 +165,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--<div class="gender-inputs">
-                                    <div class="gender-title">
-                                        <h6>Você é:</h6>
-                                    </div>
-            
-                                    <div class="gender-group">
-                                        <div class="gender-input">
-                                            <input type="radio" id="proprietario" name="gender">
-                                             <label for="proprietario">Proprietário</label>
-                                        </div>
-            
-                                        <div class="gender-input">
-                                            <input type="radio" id="representante" name="gender">
-                                            <label for="representante">Representante</label>
-                                        </div>
-            
-                                        <div class="gender-input">
-                                            <input type="radio" id="corretor" name="gender">
-                                            <label for="corretor">Corretor</label>
-                                        </div>
-                                    </div>
-                                </div>-->
-
                             <div class="envie-button">
                                 <button type="submit" onclick="enviarDados()">Enviar</button>
                             </div>
@@ -196,7 +172,7 @@
                     </div>
                 </div>
             </section>
-
+        </section>
     </main>
 
 
@@ -278,51 +254,17 @@
         </div>
     </footer>
 
+    <!-- JS Uploud -->
     <script src="../javascript/upload.js"></script>
 
-    <script>
-  async function enviarDados() {
-    try {
-        const firstname = document.getElementById('firstname').value;
-        const email = document.getElementById('email').value;
-        const number = document.getElementById('number').value;
-        const tipoimovel = document.getElementById('tipoimovel').value;
-        const selectcdd = document.getElementById('selectcdd').value;
-        const tipoNegociacao = document.getElementById('tipo-negociacao').value;
-        const infoadd = document.getElementById('infoadd').value;
-        const files = document.getElementById('upload-input').files;
+    <!-- Js navbar -->
+    <script src="../javascript/inicio.js"></script>
 
-        const formData = new FormData();
-        formData.append('owner', firstname);
-        formData.append('emailOwner', email);
-        formData.append('phone', number);
-        formData.append('propertytype', tipoimovel);
-        formData.append('city', selectcdd);
-        formData.append('typeofsale', tipoNegociacao);
-        formData.append('description', infoadd);
+    <!-- Js Search-->
+    <script src="../javascript/search.js"></script>
 
-        for (const file of files) {
-            formData.append('images', file);
-        }
-
-        const response = await fetch('http://localhost:5502/templates/create', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            const responseData = await response.json();
-            console.log(responseData);
-        } else {
-            console.error('Erro ao enviar dados:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Erro na requisição:', error);
-    }
-}
-
-
-    </script>
+    <!-- Fetch Post -->
+    <script src="../javascript/fetchpostcadastroimoveis.js"></script>
 </body>
 
 </html>
