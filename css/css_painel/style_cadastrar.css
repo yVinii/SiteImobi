@@ -1,5 +1,6 @@
 
 :root {
+  --body-color: #d5d5d5;
   --bg-nav-color: #23252b;
   --text1-nav-color: #fff;
   --text2-nav-color: #d0aa20;
@@ -359,8 +360,35 @@ body.dark .upload-info p {
 /* Formulário Fim*/
 
 /* Responsividade */
+@media screen and (min-width: 1920px) {
+  .input-box input {
+    min-width: 250px;
+  }
 
-@media screen and (max-width: 1920px) {
+  .input-box select {
+    min-width: 250px;
+  }
+
+  .input-box textarea {
+    min-width: 95rem;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .input-box input {
+    min-width: 250px;
+  }
+
+  .input-box select {
+    min-width: 250px;
+  }
+
+  .input-box textarea {
+    min-width: 92rem;
+  }
+}
+
+@media screen and (max-width: 1700px) {
   .input-box input {
     width: 250px;
   }
@@ -370,11 +398,21 @@ body.dark .upload-info p {
   }
 
   .input-box textarea {
-    width: 57rem;
+    width: 70rem;
+  }
+}
+
+@media screen and (max-width: 1455px) {
+  section {
+    padding: 20px 50px 20px 120px;
   }
 }
 
 @media screen and (max-width: 1315px) {
+  section {
+    padding: 20px 50px 20px 130px;
+  }
+
   .input-group {
     justify-content: space-around;
   }
@@ -392,13 +430,17 @@ body.dark .upload-info p {
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1275px) {
+  section {
+    padding: 20px 40px 20px 120px;
+  }
+
   .input-box textarea {
     width: 53.85rem;
   }
 }
 
-@media screen and (max-width: 1075px) {
+@media screen and (max-width: 1085px) {
   .container {
     height: auto;
   }
@@ -424,6 +466,10 @@ body.dark .upload-info p {
 }
 
 @media screen and (max-width: 900px) {
+  section {
+    padding: 20px 20px 20px 110px;
+  }
+
   .container {
     box-shadow: none;
   }
@@ -441,7 +487,7 @@ body.dark .upload-info p {
   }
 }
 
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 695px) {
   .input-box textarea {
     width: 20rem;
   }
@@ -455,24 +501,61 @@ body.dark .upload-info p {
   }
 }
 
-@media screen and (max-width: 550px) {
-  .container {
-    margin-top: 15%;
+@media screen and (max-width: 440px) {
+  section {
+    padding: 10px 10px 10px 95px;
+  }
+
+  .form {
+    padding: 2.5rem;
+  }
+
+  .input-box input {
+    width: 250px;
+  }
+
+  .input-box select {
+    width: 250px;
+  }
+
+  .input-box textarea {
+    width: 250px;
+  }
+
+  .upload {
+    width: 265px;
+    min-height: 230px;
+    box-shadow: #cbb26a 0px 6px 12px;
+  }
+
+  .upload-area {
+    width: 200px;
   }
 }
 
-@media screen and (max-width: 420px) {
-  .container {
-    margin-top: 38px;
+@media screen and (max-width: 375px) {
+  section {
+    padding: 0px 0px 0px 90px;
   }
 
-  section {
-    padding: 20px 50px;
+  .input-box input {
+    width: 230px;
   }
-}
 
-@media screen and (max-width: 360px) {
-  section {
-    padding: 20px 30px;
+  .input-box select {
+    width: 230px;
+  }
+
+  .input-box textarea {
+    width: 230px;
+  }
+
+  .upload {
+    width: 245px;
+    min-height: 230px;
+  }
+
+  .upload-area {
+    width: 200px;
   }
 }

@@ -1,8 +1,9 @@
+function iniciarSwiper(){
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
     spaceBetween: 25,
     loop: true,
-    centerSlide: 'true',
+    centeredSlides: true, 
     fade: 'true',
     grabCursor: 'true',
     pagination: {
@@ -27,3 +28,4 @@ var swiper = new Swiper(".slide-content", {
         },
     },
   });
+}

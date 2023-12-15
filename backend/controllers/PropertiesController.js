@@ -159,21 +159,30 @@ module.exports = class PropertiesController {
     }
 
     // TRAZ TODAS PROPRIEDADES
-    static async getAll(req, res) {
-        try {
-            const properties = await Properties.findAll({
-                where: { active: true },
-                order: [['createdAt', 'DESC']] // Ordenar por createdAt em ordem decrescente
-            });
-    
-            res.status(200).json({
-                properties: properties,
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
-        }
+static async getAll(req, res) {
+    try {
+        let { limit, offset } = req.query;
+
+        // Se limit ou offset não estiverem definidos, atribua valores padrão
+        limit = limit ? Number(limit) : 9;
+        offset = offset ? Number(offset) : 0;
+
+        const properties = await Properties.findAll({
+            where: { active: true },
+            order: [['createdAt', 'DESC']],
+            limit: limit,  // Adicionando limit
+            offset: offset  // Adicionando offset
+        });
+
+        res.status(200).json({
+            properties: properties,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro interno do servidor' });
     }
+}
+
 
     // RECEBE UM ID E TRAZ UMA PROPRIEDADE DETALHADA
     static async getPropertiesById(req, res) {
@@ -484,7 +493,7 @@ static async getAllCityProperties(req, res) {
            return res.status(404).json({ message: 'Cidade não encontrado' });
         }
 
-        // Consulta para encontrar propriedades associadas a este corretor
+        // Consulta para encontrar propriedades associadas a esta cidade
         const properties = await Properties.findAll({
             where: {
                 idCity: city.id

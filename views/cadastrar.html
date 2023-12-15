@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/css_painel/style.css">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
@@ -18,7 +18,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="imagens/035e6056-6275-4560-a32f-ada5a2c6d099-removebg-preview.png" alt="">
+                    <img src="../img/imagens/035e6056-6275-4560-a32f-ada5a2c6d099-removebg-preview.png" alt="">
                 </span>
                 <div class="text logo-text">
                     <span class="name">LSilva</span>
@@ -208,13 +208,18 @@
                                 <input type="number" id="registro" name="registro" placeholder="Número de Registro" required>
                             </div>
 
+                            <div class="input-box">
+                                <label for="valorPropriedade">Valor Propriedade</label>
+                                <input type="text" id="valorPropriedade" name="valorPropriedade" placeholder="R$ 00.000.000,00" required>
+                            </div>
+
                             <div class="input-box info-add">
                                 <label for="infoadd">Dados do imóvel</label>
                                 <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
                             </div>
                         </div>
 
-                        <!--Uploud teste -->
+                        <!-- Uploud -->
 
                         <div class='wrapper'>
                             <div class="upload">
@@ -229,7 +234,7 @@
                                     </div>
                                     <div class="upload-area">
                                         <div class="upload-area-img">
-                                            <img src="/imagens/upload.png" alt="">
+                                            <img src="../img/upload.png" alt="">
                                         </div>
                                         <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
                                     </div>
@@ -246,7 +251,7 @@
         </section>
     </main>
 
-<script src="nav.js"></script>
-<script src="uploud.js"></script>
+<script src="../javascript/nav.js"></script>
+<script src="../javascript/upload.js"></script>
 </body>
 </html>
