@@ -1,57 +1,59 @@
 const element = document.querySelector(".pagination ul");
-let totalPages = 20;
-let page = 10;
-// chamando uma função, passando parâmetros e adicionando dentro de um elemento que é uma lista ordenada (ul)
+
+// Chamando uma função, passando parâmetros e adicionando dentro de um elemento que é uma lista ordenada (ul)
 element.innerHTML = createPagination(totalPages, page);
-function createPagination(totalPages, page){
+
+function createPagination(totalPages, page) {
   let liTag = '';
   let active;
   let beforePage = page - 1;
   let afterPage = page + 1;
-  if(page > 1){ //show the next button if the page value is greater than 1
-    liTag += `<li class="btn prev" onclick="createPagination(totalPages, ${page - 1})"><span><i class="fas fa-angle-left"></i> Voltar</span></li>`;
+
+  if (page > 1) {
+    // Mostrar o botão Voltar se o valor da página for maior que 1
+    liTag += `<li class="btn prev" onclick="createPagination(${totalPages}, ${page - 1})"><span><i class="fas fa-angle-left"></i> Voltar</span></li>`;
   }
-  if(page > 2){ //if page value is less than 2 then add 1 after the previous button
-    liTag += `<li class="first numb" onclick="createPagination(totalPages, 1)"><span>1</span></li>`;
-    if(page > 3){ //if page value is greater than 3 then add this (...) after the first li or page
+
+  if (page > 2) {
+    // Se o valor da página for maior que 2, adicione 1 após o botão anterior
+    liTag += `<li class="first numb" onclick="createPagination(${totalPages}, 1)"><span>1</span></li>`;
+    if (page > 3) {
+      // Se o valor da página for maior que 3, adicione "..." após o primeiro li ou página
       liTag += `<li class="dots"><span>...</span></li>`;
     }
   }
-  // how many pages or li show before the current li
-  if (page == totalPages) {
-    beforePage = beforePage - 2;
-  } else if (page == totalPages - 1) {
-    beforePage = beforePage - 1;
-  }
-  // how many pages or li show after the current li
-  if (page == 1) {
-    afterPage = afterPage + 2;
-  } else if (page == 2) {
-    afterPage  = afterPage + 1;
-  }
-  for (var plength = beforePage; plength <= afterPage; plength++) {
-    if (plength > totalPages) { //if plength is greater than totalPage length then continue
-      continue;
-    }
-    if (plength == 0) { //if plength is 0 than add +1 in plength value
-      plength = plength + 1;
-    }
-    if(page == plength){ //if page is equal to plength than assign active string in the active variable
+
+  // Quantas páginas ou li mostrar antes do li atual
+  beforePage = Math.max(1, beforePage);
+
+  // Quantas páginas ou li mostrar após o li atual
+  afterPage = Math.min(totalPages, afterPage);
+
+  for (let plength = beforePage; plength <= afterPage; plength++) {
+    if (page == plength) {
+      // Se a página for igual a plength, atribua a string "active" à variável ativa
       active = "active";
-    }else{ //else leave empty to the active variable
+    } else {
+      // Caso contrário, deixe a variável ativa vazia
       active = "";
     }
-    liTag += `<li class="numb ${active}" onclick="createPagination(totalPages, ${plength})"><span>${plength}</span></li>`;
+    liTag += `<li class="numb ${active}" id="page${plength}" onclick="handlePageClick(${plength})"><span>${plength}</span></li>`;
   }
-  if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
-    if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
+
+  if (page < totalPages - 1) {
+    // Se o valor da página for menor que totalPages - 1, mostre o último li ou página
+    if (page < totalPages - 2) {
+      // Se o valor da página for menor que totalPages - 2, adicione "..." antes do último li ou página
       liTag += `<li class="dots"><span>...</span></li>`;
     }
-    liTag += `<li class="last numb" onclick="createPagination(totalPages, ${totalPages})"><span>${totalPages}</span></li>`;
+    liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
   }
-  if (page < totalPages) { //show the next button if the page value is less than totalPage(20)
-    liTag += `<li class="btn next" onclick="createPagination(totalPages, ${page + 1})"><span>Próximo <i class="fas fa-angle-right"></i></span></li>`;
+
+  if (page < totalPages) {
+    // Mostrar o botão Próximo se o valor da página for menor que totalPages
+    liTag += `<li class="btn next" onclick="createPagination(${totalPages}, ${page + 1})"><span>Próximo <i class="fas fa-angle-right"></i></span></li>`;
   }
-  element.innerHTML = liTag; //add li tag inside ul tag
-  return liTag; //reurn the li tag
+
+  element.innerHTML = liTag; // Adicionar a tag li dentro da tag ul
+  return liTag; // Retornar a tag li
 }
