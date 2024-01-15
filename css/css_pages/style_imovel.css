@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+:root{
+    --bg-nav-color:#23252B;
+    --text1-nav-color:#fff;
+    --text2-nav-color:#d0aa20;
+    --dourado:#d0aa20;
+    --bg-footer: #121212;
+    --footer-color: #f5f5f5;
+    --text-footer-color: #dddddd; 
+    --copyrigth-color: #000000;
+
+    --douradao-teste: #CBB26A;
+}
+
+::-webkit-scrollbar{
+    background: var(--bg-nav-color);
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#f5f5f5;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#CBB26A;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+main {
+    margin-top: 10%;
+}
+
+body {
+    background: #eee;
+    font-size: 14px;
+    color: #000;
+}
+
+section {
+    padding: 20px 50px;
+}
+
+/*===== REF imóvel =====*/
+
+.identidade{
+    text-align: left;
+    margin-left: 10%;
+}
+
+.jogadinha-do-paqueta {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%; 
+}
+
+.identidade p {
+    font-size: 20px;
+}
+
+/*===== Swiper =====*/
+.img-swiper-slide {
+    display: block;
+    width: 90%;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.sw-imovel {
+    width: 95%;
+    height: 80vh;
+}
+
+.sw-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sw-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*--=== Infos ===--*/
+
+.informacoes {
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    border-radius: 10px;
+}
+
+.informacoes {
+    gap: 20px;
+}
+
+.info {
+    width: 70%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.separado {
+    background: none;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .212);
+}
+
+.info-header {
+    height: 35px;
+    background-color: var(--bg-nav-color);
+    border-bottom: 3px solid var(--douradao-teste);
+}
+
+.info-header-carac {
+    margin-top: 10px;
+    height: auto;
+
+    background-color: var(--bg-nav-color);
+    color: var(--text1-nav-color);
+    border-bottom: 3px solid var(--douradao-teste);
+}
+
+.info-header p {
+    color: var(--text1-nav-color);
+    font-size: 23px;
+    padding: 0px 10px;
+}
+
+.info-header-carac p {
+    font-size: 23px;
+    padding: 0px 10px;
+}
+
+.info-body {
+    background-color: #FFF;
+}
+
+.info-title {
+    font-weight: normal;
+    font-size: 30px; 
+    padding: 10px;
+}
+
+.info-text {
+    font-size: 15px;
+    padding: 25px;
+}
+
+.info-ul {
+    font-size: 15px;
+    padding: 20px 45px;
+}
+
+.info-ul li{
+    padding: 5px;
+}
+
+.valor-saba-mais {
+    position: relative;
+    width: 30%;
+    background-color: var(--bg-nav-color);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+
+.valor-saba-mais h1 {
+    font-style: none;
+    color: #eee;
+    padding: 10px;
+    text-align: center;
+}
+
+.valor-saba-mais hr{
+    width: 100%;
+}
+
+.valor-saba-mais p{
+    color: #eee;
+    font-size: medium;
+}
+
+.info-valor {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.btn-contato-corretor {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-contato-corretor a {
+    text-align: center; 
+    position: absolute;
+    bottom: 10%;
+    font-weight: bold;
+    padding: 15px;
+    text-decoration: none;
+    background-color: #eee;
+    color: var(--bg-nav-color);
+    border: 1px solid var(--bg-nav-color);
+    border-radius: 15px;
+    transform: translateY(50%);
+    width: 70%;
+}
+
+
+.btn-contato-corretor a:hover{
+    background-color: var(--bg-nav-color);
+    color: #eee;
+    border: 1px solid #eee;
+}
+
+
+/*====== Veja Também ======*/
+
+.destaques {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.slide-container {
+    max-width: 1220px;
+    width: 100%;
+    padding: 25px 0;
+}
+
+.slide-content { 
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.card {
+    border-radius: 15px;
+    background-color: var(--bg-nav-color);
+}
+
+.image-content,
+.card-content { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.image-content {
+    position: relative;
+    padding: 0;
+}
+
+.card-image { 
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding: 5px;
+}
+
+.card-image .card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text1-nav-color);
+}
+
+.description {
+    font-size: 14px;
+    color: var(--footer-color);
+    text-align: center;
+}
+
+.button {
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: var(--douradao-teste);
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #ffe7a0;
+}
+
+.swiper-navBtn {
+    color: var(--bg-nav-color);
+    transition: color 0.3s ease;
+}
+
+.swiper-navBtn:hover {
+    color: var(--douradao-teste);
+}
+
+.swiper-navBtn::before,
+.swiper-navBtn::after {
+    font-size: 35px;
+}
+
+.swiper-button-next {
+    right: 0;
+}
+
+.swiper-button-prev {
+    left: 0;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--bg-nav-color);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--douradao-teste);
+}
+
+@media screen and (max-width: 768px) {
+    .slide-content{
+      margin: 0 10px;
+    }
+    .swiper-navBtn{
+      display: none;
+    }
+}
+
+/*====== Responsividade ======*/
+
+@media screen and (min-width: 1860px) {
+    section.images-tela-imovel {
+        padding: 20px 300px;
+    }
+
+    .teste {
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    section {
+        padding: 20px 10px;
+    }
+
+    .sw-imovel {
+        width: 100%;
+        height: 60vh;
+    }
+
+    .img-swiper-slide {
+        display: block;
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .informacoes {
+        width: 100%;
+        height: auto;
+        display: grid;
+    }
+
+    .info {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    .valor-saba-mais {
+        width: 100%;
+        height: 450px;
+        background-color: var(--bg-nav-color);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .identidade {
+        margin-top: 17%;
+        text-align: start;
+    }
+}

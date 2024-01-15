@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Swipper CSS-->
+        <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+
+        <!-- Style CSS-->
+        <link rel="stylesheet" href="../css/css_pages/style_home.css">
+        <link rel="stylesheet" href="../css/css_assets/style_navbar.css">
+        <link rel="stylesheet" href="../css/css_assets/style_footer.css">
+
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+        <!-- JQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+        <title> LSilva negócios imobiliários </title>
+    </head>
+    <body> 
+        <!--Topo do site-->
+        <header>
+            <div class="logo">
+                <a href="index.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
+            </div>
+
+            <div class="navigation">
+                <ul class="menu">
+                    <div class="close-btn"></div>
+                        <li class="menu-item"><a href="home.html">Início</a></li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Imóveis <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="pagimoveis.html">Venda</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Locação</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Lançamentos</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Serviços <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Nós encontramos</a></li>
+                                <li class="sub-item"><a href="simuladores.html">Simuladores</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Contato <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="telacontato.html">Email</a></li>
+                                <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
+                                <li class="sub-item"><a href="#tel">Telefones</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="input-box-header">
+                            <input type="text-search" placeholder="Pesquisar...">
+                            <span class="icon-search">
+                                <i class="uil uil-search search-icon-header"></i>
+                            </span>
+                            <i class="uil uil-times close-icon-search"></i>
+                        </div>
+                        
+                        <li class="menu-item">
+                            <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="menu-btn"></div>
+        </header>
+
+
+        <main>
+            <!-- Filtro -->
+            <div class="teste-filtro">
+                <div class="filtro">
+                    <h1>Encontre o imóvel dos seus sonhos</h1>
+                    <form class="form-filtro">
+                        <div class="input-cidade">
+                            <i class="bi bi-geo-fill" style="color: #f5f5f5;"></i>
+                            <div class="caixa-localizacao">
+                                <label class="label-cidade">
+                                    <div class="div-label-cidade">
+                                        <p>Cidade</p>
+                                    </div>
+                                    <div class="input-box">
+                                        <select name="cidade" id="cidade">
+                                            <option>Selecione</option>
+                                        </select>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-bairro">
+                            <i class="bi bi-house-door-fill" style="color: #f5f5f5;"></i>
+                            <div class="caixa-localizacao">
+                                <label class="label-bairro">
+                                    <div class="div-label-bairro">
+                                        <p>Bairro</p>
+                                    </div>
+                                    <input class="inp-bairro" type="search" placeholder="Busque por bairro">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="tipoimovel">Valor</label>
+                                <select name="tipoimovel" id="tipo-negociacao">
+                                    <option>Selecione</option>
+                                    <option value="1">R$ 100.000,00</option>
+                                    <option value="2">R$ 300.000,00</option>
+                                    <option value="3">R$ 500.000,00</option>
+                                    <option value="4">R$ 700.000,00</option>
+                                    <option value="5">R$ 1.000.000,+</option>
+                                </select>
+                            </div>
+    
+                            <div class="input-box">
+                                <label for="tipoimovel">Quartos</label>
+                                <select name="tipoimovel" id="tipo-negociacao">
+                                    <option>Selecione</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <a href=""><button class="buscar" value="Buscar imóvel" id="buscarimovel">Buscar imóvel</button></a>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Seção Cadastro de imóveis -->
+            <section class="cadastro-imovel">
+                <div class="cadastre-imovel">
+                    <h1>Cadastre seu imóvel</h1>
+                    <p>Venha trabalhar conosco, cadastre seu imóvel e faça parte do time LSilva. Garantimos que faremos de tudo para que seu imóvel seja alugado ou comprado.</p>
+                    <a href="cadastreimovel.html"><button>Cadastrar imóvel</button></a>
+                </div>
+
+                <div class="form-cad-imovel">
+                    
+                </div>
+            </section>
+
+            <!-- Seção Slider dos Destaques -->
+            <div class="destaques">
+                <h1>Destaques</h1>
+                <p>Últimos imóveis adicionados e melhores oportunidades de negócio.</p>
+                        
+                <div class="slide-container swiper">
+                            <div class="slide-content">
+                                <div class="card-wrapper swiper-wrapper">
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images1">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle1"></h2>
+                                            <p class="description" id="propertyDetails1"></p>
+                                            <p class="name" id="propertyPrice1"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images2">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle2"></h2>
+                                            <p class="description" id="propertyDetails2"></p>
+                                            <p class="name" id="propertyPrice2"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images3">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle3"></h2>
+                                            <p class="description" id="propertyDetails3"></p>
+                                            <p class="name" id="propertyPrice3"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images4">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle4"></h2>
+                                            <p class="description" id="propertyDetails4"></p>
+                                            <p class="name" id="propertyPrice4"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images5">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle5"></h2>
+                                            <p class="description" id="propertyDetails5"></p>
+                                            <p class="name" id="propertyPrice5"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images6">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle6"></h2>
+                                            <p class="description" id="propertyDetails6"></p>
+                                            <p class="name" id="propertyPrice6"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images7">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle7"></h2>
+                                            <p class="description" id="propertyDetails7"></p>
+                                            <p class="name" id="propertyPrice7"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images8">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle8"></h2>
+                                            <p class="description" id="propertyDetails8"></p>
+                                            <p class="name" id="propertyPrice8"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                    <div class="card swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay"></span>
+                                            <div class="card-image" id="images9">
+                                                <img src="" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name" id="propertyTitle9"></h2>
+                                            <p class="description" id="propertyDetails9"></p>
+                                            <p class="name" id="propertyPrice9"></p>
+                                            <button class="button">Ver mais</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next swiper-navBtn"></div>
+                            <div class="swiper-button-prev swiper-navBtn"></div>
+                            <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- Seção de Categorias -->
+            <section class="catigoria">
+                    <div class="titulo-categorias">
+                        <h1>Imóveis</h1>
+                        <p>Encontre o imóvel dos sonhos, escolha uma categoria ou veja todos!</p>
+                        <div class="categorias">
+                            <div class="card-categorias casas">
+                                <h2>Casas</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="3">Ver casas</button></a>
+                                </div>
+                            </div>
+        
+                            <div class="card-categorias apartamento">
+                                <h2>Apartamentos</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="5">Ver apartamentos</button></a>
+                                </div>
+                            </div>
+        
+                            <div class="card-categorias terreno">
+                                <h2>Terrenos</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="2">Ver terrenos</button></a>
+                                </div>
+                            </div>
+
+                            <div class="card-categorias rural">
+                                <h2>Rural</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="4">Ver todos</button></a>
+                                </div>
+                            </div>
+
+                            <div class="card-categorias galpoes">
+                                <h2>Galpões</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="1">Ver Galpões</button></a>
+                                </div>
+                            </div>
+
+                            <div class="card-categorias comercial">
+                                <h2>Comercial</h2>
+                                <div class="button-categoria btn-1">
+                                    <a><button class="buscartipo" value="6">Ver todos</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+               
+            <!-- Seção degradê antes do footer -->
+            <section class="section-two">
+                    <section class="card-2 contato">
+                        <div class="icon">
+                            <img src="../img/envelope.png" alt="">
+                        </div>
+                        <h3>Fale conosco</h3>
+                        <p>Entre em contato caso tenha qualquer dúvida.</p>
+                        <a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es"><button>Contato</button></a>
+                    </section>
+
+                    <section class="card-2 simulador">
+                       <div class="icon">
+                            <img src="../img/simuladores.png" alt="Simuladores">
+                       </div>
+                        <h3>Simuladores</h3>
+                        <p>Faça uma simulação para adquirir seu imóvel.</p>
+                        <a href="simuladores.html"><button>Simular</button></a>
+                    </section>
+
+                    <section class="card-2 cad-imovel">
+                        <div class="icon">
+                            <img src="../img/casa.png" alt="Cadastre seu imóvel">
+                        </div>
+                        <h3>Cadastrar imóvel</h3>
+                        <p>Cadastre seu imóvel e garanta bons negócios.</p>
+                        <a href="cadastreseuimovel.html"><button>Cadastrar</button></a>
+                    </section>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div id="footer_content">
+                <div id="footer_contacts">
+                   <h1><img src="../img/completo.png" alt=""></h1>
+                    <p>Redes Sociais:</p>
+
+                    <div id="footer_social_midia">
+                        <a href="https://www.instagram.com/lsilvaimb/" target="_blank" class="footer-link" id="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/profile.php?id=100012613808718" target="_blank" class="footer-link" id="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank" class="footer-link" id="whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="footer-list">
+                    <li>
+                        <h3>Quem Somos</h3>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Política de Privacidade</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Termos de uso</a>
+                    </li>
+                </ul>
+    
+                <ul class="footer-list">
+                    <li>
+                        <h3>Contato</h3>
+                    </li>
+                    <li>
+                        <a href="https://mail.google.com/mail/?view=cm&to=contato.lsilva@gmail.com" target="_blank" class="footer-link">contato@lsilva.com.br</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 4719-6462</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 4719-6469</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 97299-8439</a>
+                    </li>
+                </ul>
+    
+                <div id="footer_endereco">
+                    <ul class="footer-list">
+                        <li>
+                            <h3>Endereço</h3>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">Avenida Tiradentes, 441</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">Centro - São-Roque - SP</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">CEP - 18130-470</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">CRECI - 25717-J</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer_copyright">
+                LSilva
+                &#169
+                2023 - Todos os direitos reservados.
+            </div>
+        </footer>
+
+
+        <!-- Swiper JS -->
+        <script src="../javascript/swiper-bundle.min.js"></script>
+
+        <!--Slider JS-->
+        <script src="../javascript/slider.js"></script>
+
+        <!-- Navbar -->
+        <script src="../javascript/inicio.js"></script>
+
+        <!-- Js Search -->
+        <script src="../javascript/search.js"></script>
+
+        <!-- Fetch com API -->
+        <script src="../javascript/Fetchs/fetchhome.js" defer></script>
+        <noscript>You neeed enable JavaScript to view the full site.</noscript>
+    </body>
+</html>

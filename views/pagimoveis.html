@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../css/css_pages/style_pagimoveis.css">
+        <link rel="stylesheet" href="../css/css_assets/style_navbar.css">
+        <link rel="stylesheet" href="../css/css_assets/style_footer.css">
+
+        <!-- ICONS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+        <!-- JQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+        <title> LSilva negócios imobiliários </title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="home.html"><img src="../img/completo.png" alt="Logo Lsilva"></a>
+            </div>
+
+            <div class="navigation">
+                <ul class="menu">
+                    <div class="close-btn"></div>
+                        <li class="menu-item"><a href="home.html">Início</a></li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Imóveis <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="pagimoveis.html">Venda</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Locação</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Lançamentos</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Serviços <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="cadastreimovel.html">Cadastre seu imóvel</a></li>
+                                <li class="sub-item"><a href="pagimoveis.html">Nós encontramos</a></li>
+                                <li class="sub-item"><a href="simuladores.html">Simuladores</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a class="sub-btn">Contato <i class="fas fa-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                <li class="sub-item"><a href="telacontato.html">Email</a></li>
+                                <li class="sub-item"><a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank">Whatsapp</a></li>
+                                <li class="sub-item"><a href="#tel">Telefones</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="input-box-header">
+                            <input type="text-search" placeholder="Pesquisar...">
+                            <span class="icon-search">
+                                <i class="uil uil-search search-icon-header"></i>
+                            </span>
+                            <i class="uil uil-times close-icon-search"></i>
+                        </div>
+                        
+                        <li class="menu-item">
+                            <a class="sub-btn" href="login.html"><i class="fa-solid fa-user-large"></i></a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="menu-btn"></div>
+        </header>
+
+        <main>
+            <section>
+                <div class="imoveis">
+                    <div class="imoveis-titulo">
+                        <h2>Imóveis</h2>
+                    </div>
+                    <hr>
+                    <div class="resultados">
+                        <div class="resultados-da-busca">
+                            <h2>Resultados da busca</h2>
+                            <a href="#">Voltar à lista completa</a>
+                        </div>
+
+                        <div class="select">
+                            <div class="input-box">
+                                <label for="tipoimovel">Ordenar</label>
+                                <select name="ordenar" id="ordenar">
+                                    <option>Selecione</option>
+                                    <option value="Maior">Maior valor</option>
+                                    <option value="Menor">Menor valor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="parte-principal">
+                        <div class="pagination">
+                            <ul> <!--pages or li are comes from javascript --> </ul>
+                        </div>
+
+                        <div class="card-imoveis">  
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images1">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle1"></h2>
+                                    <h2 class="name" id="propertyDescription1"></h2>
+                                    <h2 class="name" id="propertyDetails1"></h2>
+                                    <p class="description" id="propertyPrice1"></p>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images2">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle2"></h2>
+                                    <h2 class="name" id="propertyDescription2"></h2>
+                                    <h2 class="name" id="propertyDetails2"></h2>
+                                    <h2 class="name" id="propertyPrice2"></h2>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images3">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle3"></h2>
+                                    <h2 class="name" id="propertyDescription3"></h2>
+                                    <h2 class="name" id="propertyDetails3"></h2>
+                                    <h2 class="name" id="propertyPrice3"></h2>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+                        
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images4">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle4"></h2>
+                                    <h2 class="name" id="propertyDescription4"></h2>
+                                    <h2 class="name" id="propertyDetails4"></h2>
+                                    <h2 class="name" id="propertyPrice4"></h2>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images5">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle5"></h2>
+                                    <h2 class="name" id="propertyDescription5"></h2>
+                                    <h2 class="name" id="propertyDetails5"></h2>
+                                    <h2 class="name" id="propertyPrice5"></h2>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+
+                            <div class="card swiper-slide">
+                                <div class="image-content">
+                                    <span class="overlay"></span>
+                                    <div class="card-image" id="images6">
+                                        <img src="" alt="" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="name" id="propertyTitle6"></h2>
+                                    <h2 class="name" id="propertyDescription6"></h2>
+                                    <h2 class="name" id="propertyDetails6"></h2>
+                                    <h2 class="name" id="propertyPrice6"></h2>
+                                    <button class="button">Ver imóvel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </section>
+        </main>
+
+        <footer>
+            <div id="footer_content">
+                <div id="footer_contacts">
+                <h1><img src="../img/completo.png" alt=""></h1>
+                    <p>Redes Sociais:</p>
+
+                    <div id="footer_social_midia">
+                        <a href="https://www.instagram.com/lsilvaimb/" target="_blank" class="footer-link" id="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/profile.php?id=100012613808718" target="_blank" class="footer-link" id="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es" target="_blank" class="footer-link" id="whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="footer-list">
+                    <li>
+                        <h3>Quem Somos</h3>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Política de Privacidade</a>
+                    </li>
+                    <li>
+                        <a href="" class="footer-link">Termos de uso</a>
+                    </li>
+                </ul>
+
+                <ul class="footer-list">
+                    <li>
+                        <h3>Contato</h3>
+                    </li>
+                    <li>
+                        <a href="https://mail.google.com/mail/?view=cm&to=contato.lsilva@gmail.com" target="_blank" class="footer-link">contato@lsilva.com.br</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 4719-6462</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 4719-6469</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" name="tel" style="color: #dddddd;">(11) 97299-8439</a>
+                    </li>
+                </ul>
+
+                <div id="footer_endereco">
+                    <ul class="footer-list">
+                        <li>
+                            <h3>Endereço</h3>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">Avenida Tiradentes, 441</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">Centro - São-Roque - SP</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">CEP - 18130-470</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" style="color: #dddddd;">CRECI - 25717-J</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer_copyright">
+                LSilva
+                &#169
+                2023 - Todos os direitos reservados.
+            </div>
+        </footer>
+        
+
+        <!-- Search Js -->
+        <script src="../javascript/search.js"></script>
+
+        <!-- carregarPropriedades.js -->
+        <script src="../javascript/Fetchs/carregarPropriedades.js"></script>
+
+        <!-- inicio.js -->
+        <script src="../javascript/inicio.js"></script>
+
+        <!-- Paginação -->
+        <script src="../javascript/pagination.js"></script>
+        <noscript>You neeed enable JavaScript to view the full site.</noscript>
+    </body>
+</html>

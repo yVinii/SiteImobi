@@ -1,4 +1,4 @@
-//jquery for toggle dropdown menus
+/*//jquery for toggle dropdown menus
 $(document).ready(function(){
     //toggle sub menus
     $(".sub-btn").click(function(){
@@ -26,8 +26,8 @@ window.addEventListener("scroll", function(){
 });
 
 //javscript slider
-let count = 1;
-document.getElementById("radio1").checked = true;
+//let count = 1;
+//document.getElementById("radio1").checked = true;
 
 setInterval( function(){
     nextImage();
@@ -43,14 +43,14 @@ function nextImage(){
 }
 
 const wrapper = document.querySelector(".wrapper"),
-selectBtn = wrapper.querySelector(".select-btn"),
-searchInp = wrapper.querySelector("input"),
-options = wrapper.querySelector(".options"); 
+//selectBtn = wrapper.querySelector(".select-btn"),
+//searchInp = wrapper.querySelector("input"),
+//options = wrapper.querySelector(".options"); 
 
 // array dos quartos
-let quartos = ["1" , "2" , "3" , "4+"];
+//let quartos = ["1" , "2" , "3" , "4+"];
 
-function addQuarto(selectedQuarto){
+/*function addQuarto(selectedQuarto){
     options.innerHTML = "";
     quartos.forEach(quarto => {
         let isSelected = quarto == selectedQuarto ? "selected" : "";
@@ -79,3 +79,4 @@ searchInp.addEventListener("keyup", () => {
 selectBtn.addEventListener("click", () => {
     wrapper.classList.toggle("active");
 });
+*/
