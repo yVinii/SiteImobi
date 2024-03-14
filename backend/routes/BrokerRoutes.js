@@ -6,9 +6,9 @@ const BrokerController = require("../controllers/BrokerController")
 const verifyToken = require('../helpers/verify-token')
 
 router.post('/create', verifyToken, BrokerController.create)
-router.get('/:id', BrokerController.getBrokerById);
+router.get('/:id', BrokerController.getById);
 router.get('/', BrokerController.getAll);
-router.patch('/:id', verifyToken, BrokerController.updateBroker);
-router.delete('/:id', verifyToken, BrokerController.deleteBrokerById);
+router.patch('/:id', verifyToken, BrokerController.update);
+router.delete('/:id', verifyToken, BrokerController.delete);
 
 module.exports = router
