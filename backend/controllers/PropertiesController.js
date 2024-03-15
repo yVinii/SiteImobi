@@ -6,8 +6,12 @@ const PropertyTypeService = require('../services/propertyTypeService');
 module.exports = class PropertiesController {
     static async create(req, res) {
         try {
-            const property = await PropertiesService.create(req.body);
-            res.status(201).json({ message: 'Propriedade cadastrada com sucesso', property });
+            const propertyData = req.body;
+            propertyData.images = req.files.map(file => file.filename);
+            const newProperty = await PropertiesService.create(propertyData);
+
+        
+            res.status(201).json({ message: 'Propriedade cadastrada com sucesso', newProperty });
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
@@ -97,7 +101,7 @@ module.exports = class PropertiesController {
             const idCity = req.params.id;
 
             // Verificando se a cidade com esse ID existe
-            const city = await CityService.getCityById(idCity);
+            const city = await CityService.getById(idCity);
             if (!city) {
                 return res.status(404).json({ message: 'Cidade não encontrada' });
             }
@@ -123,7 +127,7 @@ module.exports = class PropertiesController {
             const idPropertyType = req.params.id;
 
             // Verificando se o tipo de propriedade com esse ID existe
-            const propertyType = await PropertyTypeService.getTypeById(idPropertyType);
+            const propertyType = await PropertyTypeService.getById(idPropertyType);
             if (!propertyType) {
                 return res.status(404).json({ message: 'Tipo de propriedade não encontrado' });
             }
