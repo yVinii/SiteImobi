@@ -5,9 +5,9 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
 
 
     module.exports = class PropertiesService {
-        static async create(propertyData, images) {
+        static async create(propertyData) {
             // Validations
-            const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId} = propertyData;
+            const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId, images} = propertyData;
             
             //validations
             if(!title){
@@ -91,7 +91,8 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
             if (!propertyType) {
                 throw new Error('Tipo de Propriedade não encontrado');
             }
-    
+            // set the active atribute to true in propertyData
+            propertyData.active = true;
             // Add images to propertyData
             propertyData.images = images;
     
@@ -103,6 +104,8 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
     
             // Associate property type with the property
             await newProperty.setPropertyType(propertyType);
+            // Associate property type with the property
+            await newProperty.setBroker(broker);
     
             return newProperty;
         }
