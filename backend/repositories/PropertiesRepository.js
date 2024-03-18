@@ -1,4 +1,6 @@
 const Properties = require("../models/Properties");
+const { Sequelize, Op } = require('sequelize')
+const sequelize = require('../db/conn'); // Importando a conexão Sequelize
 
 module.exports = class PropertiesRepository {
     static async create(propertyData) {
@@ -6,8 +8,13 @@ module.exports = class PropertiesRepository {
     }
 
     static async getById(id) {
-        return await Properties.findOne({ where: { id, active: true } });
-    }
+        try {
+            return await Properties.findOne({ where: { id, active: true } });
+        } catch (error) {
+            console.error('Erro ao buscar propriedade por ID:', error);
+            throw new Error('Erro interno do servidor');
+        }
+    }    
 
     static async getAll() {
         return await Properties.findAll({ where: { active: true }, order: [['createdAt', 'DESC']] });
@@ -31,17 +38,24 @@ module.exports = class PropertiesRepository {
         await property.save();
     }
 
-    static async getUniqueNeighborhoods() {
+    static async getPropertiesByNeighborhood(neighborhood) {
         try {
-            const neighborhoods = await Properties.findAll({
-                attributes: ['neighborhood'],
-                group: ['neighborhood'],
-                raw: true,
+            const query = `
+                SELECT * 
+                FROM Properties 
+                WHERE neighborhood LIKE :neighborhood 
+                AND active = true;
+            `;
+            
+            const properties = await sequelize.query(query, {
+                replacements: { neighborhood: `%${neighborhood}%` },
+                type: sequelize.QueryTypes.SELECT
             });
-            return neighborhoods.map(property => property.neighborhood);
+    
+            return properties;
         } catch (error) {
-            console.error(error);
-            throw new Error('Erro ao obter bairros únicos');
+            console.error('Erro ao buscar propriedades por bairro:', error);
+            throw new Error('Erro interno do servidor');
         }
     }
 
@@ -56,7 +70,6 @@ module.exports = class PropertiesRepository {
             throw new Error('Erro ao obter propriedades do corretor');
         }
     }
-
 
     static async getAllCityProperties(idCity) {
         try {
@@ -84,15 +97,22 @@ module.exports = class PropertiesRepository {
 
     static async getByTypeOfSale(typeofsale) {
         try {
-            const properties = await Properties.findAll({
-                where: {
-                    typeofsale: typeofsale,
-                },
+            const query = `
+                SELECT * 
+                FROM Properties 
+                WHERE typeofsale LIKE :typeofsale 
+                AND active = true;
+            `;
+            
+            const properties = await sequelize.query(query, {
+                replacements: { typeofsale: `%${typeofsale}%` },
+                type: sequelize.QueryTypes.SELECT
             });
+    
             return properties;
         } catch (error) {
-            console.error(error);
-            throw new Error('Erro ao obter propriedades por tipo de venda');
+            console.error('Erro ao buscar propriedades por tipo de venda:', error);
+            throw new Error('Erro interno do servidor');
         }
     }
 

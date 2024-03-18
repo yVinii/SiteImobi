@@ -5,7 +5,7 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
 
 
     module.exports = class PropertiesService {
-        static async create(propertyData) {
+    static async create(propertyData) {
             // Validations
             const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId, images} = propertyData;
             
@@ -108,16 +108,21 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
             await newProperty.setBroker(broker);
     
             return newProperty;
-        }
-
-    static async getById(id) {
-        property = await PropertiesRepository.getById(id);
-        if (!property) {
-            throw new Error('Propriedade não cadastrada ou inativa');
-        }
-        return property;
     }
 
+    static async getById(id) {
+            try {
+                const property = await PropertiesRepository.getById(id);
+                if (!property) {
+                    throw new Error('Propriedade não encontrada');
+                }
+                return property;
+            } catch (error) {
+                console.error(error);
+                throw new Error(error);
+            }
+    }
+        
     static async getAll(limit, offset) {
         try {
             // Se limit ou offset não estiverem definidos, atribua valores padrão
@@ -195,56 +200,51 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
         }
     }
 
-
-        static async getUniqueNeighborhoods() {
+    static async getPropertiesByNeighborhood(neighborhood) {
             try {
-                return await PropertiesRepository.getUniqueNeighborhoods();
+                return await PropertiesRepository.getPropertiesByNeighborhood(neighborhood);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
       
             }
-        }
+    }
 
-        static async getAllBrokerProperties(idBroker) {
+    static async getAllBrokerProperties(idBroker) {
             try {
                 return await PropertiesRepository.getAllBrokerProperties(idBroker);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-        }
+    }
 
-        static async getAllCityProperties(idCity) {
+    static async getAllCityProperties(idCity) {
             try {
                 return await PropertiesRepository.getAllCityProperties(idCity);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-        }
+    }
 
-        static async getAllTypeProperties(idPropertyType) {
+    static async getAllTypeProperties(idPropertyType) {
             try {
                 return await PropertiesRepository.getAllTypeProperties(idPropertyType);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-        }
+    }
 
-        static async getByTypeOfSale(typeofsale) {
+    static async getByTypeOfSale(typeofsale) {
             try {
                 return await PropertiesRepository.getByTypeOfSale(typeofsale);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-        }
+    }
 
 }
 
-
-
-
-    // Implement other methods as needed

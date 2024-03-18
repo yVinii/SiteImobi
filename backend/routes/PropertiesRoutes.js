@@ -12,10 +12,11 @@ PropertiesController.create)
 
 router.get('/', PropertiesController.getAll);
 router.get('/getAllBrokerProperties/:id',PropertiesController.getAllBrokerProperties);
+router.get('/unique-neighborhoods', PropertiesController.getPropertiesByNeighborhood);
+router.get('/typeofsale', PropertiesController.getByTypeOfSale);
 router.get('/:id', PropertiesController.getPropertiesById);
 router.delete('/:id', verifyToken, PropertiesController.removePropertiesById);
 router.patch('/:id', verifyToken, imageUpload.array('images'), PropertiesController.updateProperty);
-router.get('/unique-neighborhoods', PropertiesController.getUniqueNeighborhoods);
 router.get('/city/:id', PropertiesController.getAllCityProperties);
 router.get('/propertyType/:id', PropertiesController.getAllTypeProperties);
 

@@ -59,13 +59,14 @@ module.exports = class PropertiesController {
         }
     }
 
-    static async getUniqueNeighborhoods(req, res) {
+    static async getPropertiesByNeighborhood(req, res) {
         try {
-            const uniqueNeighborhoods = await PropertiesService.getUniqueNeighborhoods();
-            res.json({ neighborhoods: uniqueNeighborhoods });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
-        }
+            const { neighborhood } = req.query;
+        const properties = await PropertiesService.getPropertiesByNeighborhood(neighborhood);
+        res.status(200).json({ properties });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
     }
 
     static async getAllBrokerProperties(req, res) {
