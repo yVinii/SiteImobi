@@ -15,7 +15,7 @@ router.get('/getAllBrokerProperties/:id',PropertiesController.getAllBrokerProper
 router.get('/:id', PropertiesController.getPropertiesById);
 router.delete('/:id', verifyToken, PropertiesController.removePropertiesById);
 router.patch('/:id', verifyToken, imageUpload.array('images'), PropertiesController.updateProperty);
-router.get('/getPropertiesByNeighborhood/:id', PropertiesController.getAllNeighborhoodProperties);
+router.get('/unique-neighborhoods', PropertiesController.getUniqueNeighborhoods);
 router.get('/city/:id', PropertiesController.getAllCityProperties);
 router.get('/propertyType/:id', PropertiesController.getAllTypeProperties);
 

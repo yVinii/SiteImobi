@@ -2,22 +2,28 @@ const PropertiesRepository = require("../repositories/PropertiesRepository");
 const CityRepository = require("../repositories/cityRepository");
 const BrokerRepository = require('../repositories/brokerRepository');
 const PropertyTypeRepository = require('../repositories/propertyTypeRepository');
-const NeighborhoodRepository = require('../repositories/NeighborhoodRepository');
-const TypeOfSaleRepository = require('../repositories/TypeOfSaleRepository');
 
 
     module.exports = class PropertiesService {
-    static async create(propertyData) {
+        static async create(propertyData) {
             // Validations
-            const {title, typeofsaleId, address, cityId, neighborhoodId, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId, images} = propertyData;
+            const {title, typeofsale, address, cityId, neighborhood, value, nbedrooms, propertyTypeId, buildm2, groundm2, description, nsuites, nvacancies, nbathrooms, register, owner, ownerPhone, brokerId, images} = propertyData;
             
             //validations
             if(!title){
                 throw new Error("O titulo do imóvel é obrigatório")
             }
     
+            if(!typeofsale){
+                throw new Error("O typeofsale do imóvel é obrigatório")
+            }
+    
             if(!address){
                 throw new Error("O address do imóvel é obrigatório")
+            }
+    
+            if(!neighborhood){
+                throw new Error("O neighborhood do imóvel é obrigatório")
             }
     
             if(!value){
@@ -68,50 +74,41 @@ const TypeOfSaleRepository = require('../repositories/TypeOfSaleRepository');
                 throw new Error('A imagem é obrigatória!')
             }
     
+            // Check if broker exists
             const broker = await BrokerRepository.getById(brokerId);
             if (!broker) {
                 throw new Error('Corretor não encontrado');
             }
     
+            // Check if city exists
             const city = await CityRepository.getById(cityId)
             if (!city) {
                 throw new Error('Cidade não encontrada');
             }
     
+            // Check if property type exists
             const propertyType = await PropertyTypeRepository.getById(propertyTypeId);
             if (!propertyType) {
                 throw new Error('Tipo de Propriedade não encontrado');
             }
-
-            const neighborhood = await NeighborhoodRepository.getById(neighborhoodId);
-            if(!neighborhood){
-                throw new Error("O neighborhood do imóvel é obrigatório")
-            }
-
-            const typeofsale = await TypeOfSaleRepository.getById(typeofsaleId)
-            if(!typeofsale){
-                throw new Error("O typeofsale do imóvel é obrigatório")
-            }
-            
+            // set the active atribute to true in propertyData
             propertyData.active = true;
-            
+            // Add images to propertyData
             propertyData.images = images;
     
-         
+            // Create property
             const newProperty = await PropertiesRepository.create(propertyData);
     
+            // Associate city with the property
             await newProperty.setCity(city);
     
+            // Associate property type with the property
             await newProperty.setPropertyType(propertyType);
-           
+            // Associate property type with the property
             await newProperty.setBroker(broker);
-
-            await newProperty.setNeighborhood(neighborhood);
-
-            await newProperty.setTypeOfSale(typeofsale);
     
             return newProperty;
-    }
+        }
 
     static async getById(id) {
         property = await PropertiesRepository.getById(id);
@@ -164,7 +161,7 @@ const TypeOfSaleRepository = require('../repositories/TypeOfSaleRepository');
 
     static async updateProperty(id, newData, images) {
         try {
-            const { brokerId, cityId, propertyTypeId, neighborhoodId , typeofsaleId} = newData;
+            const { brokerId, cityId, propertyTypeId } = newData;
 
             const broker = await BrokerRepository.getById(brokerId);
             if (!broker) {
@@ -181,22 +178,10 @@ const TypeOfSaleRepository = require('../repositories/TypeOfSaleRepository');
                 throw new Error('Tipo de Propriedade não encontrado');
             }
 
-            const neighborhood = await NeighborhoodRepository.getById(neighborhoodId);
-            if (!neighborhood) {
-                throw new Error('Bairro não encontrada');
-            }
-
-            const typeofsale = await TypeOfSaleRepository.getById(typeofsaleIdId);
-            if (!typeofsale) {
-                throw new Error('Tipo de venda não encontrada');
-            }
-
             const updateData = {
                 ...newData,
                 broker,
                 city,
-                neighborhood,
-                typeofsale,
                 propertytype: propertyType,
                 images: images.map(file => file.filename)
             };
@@ -210,49 +195,56 @@ const TypeOfSaleRepository = require('../repositories/TypeOfSaleRepository');
         }
     }
 
-    static async getPropertiesByNeighborhood(idNeighborhood) {
-        try {
-            return await PropertiesRepository.getPropertiesByNeighborhood(idNeighborhood);
+
+        static async getUniqueNeighborhoods() {
+            try {
+                return await PropertiesRepository.getUniqueNeighborhoods();
             } catch (error) {
                 console.error(error);
-            throw new Error('Erro interno do servidor');
+                throw new Error('Erro interno do servidor');
+      
             }
-    }
+        }
 
-    static async getAllBrokerProperties(idBroker) {
+        static async getAllBrokerProperties(idBroker) {
             try {
                 return await PropertiesRepository.getAllBrokerProperties(idBroker);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-    }
+        }
 
-    static async getAllCityProperties(idCity) {
+        static async getAllCityProperties(idCity) {
             try {
                 return await PropertiesRepository.getAllCityProperties(idCity);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-    }
+        }
 
-    static async getAllTypeProperties(idPropertyType) {
+        static async getAllTypeProperties(idPropertyType) {
             try {
                 return await PropertiesRepository.getAllTypeProperties(idPropertyType);
             } catch (error) {
                 console.error(error);
                 throw new Error('Erro interno do servidor');
             }
-    }
+        }
 
-    static async getAllTypeOfSale(idTypeOfSale) {
-        try {
-            return await PropertiesService.getAllTypeOfSale(idTypeOfSale);
+        static async getByTypeOfSale(typeofsale) {
+            try {
+                return await PropertiesRepository.getByTypeOfSale(typeofsale);
             } catch (error) {
                 console.error(error);
-            throw new Error('Erro interno do servidor');
+                throw new Error('Erro interno do servidor');
             }
-    }
+        }
 
 }
+
+
+
+
+    // Implement other methods as needed
