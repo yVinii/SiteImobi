@@ -31,17 +31,15 @@ module.exports = class PropertiesRepository {
         await property.save();
     }
 
-    static async getUniqueNeighborhoods() {
+    static async getPropertiesByNeighborhood(idNeighborhood) {
         try {
-            const neighborhoods = await Properties.findAll({
-                attributes: ['neighborhood'],
-                group: ['neighborhood'],
-                raw: true,
+            const properties = await Properties.findAll({
+                where: { idNeighborhood },
             });
-            return neighborhoods.map(property => property.neighborhood);
+            return properties;
         } catch (error) {
             console.error(error);
-            throw new Error('Erro ao obter bairros únicos');
+            throw new Error('Erro ao obter propriedades desse Bairro');
         }
     }
 
@@ -56,7 +54,6 @@ module.exports = class PropertiesRepository {
             throw new Error('Erro ao obter propriedades do corretor');
         }
     }
-
 
     static async getAllCityProperties(idCity) {
         try {
@@ -82,17 +79,15 @@ module.exports = class PropertiesRepository {
         }
     }
 
-    static async getByTypeOfSale(typeofsale) {
+    static async getAllTypeOfSaleProperties(idTypeOfSale) {
         try {
             const properties = await Properties.findAll({
-                where: {
-                    typeofsale: typeofsale,
-                },
+                where: { idTypeOfSale },
             });
             return properties;
         } catch (error) {
             console.error(error);
-            throw new Error('Erro ao obter propriedades por tipo de venda');
+            throw new Error('Erro ao obter propriedades desse Bairro');
         }
     }
 

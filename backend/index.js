@@ -30,6 +30,7 @@ const BrokerRoutes = require('./routes/BrokerRoutes');
 const TemplatesRoutes = require('./routes/TemplateRoutes');
 const CityRoutes = require('./routes/CityRoutes');
 const PropertyTypeRoutes = require('./routes/PropertyTypeRoutes');
+const NeighborhoodRoutes = require('./routes/NeighborhoodRoutes');
 
 app.use('/users', UserRoutes);
 app.use('/properties', PropertiesRoutes);
@@ -37,6 +38,7 @@ app.use('/broker', BrokerRoutes);
 app.use('/templates', TemplatesRoutes);
 app.use('/city', CityRoutes);
 app.use('/propertyType', PropertyTypeRoutes);
+app.use('/neighborhood',NeighborhoodRoutes);
 
 const PORT = 5502;
 

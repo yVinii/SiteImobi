@@ -1,3 +1,4 @@
+const NeighborhoodService = require('../services/NeighborhoodService');
 const PropertiesService = require('../services/PropertiesService');
 const BrokerService = require('../services/brokerService');
 const CityService = require('../services/cityService');
@@ -59,13 +60,28 @@ module.exports = class PropertiesController {
         }
     }
 
-    static async getUniqueNeighborhoods(req, res) {
+    static async getAllNeighborhoodProperties(req, res) {
         try {
-            const uniqueNeighborhoods = await PropertiesService.getUniqueNeighborhoods();
-            res.json({ neighborhoods: uniqueNeighborhoods });
+           
+            const idNeighborhood = req.params.id;
+
+            const neighborhood = await NeighborhoodService.getById(idNeighborhood);
+            if (!neighborhood) {
+                return res.status(404).json({ message: 'Bairro não encontrado' });
+            }
+
+            const properties = await PropertiesService.getPropertiesByNeighborhood(idNeighborhood)
+
+            if (!properties || properties.length === 0) {
+                return res.status(404).json({ message: 'Nenhuma propriedade encontrada para este Bairro' });
+            }
+
+            res.status(200).json({ properties });
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            console.error(error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
         }
+
     }
 
     static async getAllBrokerProperties(req, res) {
@@ -165,7 +181,5 @@ module.exports = class PropertiesController {
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
-
-
 
 }

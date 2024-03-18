@@ -1,24 +1,18 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-const sequelize = require('../db/conn'); // Importando a conexão Sequelize
+const sequelize = require('../db/conn');
 const Broker = require('./Broker');
 const City = require('./City');
 const PropertyType = require('./PropertyType');
+const Neighborhood = require('./Neighbordhood');
+const TypeOfSale = require('./TypeOfSale');
 
 const Properties = sequelize.define('Properties', {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  typeofsale: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   address: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  neighborhood: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -102,6 +96,15 @@ City.hasMany(Properties,{
   foreignKey: 'idCity'
 });
 
+Properties.belongsTo(Neighborhood, {
+  constraints: true,
+  foreignKey:  'idNeighborhood'
+});
+
+Neighborhood.hasMany(Properties,{
+  foreignKey: 'idNeighborhood'
+});
+
 Properties.belongsTo(PropertyType, {
   constraints: true,
   foreignKey:  'idPropertyType'
@@ -109,6 +112,15 @@ Properties.belongsTo(PropertyType, {
 
 PropertyType.hasMany(Properties,{
   foreignKey: 'idPropertyType'
+});
+
+Properties.belongsTo(TypeOfSale, {
+  constraints: true,
+  foreignKey:  'idTypeOfSale'
+});
+
+TypeOfSale.hasMany(Properties,{
+  foreignKey: 'idTypeOfSale'
 });
 
 
