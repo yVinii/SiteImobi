@@ -4,20 +4,20 @@ async function carregarCidades() {
         const data = await response.json();
 
         if (response.ok) {
-            const cidades = data.city;
+            const cidades = data.cities;
             const selectElement = document.getElementById('cidade');
           
-            selectElement.textContent = ''; // Usar textContent para limpar
+            selectElement.textContent = ''; 
 
             const defaultOption = document.createElement('option');
             defaultOption.value = '';
             defaultOption.text = 'Selecione';
             selectElement.appendChild(defaultOption);
 
-            cidades.forEach(city => {
+            cidades.forEach(cities => {
                 const option = document.createElement('option');
-                option.text = city.name;
-                option.value = city.id;
+                option.text = cities.name;
+                option.value = cities.id;
                 selectElement.appendChild(option);
             });
 
@@ -26,7 +26,7 @@ async function carregarCidades() {
             console.log('Erro ao obter cidades:', response.statusText);
         }
     } catch (error) {
-        console.log('Erro na requisição:', error);
+        console.log('Erro na requisição:', error.message);
     }
 }
 
@@ -77,7 +77,6 @@ document.getElementById('buscarimovel').addEventListener('click', async function
     event.preventDefault()
 
     const cityId = document.getElementById('cidade').value;
-    // Aguarde o carregamento das propriedades antes de redirecionar
     await carregarPropriedades();
     window.location.href = `pagimoveis.html?cityId=${cityId}`;
 });
@@ -87,7 +86,6 @@ buttons.forEach(button => {
     button.addEventListener('click', async function(event) {
         event.preventDefault();
         const propertyTypeId = button.value;
-        // Aguarde o carregamento das propriedades antes de redirecionar
         await carregarPropriedades();
         window.location.href = `pagimoveis.html?propertyTypeId=${propertyTypeId}`;
     });  
