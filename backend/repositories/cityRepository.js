@@ -6,7 +6,11 @@ module.exports = class CityRepository {
     }
 
     static async getById(id) {
-        return await City.findOne({ where: { id, active: true } });
+        try {
+            return await City.findOne({ where: { id, active: true } });
+        } catch(error){
+            throw new Error(error.message);
+        }
     }
 
     static async getAll() {

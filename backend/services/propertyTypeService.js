@@ -14,7 +14,7 @@ module.exports = class PropertyTypeService {
         try {
             return await PropertyTypeRepository.getById(id);
         } catch (error) {
-            throw new Error('Erro interno do servidor');
+            throw new Error(error.message);
         }
     }
 

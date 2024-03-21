@@ -6,7 +6,7 @@ module.exports = class PropertyTypeRepository {
         try {
             return await PropertyType.create({ name, active: true });
         } catch (error) {
-            throw new Error('Erro ao criar tipo de propriedade');
+            throw new Error(error.message);
         }
     }
 
@@ -14,7 +14,7 @@ module.exports = class PropertyTypeRepository {
         try {
             return await PropertyType.findOne({ where: { id, active: true } });
         } catch (error) {
-            throw new Error('Erro ao buscar tipo de propriedade por ID');
+            throw new Error(error.message);
         }
     }
 
@@ -22,7 +22,7 @@ module.exports = class PropertyTypeRepository {
         try {
             return await PropertyType.findAll({ where: { active: true }, order: [['createdAt', 'DESC']] });
         } catch (error) {
-            throw new Error('Erro ao buscar todos os tipos de propriedade');
+            throw new Error(error.message);
         }
     }
 }

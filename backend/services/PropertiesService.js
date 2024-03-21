@@ -125,14 +125,11 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
         
     static async getAll(limit, offset) {
         try {
-            // Se limit ou offset não estiverem definidos, atribua valores padrão
             limit = limit ? Number(limit) : 9;
             offset = offset ? Number(offset) : 0;
 
-            // Obtém o número total de propriedades ativas
             const total = await PropertiesRepository.countActive();
 
-            // Obtém as propriedades ativas com paginação
             const properties = await PropertiesRepository.findAll({
                 where: { active: true },
                 order: [['createdAt', 'DESC']],
@@ -219,30 +216,75 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
             }
     }
 
-    static async getAllCityProperties(idCity) {
-            try {
-                return await PropertiesRepository.getAllCityProperties(idCity);
-            } catch (error) {
-                console.error(error);
-                throw new Error('Erro interno do servidor');
-            }
+    static async getAllCityProperties(idCity, limit, offset) {
+        try {
+            limit = limit ? Number(limit) : 6;
+            offset = offset ? Number(offset) : 0;
+            
+            const total = await PropertiesRepository.countCityProperties(idCity);
+    
+            const properties = await PropertiesRepository.getAllCityProperties(idCity);
+    
+            const pagination = {
+                total: total,
+                limit: limit,
+                offset: offset,
+                nextUrl: offset + limit < total ? `/properties/city/${idCity}?limit=${limit}&offset=${offset + limit}` : null,
+                previousUrl: offset - limit >= 0 ? `/properties/city/${idCity}?limit=${limit}&offset=${offset - limit}` : null
+            };
+            return { properties, pagination };
+    
+        } catch (error) {
+            console.error(error);
+            throw new Error(error.message);
+        }
     }
 
-    static async getAllTypeProperties(idPropertyType) {
-            try {
-                return await PropertiesRepository.getAllTypeProperties(idPropertyType);
-            } catch (error) {
-                console.error(error);
-                throw new Error('Erro interno do servidor');
-            }
-    }
+    static async getAllTypeProperties(idPropertyType, limit, offset) {
+        try {
+           
+            limit = limit ? Number(limit) : 6;
+            offset = offset ? Number(offset) : 0;
 
-    static async getByTypeOfSale(typeofsale) {
+            const total = await PropertiesRepository.countTypeProperties(idPropertyType);
+
+            const properties = await PropertiesRepository.getAllTypeProperties(idPropertyType);
+
+            const pagination = {
+                total: total,
+                limit: limit,
+                offset: offset,
+                nextUrl: offset + limit < total ? `/properties/propertyType/${idPropertyType}?limit=${limit}&offset=${offset + limit}` : null,
+                previousUrl: offset - limit >= 0 ? `/properties/propertyType/${idPropertyType}?limit=${limit}&offset=${offset - limit}` : null
+            };
+    
+            return { properties, pagination };
+        } catch (error) {
+            console.error(error.message);
+            throw new Error( error.message);
+        }
+    }
+    
+    static async getByTypeOfSale(typeofsale, limit, offset) {
             try {
-                return await PropertiesRepository.getByTypeOfSale(typeofsale);
+                limit = limit ? Number(limit) : 6;
+                offset = offset ? Number(offset) : 0;
+
+                const total = await PropertiesRepository.countTypeOfSaleProperties(typeofsale);
+                const properties = await PropertiesRepository.getByTypeOfSale(typeofsale);
+
+                
+            const pagination = {
+                total: total,
+                limit: limit,
+                offset: offset,
+                nextUrl: offset + limit < total ? `/properties/typeofsale?typeofsale=${typeofsale}&limit=${limit}&offset=${offset + limit}` : null,
+                previousUrl: offset - limit >= 0 ? `/properties/typeofsale?typeofsale=${typeofsale}&limit=${limit}&offset=${offset - limit}` : null
+            };
+                return {properties, pagination}
             } catch (error) {
                 console.error(error);
-                throw new Error('Erro interno do servidor');
+                throw new Error(error.message);
             }
     }
 

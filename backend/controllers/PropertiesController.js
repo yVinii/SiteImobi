@@ -98,75 +98,70 @@ module.exports = class PropertiesController {
 
     static async getAllCityProperties(req, res) {
         try {
-            // Recebendo o id da cidade
-            const idCity = req.params.id;
-
-            // Verificando se a cidade com esse ID existe
+            const { idCity } = req.params;
+            const { limit, offset } = req.query; 
+           
             const city = await CityService.getById(idCity);
-            if (!city) {
+           if (!city) {
                 return res.status(404).json({ message: 'Cidade não encontrada' });
             }
-
-            // Obtendo todas as propriedades associadas a esta cidade
-            const properties = await PropertiesService.getAllCityProperties(idCity);
-
-            // Verificando se há propriedades associadas a esta cidade
+    
+            const { properties, pagination } = await PropertiesService.getAllCityProperties(idCity, limit, offset);
+    
             if (!properties || properties.length === 0) {
                 return res.status(404).json({ message: 'Nenhuma propriedade encontrada nessa cidade' });
             }
-
-            res.status(200).json({ properties });
+    
+            res.status(200).json({ properties, pagination });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
+            res.status(500).json({ message :error.message });
         }
     }
-
+    
     static async getAllTypeProperties(req, res) {
         try {
-            // Recebendo o id do tipo de propriedade
-            const idPropertyType = req.params.id;
-
-            // Verificando se o tipo de propriedade com esse ID existe
-            const propertyType = await PropertyTypeService.getById(idPropertyType);
+            const { idPropertyType } = req.params;
+            const { limit, offset } = req.query; 
+    
+           const propertyType = await PropertyTypeService.getById(idPropertyType);
             if (!propertyType) {
-                return res.status(404).json({ message: 'Tipo de propriedade não encontrado' });
+               return res.status(404).json({ message: 'Tipo de propriedade não encontrado' });
             }
+    
+            const { properties, pagination } = await PropertiesService.getAllTypeProperties(idPropertyType, limit, offset);
 
-            // Obtendo todas as propriedades do tipo selecionado
-            const properties = await PropertiesService.getAllTypeProperties(idPropertyType);
-
-            // Verificando se há propriedades do tipo selecionado
             if (!properties || properties.length === 0) {
                 return res.status(404).json({ message: 'Nenhuma propriedade encontrada' });
             }
-
-            res.status(200).json({ properties });
+    
+            res.status(200).json({ properties, pagination });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Erro interno do servidor' });
+            res.status(500).json({ message: error.message });
         }
     }
+    
 
     static async getByTypeOfSale(req, res) {
         try {
-            const { typeofsale } = req.query;
-
-            // Verificando se o tipo de venda foi fornecido
+           
+            const { typeofsale, limit, offset } = req.query; 
+            
             if (!typeofsale) {
                 return res.status(400).json({ message: 'O tipo de venda é obrigatório' });
             }
+            const {properties, pagination} = await PropertiesService.getByTypeOfSale(typeofsale, limit, offset);
 
-            // Obtendo propriedades pelo tipo de venda
-            const properties = await PropertiesService.getByTypeOfSale(typeofsale);
-
-            res.status(200).json({ properties });
+            if (!properties || properties.length === 0) {
+                return res.status(404).json({ message: 'Nenhuma propriedade encontrada' });
+            }
+            res.status(200).json({ properties , pagination });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Erro interno do servidor' });
         }
     }
-
 
 
 }

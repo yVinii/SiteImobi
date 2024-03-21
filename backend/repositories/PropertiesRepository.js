@@ -79,7 +79,7 @@ module.exports = class PropertiesRepository {
             return properties;
         } catch (error) {
             console.error(error);
-            throw new Error('Erro ao obter propriedades da cidade');
+            throw new Error(error.message);
         }
     }
 
@@ -100,12 +100,12 @@ module.exports = class PropertiesRepository {
             const query = `
                 SELECT * 
                 FROM Properties 
-                WHERE typeofsale LIKE :typeofsale 
+                WHERE typeofsale = :typeofsale 
                 AND active = true;
             `;
             
             const properties = await sequelize.query(query, {
-                replacements: { typeofsale: `%${typeofsale}%` },
+                replacements: { typeofsale },
                 type: sequelize.QueryTypes.SELECT
             });
     
@@ -122,5 +122,56 @@ module.exports = class PropertiesRepository {
 
     static async countActive() {
         return await Properties.count({ where: { active: true } });
+    }
+
+    static async countCityProperties(idCity) {
+        try {
+            const count = await Properties.count({
+                where: {
+                    idCity: idCity,
+                    active: true
+                }
+            });
+            return count;
+        } catch (error) {
+            console.error(error);
+            throw new Error('Erro ao contar propriedades na cidade');
+        }
+    }
+
+    static async countTypeProperties(idPropertyType) {
+        try {
+            const count = await Properties.count({
+                where: {
+                    idPropertyType: idPropertyType,
+                    active: true
+                }
+            });
+            return count;
+        } catch (error) {
+            console.error(error);
+            throw new Error(error.message);
+        }
+    }
+
+    static async countTypeOfSaleProperties(typeofsale) {
+        try {
+            const query = `
+                SELECT COUNT(*) as count
+                FROM Properties 
+                WHERE typeofsale = :typeofsale 
+                AND active = true;
+            `;
+            
+            const count = await sequelize.query(query, {
+                replacements: { typeofsale },
+                type: sequelize.QueryTypes.SELECT
+            });
+    
+            return count[0].count;
+        } catch (error) {
+            console.error('Erro ao contar propriedades por tipo de venda:', error);
+            throw new Error('Erro interno do servidor');
+        }
     }
 }

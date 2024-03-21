@@ -17,7 +17,7 @@ router.get('/typeofsale', PropertiesController.getByTypeOfSale);
 router.get('/:id', PropertiesController.getPropertiesById);
 router.delete('/:id', verifyToken, PropertiesController.removePropertiesById);
 router.patch('/:id', verifyToken, imageUpload.array('images'), PropertiesController.updateProperty);
-router.get('/city/:id', PropertiesController.getAllCityProperties);
-router.get('/propertyType/:id', PropertiesController.getAllTypeProperties);
+router.get('/city/:idCity', PropertiesController.getAllCityProperties);
+router.get('/propertyType/:idPropertyType', PropertiesController.getAllTypeProperties);
 
 module.exports = router
