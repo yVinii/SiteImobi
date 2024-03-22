@@ -142,7 +142,6 @@ module.exports = class PropertiesController {
         }
     }
     
-
     static async getByTypeOfSale(req, res) {
         try {
            
@@ -163,5 +162,24 @@ module.exports = class PropertiesController {
         }
     }
 
+    static async getPropertiesByFiltro(req, res) {
+        try {
+            const { cityId, bairro, tipoNegociacao, quartos, valor, limit, offset } = req.query;
+            const filters = {};
+    
+            if (cityId) filters.cityId = cityId;
+            if (bairro) filters.bairro = bairro;
+            if (tipoNegociacao) filters.tipoNegociacao = tipoNegociacao;
+            if (quartos) filters.quartos = quartos;
+            if (valor) filters.valor = valor;
+    
+            const { properties, pagination } = await PropertiesService.getPropertiesByFiltroService(filters, limit, offset);
+            res.status(200).json({ properties, pagination });
+        } catch (error) {
+            console.error('Erro ao buscar propriedades por filtros:', error);
+            res.status(500).json({ message: 'Erro interno do servidor' });
+        }
+    }
+    
 
 }

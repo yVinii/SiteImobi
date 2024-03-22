@@ -130,7 +130,7 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
 
             const total = await PropertiesRepository.countActive();
 
-            const properties = await PropertiesRepository.findAll({
+            const properties = await PropertiesRepository.getAll({
                 where: { active: true },
                 order: [['createdAt', 'DESC']],
                 limit: limit,
@@ -287,6 +287,35 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
                 throw new Error(error.message);
             }
     }
+
+    static async getPropertiesByFiltroService(filtros, limit, offset) {
+        try {
+            limit = limit ? Number(limit) : 6;
+            offset = offset ? Number(offset) : 0;
+    
+            const total = await PropertiesRepository.countGetPropertiesByFiltros(filtros);
+    
+            const properties = await PropertiesRepository.getPropertiesByFiltroRepository(filtros);
+    
+            const queryString = new URLSearchParams(filtros).toString(); 
+            const nextUrl = offset + limit < total ? `/properties/filtros?${queryString}&limit=${limit}&offset=${offset + limit}` : null;
+            const previousUrl = offset - limit >= 0 ? `/properties/filtros?${queryString}&limit=${limit}&offset=${offset - limit}` : null;
+    
+            const pagination = {
+                total: total,
+                limit: limit,
+                offset: offset,
+                nextUrl: nextUrl,
+                previousUrl: previousUrl
+            };
+    
+            return { properties, pagination };
+        } catch (error) {
+            console.error('Erro ao buscar propriedades por filtros na service:', error);
+            throw new Error(error.message);
+        }
+    }
+    
 
 }
 

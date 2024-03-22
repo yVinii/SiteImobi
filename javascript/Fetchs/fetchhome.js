@@ -74,11 +74,22 @@ async function carregarPropriedades() {
 }
 
 document.getElementById('buscarimovel').addEventListener('click', async function(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     const cityId = document.getElementById('cidade').value;
+    const bairro = document.getElementById('bairro').value;
+    const valor = document.getElementById('valor-imovel').value;
+    const quartos = document.getElementById('qtd-quartos').value;
+
+    const queryParams = new URLSearchParams({
+        cityId: cityId,
+        bairro: bairro,
+        valor: valor,
+        quartos: quartos
+    });
+
     await carregarPropriedades();
-    window.location.href = `pagimoveis.html?cityId=${cityId}`;
+    window.location.href = `pagimoveis.html?properties/filtros?${queryParams.toString()}`;
 });
 
 const buttons = document.querySelectorAll('.buscartipo');
