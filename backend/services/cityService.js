@@ -5,7 +5,7 @@ module.exports = class CityService {
         if (!cityData.name) {
             throw new Error('O nome da cidade é obrigatório');
         }
-
+        cityData.active = true;
         return await CityRepository.create(cityData);
     }
 
