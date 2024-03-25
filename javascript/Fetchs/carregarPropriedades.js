@@ -26,8 +26,9 @@ function populatePropertyCard(property, index ) {
     if (property.images && property.images.length > 0) {
         const imagesArray = JSON.parse(property.images);
         if (imagesArray.length > 0) {
+            const imagesArray = property.images.replace(/\\/g, '').replace(/"/g, '').replace(/]/g,'').replace(/\[/g,'');
             const imageElement = document.querySelector(`#images${index + 1} img`);
-            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
+            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray}`;
         }
     }
 }
@@ -37,10 +38,32 @@ async function carregarPropriedades() {
         const urlSearchParams = new URLSearchParams(window.location.search);
 
         let propertiesUrl = 'http://localhost:5502/properties/?limit=6&offset=0';
-        if (urlSearchParams.has('cityId')) {
-            const cityId = urlSearchParams.get('cityId');
-            propertiesUrl = `http://localhost:5502/properties/city/${cityId}?limit=6&offset=0`;
-        }
+        
+        if (urlSearchParams.has('cityId') || urlSearchParams.has('bairro') || urlSearchParams.has('valor') || urlSearchParams.has('quartos')) {
+            propertiesUrl = 'http://localhost:5502/properties/filtros?';
+
+            if (urlSearchParams.has('cityId')) {
+                const cityId = urlSearchParams.get('cityId');
+                propertiesUrl += `cityId=${cityId}&`;
+            }
+            if (urlSearchParams.has('bairro')) {
+                const bairro = urlSearchParams.get('bairro');
+                propertiesUrl += `bairro=${bairro}&`;
+            }
+            if (urlSearchParams.has('valor')) {
+                const valor = urlSearchParams.get('valor');
+                propertiesUrl += `valor=${valor}&`;
+            }
+            if (urlSearchParams.has('quartos')) {
+                const quartos = urlSearchParams.get('quartos');
+                propertiesUrl += `quartos=${quartos}&`;
+            }
+        
+        propertiesUrl += 'limit=6&offset=0';
+        
+    }
+
+
         if (urlSearchParams.has('propertyTypeId')) {
             const propertyTypeId = urlSearchParams.get('propertyTypeId');
             propertiesUrl = `http://localhost:5502/properties/propertyType/${propertyTypeId}?limit=6&offset=0`

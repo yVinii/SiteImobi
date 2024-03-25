@@ -11,7 +11,7 @@ module.exports = class PropertiesRepository {
             const query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.id = :id 
@@ -32,11 +32,11 @@ module.exports = class PropertiesRepository {
         const query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.active = true
-            ORDER BY prop.createdAt;
+            ORDER BY prop.createdAt DESC;
         `;
         const properties = await sequelize.query(query, {
             type: sequelize.QueryTypes.SELECT
@@ -68,7 +68,8 @@ module.exports = class PropertiesRepository {
                 SELECT * 
                 FROM Properties 
                 WHERE neighborhood LIKE :neighborhood 
-                AND active = true;
+                AND active = true
+                ORDER BY createdAt DESC
             `;
             
             const properties = await sequelize.query(query, {
@@ -88,11 +89,12 @@ module.exports = class PropertiesRepository {
             const query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.idBroker = :idBroker 
-            AND prop.active = true;
+            AND prop.active = true
+            ORDER BY prop.createdAt DESC
             `;
 
             const properties = await sequelize.query(query, {
@@ -111,11 +113,12 @@ module.exports = class PropertiesRepository {
             const query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.idCity = :idCity 
-            AND prop.active = true;
+            AND prop.active = true
+            ORDER BY prop.createdAt DESC
             `;
             const properties = await sequelize.query(query ,{
                 replacements: { idCity },
@@ -133,11 +136,12 @@ module.exports = class PropertiesRepository {
                 const query = `
                 SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
                 FROM Properties AS prop
-                INNER JOIN cities AS cit ON prop.idCity = cit.id
+                INNER JOIN city AS cit ON prop.idCity = cit.id
                 INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
                 INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
                 WHERE prop.idPropertyType = :idPropertyType 
-                AND prop.active = true;
+                AND prop.active = true
+                ORDER BY prop.createdAt DESC
                 `;
                 const properties = await sequelize.query(query, {
                     replacements: { idPropertyType },
@@ -155,11 +159,11 @@ module.exports = class PropertiesRepository {
             const query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.typeofsale = :typeofsale 
-            AND prop.active = true;
+            AND prop.active = true
             `;
             const properties = await sequelize.query(query, {
                 replacements: { typeofsale },
@@ -233,10 +237,10 @@ module.exports = class PropertiesRepository {
             let query = `
             SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
             FROM Properties AS prop
-            INNER JOIN cities AS cit ON prop.idCity = cit.id
+            INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
-            WHERE prop.active = true
+            WHERE prop.active = true 
         `;
             const replacements = {}; 
     

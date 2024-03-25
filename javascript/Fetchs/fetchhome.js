@@ -43,8 +43,9 @@ function preencherDetalhesPropriedade(property, index) {
     if (property.images && property.images.length > 0) {
         const imagesArray = JSON.parse(property.images);
         if (imagesArray.length > 0) {
+            const imagesArray = property.images.replace(/\\/g, '').replace(/"/g, '').replace(/]/g,'').replace(/\[/g,'');
             const imageElement = document.querySelector(`#images${index + 1} img`);
-            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray[0]}`;
+            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray}`;
         }
     }
 }
@@ -75,15 +76,22 @@ document.getElementById('buscarimovel').addEventListener('click', async function
     const valor = document.getElementById('valor-imovel').value;
     const quartos = document.getElementById('qtd-quartos').value;
 
-    const queryParams = new URLSearchParams({
-        cityId: cityId,
-        bairro: bairro,
-        valor: valor,
-        quartos: quartos
-    });
+    const queryParams = new URLSearchParams();
 
+    if (cityId !== "Selecione") {
+        queryParams.append('cityId', cityId);
+    }
+    if (bairro) {
+        queryParams.append('bairro', bairro);
+    }
+    if (valor !== "Selecione") {
+        queryParams.append('valor', valor);
+    }
+    if (quartos !== "Selecione") {
+        queryParams.append('quartos', quartos);
+    }
     await carregarPropriedades();
-    window.location.href = `pagimoveis.html?properties/filtros?${queryParams.toString()}`;
+    window.location.href = `pagimoveis.html?${queryParams.toString()}`;
 });
 
 const buttons = document.querySelectorAll('.buscartipo');

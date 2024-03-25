@@ -74,8 +74,8 @@ async function enviarDadosTemplate() {
         });
 
         if (response.ok) {
-            const responseData = await response.json();
             toggleMessage("Propriedade cadastrada com sucesso, em breve entraremos em contato !");
+            const responseData = await response.json();
         } else 
         {
             const responseData = await response.json();
