@@ -61,7 +61,12 @@ async function carregarPropriedades() {
         
         propertiesUrl += 'limit=6&offset=0';
         
-    }
+        }
+        if (urlSearchParams.has('tipoVenda')) {
+            const typeofsale = urlSearchParams.get('tipoVenda');
+            console.log(typeofsale)
+            propertiesUrl = `http://localhost:5502/properties/typeofsale?typeofsale=${typeofsale}`
+        }
 
 
         if (urlSearchParams.has('propertyTypeId')) {
