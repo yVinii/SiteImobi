@@ -1,8 +1,5 @@
 const element = document.querySelector(".pagination ul");
 
-// Chamando uma função, passando parâmetros e adicionando dentro de um elemento que é uma lista ordenada (ul)
-element.innerHTML = createPagination(totalPages, page);
-
 function createPagination(totalPages, page) {
   let liTag = '';
   let active;

@@ -31,10 +31,10 @@ async function carregarCidades() {
 }
 
 function preencherDetalhesPropriedade(property, index) {
+    if(index < 9){
     const titleElement = document.getElementById(`propertyTitle${index + 1}`);
     const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
     const priceElement = document.getElementById(`propertyPrice${index + 1}`);
-    const imageElement = document.getElementById(`images${index + 1}`);
     const buttonElement = document.getElementById(`propertyButton${index + 1}`);
 
     titleElement.textContent = `${property.title} - ${property.City} - ${property.neighborhood}`;
@@ -43,13 +43,15 @@ function preencherDetalhesPropriedade(property, index) {
     buttonElement.value = property.id;
 
     if (property.images && property.images.length > 0) {
-        const imagesArray = JSON.parse(property.images);
+        let imagesArray = JSON.parse(property.images);
         if (imagesArray.length > 0) {
-            const imagesArray = property.images.replace(/\\/g, '').replace(/"/g, '').replace(/]/g,'').replace(/\[/g,'');
+            imagesArray = property.images.replace(/\\/g, '').replace(/"/g, '').replace(/]/g,'').replace(/\[/g,'');
             const imageElement = document.querySelector(`#images${index + 1} img`);
-            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray}`;
+            let imagem =imagesArray.split(',');
+            imageElement.src = `/backend/public/images/PropertyImages/${imagem[0]}`;
         }
     }
+}
 }
 
 async function carregarPropriedades() {

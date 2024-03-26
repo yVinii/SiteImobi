@@ -11,15 +11,15 @@ async function fetchData(url) {
 }
 
 function populatePropertyCard(property, index ) {
+    if(index < 6){
     const titleElement = document.getElementById(`propertyTitle${index + 1}`);
     const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
     const priceElement = document.getElementById(`propertyPrice${index + 1}`);
     const descriptionElement = document.getElementById(`propertyDescription${index + 1}`);
-    const imageElement = document.getElementById(`images${index + 1}`);
 
     titleElement.textContent = `${property.City} - ${property.neighborhood}`;
     detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
-    descriptionElement.textContent = `${property.description}`;
+    descriptionElement.textContent = `${property.title}`;
     priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
 
 
@@ -28,9 +28,11 @@ function populatePropertyCard(property, index ) {
         if (imagesArray.length > 0) {
             const imagesArray = property.images.replace(/\\/g, '').replace(/"/g, '').replace(/]/g,'').replace(/\[/g,'');
             const imageElement = document.querySelector(`#images${index + 1} img`);
-            imageElement.src = `/backend/public/images/PropertyImages/${imagesArray}`;
+            let imagem =imagesArray.split(',');
+            imageElement.src = `/backend/public/images/PropertyImages/${imagem[0]}`;
         }
     }
+}
 }
 
 async function carregarPropriedades() {

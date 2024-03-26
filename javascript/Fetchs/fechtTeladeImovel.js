@@ -10,7 +10,6 @@ async function fetchData(url) {
 
 function populatePropertyCard(properties) {
     const property = properties.property[0];
-    console.log(properties.property[0])
     const titleElement = document.getElementById(`propertyTitle`);
     const registerElement = document.getElementById(`propertyRegister`);
     const detailsElement = document.getElementById(`propertyDetails`);
@@ -55,7 +54,6 @@ function populatePropertyCard(properties) {
         const swiperWrapper = document.getElementById(`div-principal`);
         if (imagesArray.length > 0) {
             imagesArray[0].forEach(imageSrc => {
-                console.log(imageSrc)
                 const swiperSlide = document.createElement('div');
                 swiperSlide.classList.add('swiper-slide', 'sw-slide');
                 const img = document.createElement('img');

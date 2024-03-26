@@ -30,7 +30,7 @@ module.exports = class PropertiesRepository {
 
     static async getAll() {
         const query = `
-            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
             FROM Properties AS prop
             INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
@@ -87,7 +87,7 @@ module.exports = class PropertiesRepository {
     static async getAllBrokerProperties(idBroker) {
         try {
             const query = `
-            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
             FROM Properties AS prop
             INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
@@ -111,7 +111,7 @@ module.exports = class PropertiesRepository {
     static async getAllCityProperties(idCity) {
         try {
             const query = `
-            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
             FROM Properties AS prop
             INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
@@ -134,7 +134,7 @@ module.exports = class PropertiesRepository {
     static async getAllTypeProperties(idPropertyType) {
         try {
                 const query = `
-                SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+                SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
                 FROM Properties AS prop
                 INNER JOIN city AS cit ON prop.idCity = cit.id
                 INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
@@ -157,7 +157,7 @@ module.exports = class PropertiesRepository {
     static async getByTypeOfSale(typeofsale) {
         try {
             const query = `
-            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
             FROM Properties AS prop
             INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id
@@ -236,7 +236,7 @@ module.exports = class PropertiesRepository {
     static async getPropertiesByFiltroRepository(filtros) {
         try {
             let query = `
-            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.*
+            SELECT prop.*, cit.name as City, pt.name as TypeProperty, bk.email, bk.name, bk.phone
             FROM Properties AS prop
             INNER JOIN city AS cit ON prop.idCity = cit.id
             INNER JOIN propertytypes AS pt ON  prop.idPropertyType = pt.id

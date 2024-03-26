@@ -125,7 +125,7 @@ const PropertyTypeRepository = require('../repositories/propertyTypeRepository')
         
     static async getAll(limit, offset) {
         try {
-            limit = limit ? Number(limit) : 9;
+            limit = limit ? Number(limit) : 8;
             offset = offset ? Number(offset) : 0;
 
             const total = await PropertiesRepository.countActive();
