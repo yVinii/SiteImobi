@@ -35,10 +35,12 @@ function preencherDetalhesPropriedade(property, index) {
     const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
     const priceElement = document.getElementById(`propertyPrice${index + 1}`);
     const imageElement = document.getElementById(`images${index + 1}`);
+    const buttonElement = document.getElementById(`propertyButton${index + 1}`);
 
     titleElement.textContent = `${property.title} - ${property.City} - ${property.neighborhood}`;
     detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
     priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
+    buttonElement.value = property.id;
 
     if (property.images && property.images.length > 0) {
         const imagesArray = JSON.parse(property.images);
@@ -93,6 +95,19 @@ document.getElementById('buscarimovel').addEventListener('click', async function
     await carregarPropriedades();
     window.location.href = `pagimoveis.html?${queryParams.toString()}`;
 });
+
+const verMaisButtons = document.querySelectorAll('.ver-mais-button');
+
+verMaisButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+  
+        event.preventDefault();
+
+        const propertyId = button.value;
+        window.location.href = `imovel.html?propertyId=${propertyId}`;
+    });
+});
+
 
 const buttons = document.querySelectorAll('.buscartipo');
 buttons.forEach(button => {

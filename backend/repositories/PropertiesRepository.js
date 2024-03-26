@@ -164,6 +164,7 @@ module.exports = class PropertiesRepository {
             INNER JOIN brokers AS bk ON prop.idBroker = bk.id 
             WHERE prop.typeofsale = :typeofsale 
             AND prop.active = true
+            ORDER BY prop.createdAt DESC
             `;
             const properties = await sequelize.query(query, {
                 replacements: { typeofsale },

@@ -35,9 +35,15 @@
                         <li class="menu-item">
                             <a class="sub-btn">Imóveis <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
-                                <li class="sub-item"><a href="pagimoveis.html">Venda</a></li>
-                                <li class="sub-item"><a href="pagimoveis.html">Locação</a></li>
-                                <li class="sub-item"><a href="pagimoveis.html">Lançamentos</a></li>
+                                <li class="sub-item">
+                                    <a href="pagimoveis.html?tipoVenda=Venda">Venda</a>
+                                </li>
+                                <li class="sub-item">
+                                    <a href="pagimoveis.html?tipoVenda=Aluguel">Locação</a>
+                                </li>
+                                <li class="sub-item">
+                                    <a href="pagimoveis.html">Lançamentos</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="menu-item">
@@ -77,21 +83,17 @@
         <main>
             <section>
                 <div class="identidade">
-                    <h1>REF: LS0056 - Casas</h1>
-                    <p>Endereço (bairro) - Cidade - Estado</p>
+                    <h1 id="propertyTitle">Titulo do Imovel</h1>
+                    <h1 id="propertyRegister">REF: LS0056 - Casas</h1>
+                    <p id="propertyAdress">Endereço (bairro) - Cidade - Estado</p>
                 </div>
                 <hr class="jogadinha-do-paqueta">
             </section>
 
             <section>
-                <div class="swiper sw-imovel mySwiper">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide sw-slide"><img src="../img/casa1.jfif" class="img-swiper-slide" alt=""></div>
-                      <div class="swiper-slide sw-slide"><img src="../img/images (2).jfif" class="img-swiper-slide" alt=""></div>
-                      <div class="swiper-slide sw-slide"><img src="../img/images (3).jfif" class="img-swiper-slide" alt=""></div>
-                      <div class="swiper-slide sw-slide"><img src="../img/casa1.jfif" class="img-swiper-slide" alt=""></div>
-                      <div class="swiper-slide sw-slide"><img src="../img/casa1.jfif" class="img-swiper-slide" alt=""></div>
-                      <div class="swiper-slide sw-slide"><img src="../img/casa1.jfif" class="img-swiper-slide" alt=""></div>
+                <div class="swiper sw-imovel mySwiper" id="images">
+                    <div class="swiper-wrapper" id="div-principal">
+                      
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -105,7 +107,7 @@
                                 <p>Descrição</p>
                               </div>
                               <div class="info-body">
-                                  <p class="info-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur quis autem voluptate. Aperiam quia sint veniam molestiae ad inventore, architecto cum aspernatur assumenda, rem repellat quisquam voluptatibus voluptate atque quas expedita similique veritatis facere velit nulla. Iste optio magnam omnis natus? Eos, nemo ipsa id suscipit earum tenetur, perspiciatis odio quasi quam corrupti illum ipsam? Expedita delectus itaque, dignissimos blanditiis autem enim quidem molestiae fuga quibusdam dolores odit illo? Voluptatem tempora earum sapiente cum, rem porro id aperiam ullam voluptatum, eius consequatur illum dolor culpa natus officiis!</p>
+                                  <p id="propertyDescription" class="info-text"></p>
                               </div>
                         </div>
                         <div class="separado">
@@ -113,7 +115,7 @@
                                 <p>Características do imóvel</p>
                               </div>
                               <div class="info-body">
-                                <ul class="info-ul">
+                                <ul class="info-ul" id="propertyDetails">
                                     <li>Características 1</li>
                                     <li>Características 2</li>
                                     <li>Características 3</li>
@@ -125,16 +127,16 @@
                     <div class="valor-saba-mais">
                         <h1>Informações</h1>
                         <hr>
-                        <div class="info-valor">
-                            <p class="info-tipo">Valor:</p>
-                            <p class="info-dineiro">R$ 0.000.000,00</p>
+                        <div class="info-valor" id="info-venda">
+                            <p class="info-tipo"></p>
+                            <p id="propertyPriceVenda" class="info-dineiro">R$ 0.000.000,00</p>
                         </div>
-                        <div class="info-valor">
-                            <p class="info-tipo">Aluguel:</p>
-                            <p class="info-dineiro">R$ 00.000,00</p>
+                        <div class="info-valor" id="info-aluguel">
+                            <p class="info-tipo"></p>
+                            <p id="propertyPriceAluguel" class="info-dineiro">R$ 00.000,00</p>
                         </div>
                         <div class="btn-contato-corretor">
-                            <a href="">Contato</a>
+                            <a id="PropertyCorretor" href="https://api.whatsapp.com/send?phone=5511972998439&text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es">Contato</a>
                         </div>
                     </div>
                 </div>
@@ -334,6 +336,8 @@
                 },
             });
         </script>
+     <!--Carregar Propriedade JS-->
+      <script src="../javascript/Fetchs/fechtTeladeImovel.js"></script>
 
         <!--Slider JS-->
         <script src="../javascript/slider.js"></script>
