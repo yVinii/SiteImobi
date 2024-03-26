@@ -360,6 +360,10 @@ section{
     transition: all 0.3s ease;
 }
 
+.ver-mais-button{
+    text-decoration: none;
+}
+
 .button:hover {
     background: #ffe7a0;
 }
