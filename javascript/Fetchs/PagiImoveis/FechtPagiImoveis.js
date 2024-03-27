@@ -16,11 +16,13 @@ function populatePropertyCard(property, index ) {
     const detailsElement = document.getElementById(`propertyDetails${index + 1}`);
     const priceElement = document.getElementById(`propertyPrice${index + 1}`);
     const descriptionElement = document.getElementById(`propertyDescription${index + 1}`);
+    const buttonElement = document.getElementById(`propertyButton${index + 1}`);
 
     titleElement.textContent = `${property.City} - ${property.neighborhood}`;
     detailsElement.textContent = `Quartos: ${property.nbedrooms} / Banheiros: ${property.nbathrooms} / Garagem: ${property.nvacancies} / Área: ${property.groundm2}m²`;
     descriptionElement.textContent = `${property.title}`;
     priceElement.textContent = `${property.typeofsale}: R$ ${property.value}`;
+    buttonElement.value = property.id;
 
 
     if (property.images && property.images.length > 0) {
@@ -92,6 +94,17 @@ async function carregarPropriedades() {
     }
 }
 
+const verMaisButtons = document.querySelectorAll('.ver-mais-button');
+
+verMaisButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+  
+        event.preventDefault();
+
+        const propertyId = button.value;
+        window.location.href = `imovel.html?propertyId=${propertyId}`;
+    });
+});
 
 
 
