@@ -82,7 +82,9 @@ async function carregarPropriedades() {
 
         const pagination = propertiesData.pagination;
         const totalPages = Math.ceil(pagination.total / pagination.limit);
-        createPagination(totalPages, 1);
+        const nextUrl = propertiesData.nextUrl;
+        const previousUrl = propertiesData.previousUrl;
+        createPagination(totalPages, 1, nextUrl, previousUrl);
 
         if (propertiesData) {
             const properties = propertiesData.properties;
