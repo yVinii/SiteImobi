@@ -53,7 +53,7 @@ async function enviarDados() {
         // Armazenar o token no localStorage
         localStorage.setItem('token', responseData.token);
         // Redirecionar para a próxima página
-        window.location.href =  `index.html`;
+        window.location.href =  `createimovel.html`;
     } else {
         // Se a resposta não foi bem-sucedida, tratar de acordo
         const responseData = await response.json();
