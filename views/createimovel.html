@@ -296,7 +296,7 @@
         const data = await response.json();
 
         if (response.ok) {
-            const cidades = data.city;
+            const cidades = data.cities;
             const selectElement = document.getElementById('cidade');
           
             selectElement.innerHTML = '';
@@ -330,9 +330,9 @@ async function carregarTipoPropriedade() {
         const data = await response.json();
 
         if (response.ok) {
-            const tipo = data.propertytype;
+            const tipo = data.propertyTypes;
             const selectElement = document.getElementById('propertytype');
-          
+            
             selectElement.innerHTML = '';
 
             const defaultOption = document.createElement('option');
@@ -366,9 +366,9 @@ async function carregarCorretores() {
         const data = await response.json();
 
         if (response.ok) {
-            const brokers = data.broker;
+            const brokers = data.brokers;
             const selectElement = document.getElementById('broker');
-          
+            
             selectElement.innerHTML = '';
 
             const defaultOption = document.createElement('option');
