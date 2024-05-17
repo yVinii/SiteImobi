@@ -1,38 +1,31 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+
 const app = express();
 
 // Middleware para analisar dados do corpo da solicitação
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//solve CORS
+// Resolver CORS
 app.use(cors({ origin: "*" }));
 
-//public folder for images
+// Pasta pública para imagens
 app.use(express.static("public"));
+
 // Incluindo a sincronização do banco de dados
 require("./db/syncDatabase");
 
-//rotas - endpoints
+// Rotas - endpoints
 const UserRoutes = require("./routes/UserRoutes");
 const PropertiesRoutes = require("./routes/PropertiesRoutes");
 const BrokerRoutes = require("./routes/BrokerRoutes");
 const TemplatesRoutes = require("./routes/TemplateRoutes");
 const CityRoutes = require("./routes/CityRoutes");
 const PropertyTypeRoutes = require("./routes/PropertyTypeRoutes");
-const ClienteRouters = require("./routes/ClientRoutes");
+const ClientsRouters = require("./routes/ClientRoutes");
 
-app.use("clients", ClienteRouters);
+app.use("/clients", ClientsRouters); // Corrigido aqui
 app.use("/users", UserRoutes);
 app.use("/properties", PropertiesRoutes);
 app.use("/broker", BrokerRoutes);

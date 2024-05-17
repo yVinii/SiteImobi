@@ -1,37 +1,40 @@
-// templatesService.js
-const TemplatesRepository = require('../repositories/templateRepository');
+const TemplatesRepository = require("../repositories/templateRepository");
+const templateSchema = require("../schemas/templateSchema");
 
 module.exports = class TemplatesService {
-    static async create(templateData) {
-        const { owner, emailOwner, phone, city, propertytype, description, typeofsale, images } = templateData;
+  static async create(templateData) {
+    const { error } = templateSchema.validate(templateData, {
+      abortEarly: false,
+    });
 
-        // Validação
-        if (!owner || !emailOwner || !phone || !city || !propertytype || !description || !typeofsale || images.length === 0) {
-            throw new Error('Todos os campos são obrigatórios');
-        }
-
-        return await TemplatesRepository.create({
-            owner,
-            emailOwner,
-            phone,
-            city,
-            propertytype,
-            description,
-            typeofsale,
-            images,
-            active: true,
-        });
+    if (error) {
+      throw new Error(error.details.map((detail) => detail.message).join(","));
     }
-
-    static async getById(id) {
-        return await TemplatesRepository.findById(id);
+    if (typeof templateData.phone === "string") {
+      templateData.phone = parseInt(templateData.phone, 10);
     }
+    return await TemplatesRepository.create({
+      owner,
+      emailOwner,
+      phone,
+      city,
+      propertytype,
+      description,
+      typeofsale,
+      images,
+      active: true,
+    });
+  }
 
-    static async getAllActive() {
-        return await TemplatesRepository.findAllActive();
-    }
+  static async getById(id) {
+    return await TemplatesRepository.findById(id);
+  }
 
-    static async deactivateById(id) {
-        await TemplatesRepository.deactivateById(id);
-    }
+  static async getAllActive() {
+    return await TemplatesRepository.findAllActive();
+  }
+
+  static async deactivateById(id) {
+    await TemplatesRepository.deactivateById(id);
+  }
 };

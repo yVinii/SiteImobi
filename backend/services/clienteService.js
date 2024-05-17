@@ -1,16 +1,15 @@
 const ClienteRepository = require("../repositories/clienteRepository");
+const clienteSchema = require("../schemas/clienteSchema");
 
 module.exports = class ClienteService {
   static async create(clienteData) {
-    if (!clienteData.name) {
-      throw new Error("Por favor insira um nome");
+    const { error } = clienteSchema.validate(clienteData, {
+      abortEarly: false,
+    });
+    if (error) {
+      throw new Error(error.details.map((detail) => detail.message).join(", "));
     }
-    if (!clienteData.email) {
-      throw new Error("Por favor insira um email valido");
-    }
-    if (!clienteData.phone) {
-      throw new Error("Por favor insira um telefone válido");
-    }
+    clienteData.phone = parseInt(clienteData.phone, 10);
     return await ClienteRepository.create(clienteData);
   }
 
