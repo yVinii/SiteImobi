@@ -1,0 +1,213 @@
+:root {
+    --body-color: #d5d5d5;
+    --sidebar-color: #FFF;
+    --primary-color: #cbb26a;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --btn-edit-color: #3c3cf1;
+    --btn-delete-color: #f13c3c;
+    --body-card-color: #fafafa;
+    --body-card-dark-color: #202020;
+}
+
+
+body.dark { 
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #cbb26a;
+    --primary-color-light: #3a3b3c;
+    --input-color: #2a2b2c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+.text h1 {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.header-imoveis-painel {
+    display: flex;
+    width: 100%;
+}
+
+.container-imoveis-painel {
+    width: 100%;
+    background-color: var(--sidebar-color);
+    border-radius: 15px;
+}
+
+.container-imoveis-painel-header {
+    display: flex;
+    width: 100%;
+    height: 12vh;
+    padding: 30px;
+}
+
+.titulo-container-imoveis,
+.buttons-imoveis-painel {
+    width: 50%;
+}
+
+.buttons-imoveis-painel {
+    display: flex;
+    justify-content: end;
+}
+
+.button-header {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+   
+.button-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #1fa800;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+   
+.button-header:hover {
+    color: #e8e8e8;
+}
+   
+.button-header:hover::before {
+    width: 100%;
+}
+
+/* Cards */
+.cards-imoveis-painel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    gap: 25px;
+    padding: 30px;
+}
+
+.card {
+    border-radius: 15px;
+    background-color: var(--body-card-color);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.50);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.50);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+body.dark .card {
+    background-color: var(--body-card-dark-color);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(128, 127, 127, 0.50);
+    box-shadow: 4px 8px 19px -3px rgba(119, 119, 119, 0.50);
+}
+
+.image-content,
+.card-content { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.image-content {
+    position: relative;
+    padding: 0;
+}
+
+.card-image { 
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding: 5px;
+}
+
+.card-image .card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.name-card {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--input-color);
+}
+
+body.dark .name-card {
+    color: var(--toggle-color);
+}
+
+.description {
+    font-size: 14px;
+    color: var(--input-color);
+    text-align: center;
+}
+
+body.dark .description {
+    color: var(--text-color);
+}
+
+.button {
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background-color: var(--btn-edit-color);
+}
+
+.btn-edit:hover {
+    background: #4f78e7;
+}
+
+.btn-delete {
+    background-color: var(--btn-delete-color);
+}
+
+.btn-delete:hover {
+    background: #e55757;
+}
+
+@media screen and (max-width: 1200px) {
+    .cards-imoveis-painel {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 745px) {
+    .cards-imoveis-painel {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+/* Cards fim */

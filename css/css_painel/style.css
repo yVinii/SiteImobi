@@ -1,2 +1,4 @@
 @import './global.css';
-@import './style_cadastrar.css'
+@import './style_cadastrar.css';
+@import './style_imoveis_painel.css';
+@import './funcionarios.css'

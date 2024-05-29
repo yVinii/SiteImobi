@@ -297,10 +297,9 @@ body.dark .switch::before {
 .home {
     position: absolute;
     top: 0;
-    top: 0;
-    left: 250px;
+    left: 120px;
     height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(100% - 120px);
     background-color: var(--body-color);
     transition: var(--tran-05);
 }

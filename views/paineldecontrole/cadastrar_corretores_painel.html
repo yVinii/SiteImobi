@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+</head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../../css/css_painel/style.css">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <!----===== JQuery ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+
+    <title>Painel de Controle</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../../img/imagens/035e6056-6275-4560-a32f-ada5a2c6d099-removebg-preview.png" alt="">
+                </span>
+                <div class="text logo-text">
+                    <span class="name">LSilva</span>
+                    <span class="profession">Negócios Imobiliários</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Painel</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="imoveis_painrl.html">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Imóveis</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Tarefas</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Clientes</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Funcionários</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Modo Escuro</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+    </nav>
+    
+    <section>
+            <div class="container">
+                <div class="form">
+                    <form action="">
+                        <div class="form-header">
+                            <div class="title">
+                                <h1>Cadastrar Funcionário</h1>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="firstname">Nome e Sobrenome</label>
+                                <input type="text" id="firstname" name="firstname" placeholder="Digite o nome do funcionário" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email" placeholder="Digite o email">
+                            </div>
+
+                            <div class="input-box">
+                                <label for="cargo">Cargo</label>
+                                <select name="cargo" id="cargo" required>
+                                    <option>Selecione</option>
+                                    <option value="1">Corretor</option>
+                                    <option value="2">Financeiro</option>
+                                    <option value="3">Recepcionista</option>
+                                    <option value="4">Marketing</option>
+                                    <option value="5">T.I</option>
+                                </select>
+                            </div>
+
+                            <div class="input-box info-add">
+                                <label for="infoadd">Descrição</label>
+                                <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Uploud -->
+
+                        <div class='wrapper'>
+                            <div class="upload">
+                                <div class="upload-wrapper">
+                                    <div class="upload-img">
+                                        <!-- image here -->
+                                    </div>
+                                    <div class="upload-info">
+                                        <p>
+                                            <span class="upload-info-value">0</span> arquivos(s) selecionados.
+                                        </p>
+                                    </div>
+                                    <div class="upload-area">
+                                        <div class="upload-area-img">
+                                            <img src="../img/upload.png" alt="">
+                                        </div>
+                                        <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
+                                    </div>
+                                    <input type="file" class="visually-hidden" id="upload-input" multiple>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="envie-button">
+                            <button type="submit" onclick="enviarDados()">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </section>
+    
+
+    <script src="../../javascript/Fetchs/PainelControle/"></script>
+    <script src="../../javascript/upload.js"></script>
+</body>
+</html>

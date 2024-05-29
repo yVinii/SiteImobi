@@ -1,0 +1,54 @@
+
+.tabela-div {
+    width: 80%; /* Defina a largura da div da tabela conforme necessário */
+    margin: 0 auto; /* Para centralizar a div horizontalmente */
+}
+
+.tabela {
+    padding-top: 20px;
+    width: 100%;
+    border-collapse: collapse; /* Para garantir que as bordas das células sejam juntas */
+}
+
+.tabela th,
+.tabela td {
+    border: 1px solid #333; /* Espessura e cor da borda das células */
+    padding: 8px; /* Espaçamento interno das células */
+    text-align: center; /* Alinhamento do texto centralizado nas células */ 
+}
+
+.tabela th {
+    background-color: #f2f2f2; /* Cor de fundo das células de cabeçalho */
+}
+
+.tabela th:hover {
+    background-color: #ddd; /* Cor de fundo ao passar o mouse no cabeçalho */
+}
+.tabela tbody tr:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse na linha */
+}
+
+.tabela tbody td:hover {
+    background-color: #ccc; /* Cor de fundo ao passar o mouse no item da linha */ 
+}
+
+.col-md-auto {
+    padding: 20px;
+}
+
+.row {
+    display: flex; /* Define a div como um flex container */
+}
+
+.dt-length, .dt-search{
+    flex: 1; /* Faz com que os elementos ocupem espaços iguais dentro da div flex */
+    margin-right: 750px; /* Adiciona espaço entre os elementos */
+}
+
+#dt-lenght-0 {
+    
+}
+
+#dt-lenght-0 label{
+    
+}

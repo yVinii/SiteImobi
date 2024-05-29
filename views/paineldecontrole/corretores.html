@@ -1,0 +1,263 @@
+!<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../../css/css_painel/style.css">
+
+    <!----===== Tawilnd CSS ===== -->
+    <link href="/dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!----===== JQuery ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" charset="UTF-8"> </script>
+    <title>Painel de Controle</title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../../img/imagens/035e6056-6275-4560-a32f-ada5a2c6d099-removebg-preview.png" alt="">
+                </span>
+                <div class="text logo-text">
+                    <span class="name">LSilva</span>
+                    <span class="profession">Negócios Imobiliários</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="imoveis_painrl.html">
+                            <i class='bx bx-building-house icon'></i>
+                            <span class="text nav-text">Imóveis</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="corretores.html">
+                            <i class='bx bx-group icon' ></i>
+                            <span class="text nav-text">Corretores</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notificações</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="../home.html">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Sair</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Modo Escuro</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+    </nav>
+    
+    <section class="home">
+        <div class="header-imoveis-painel">
+        </div>
+
+        <div class="container">
+            <div class="container-imoveis-painel">
+                <div class="container-imoveis-painel-header">
+                    <div class="titulo-container-imoveis text">
+                        <h1>Todos os Funcionários</h1>
+                    </div>
+                    <div class="buttons-imoveis-painel">   
+                        <a href="cadastrar_corretores_painel.html"><button class="button-header">Cadastrar <i class="bi bi-plus-lg"></i></button></a>
+                    </div>
+                </div>
+
+                <div class="cards-funcionarios-painel">
+
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="../../img/imageteste.enc" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Adriano</h2>
+                                <h2 class="funcao">Proprietário</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="../img/imagens/amanda.enc" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Amanda</h2>
+                                <h2 class="funcao">Administração</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>  
+
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="../img/thales.jpg" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Thales</h2>
+                                <h2 class="funcao">Marketing</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Maurício</h2>
+                                <h2 class="funcao">Corretor</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Jucilene</h2>
+                                <h2 class="funcao">Recepção</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="card-funcionario">
+                        <div class="card-funcionarios">
+                            <div class="image-content-funcionarios">
+                                <span class="overlay-funcionarios"></span>
+        
+                                <div class="card-funcionarios-image">
+                                    <img src="" alt="" class="card-funcionarios-img">
+                                </div>
+                            </div>
+    
+                            <div class="card-funcionarios-content">
+                                <h2 class="name-funcionario">Mayara</h2>
+                                <h2 class="funcao">Financeiro</h2>
+                                <p>email@gmail.com</p>
+                                <p>(xx) xxxxx-xxxx</p>
+                            </div>
+    
+                            <div class="card-funcionarios-button">
+                                <button class="button btn-edit">Editar</button>
+                                <button class="button btn-delete">Excluir</button>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+        </div>
+    </section>
+<script src="../../javascript/nav.js"></script>
+</body>
+</html>

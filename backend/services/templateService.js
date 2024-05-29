@@ -13,6 +13,16 @@ module.exports = class TemplatesService {
     if (typeof templateData.phone === "string") {
       templateData.phone = parseInt(templateData.phone, 10);
     }
+    const {
+      owner,
+      emailOwner,
+      phone,
+      city,
+      propertytype,
+      description,
+      typeofsale,
+      images,
+    } = templateData;
     return await TemplatesRepository.create({
       owner,
       emailOwner,

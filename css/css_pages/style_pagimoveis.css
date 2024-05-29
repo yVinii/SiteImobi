@@ -321,7 +321,7 @@ section{
 
 @media screen and (max-width: 420px) {
     section{
-        padding: 20px 5px;
+        padding: 20px 10px;
     }
 
     .pagination ul li {
@@ -356,6 +356,14 @@ section{
 .card {
     border-radius: 15px;
     background-color: var(--bg-nav-color);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.50);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.50);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: scale(1.01);
 }
 
 .image-content,
@@ -407,9 +415,6 @@ section{
     margin: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-.ver-mais-button{
-    text-decoration: none;
 }
 
 .button:hover {
