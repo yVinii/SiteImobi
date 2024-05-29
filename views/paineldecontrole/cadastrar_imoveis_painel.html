@@ -85,7 +85,7 @@
     <section>
             <div class="container">
                 <div class="form">
-                    <form action="">
+                    <form action="" id="form-data">
                         <div class="form-header">
                             <div class="title">
                                 <h1>Cadastrar Imóvel</h1>
@@ -95,62 +95,48 @@
                         <div class="input-group">
                             <div class="input-box">
                                 <label for="titulo">Título</label>
-                                <input type="text" id="titulo" name="titulo" placeholder="Digite o título" required>
+                                <input type="text" id="title" name="title" placeholder="Digite o título" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="firstname">Nome do Proprietário</label>
-                                <input type="text" id="firstname" name="firstname" placeholder="Digite o nome do proprietário" required>
+                                <input type="text" id="owner" name="owner" placeholder="Digite o nome do proprietário" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="ownerPhone">Telefone Proprietário</label>
+                                <input type="phone" id="ownerPhone" name="ownerPhone" placeholder="Digite o Telefone do Proprietário" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="corretorl">Corretor</label>
-                                <select name="corretorl" id="corretorl">
+                                <select name="broker" id="broker">
                                     <option>Selecione</option>
-                                    <option value="1">Adriano</option>
-                                    <option value="2">Maurício</option>
-                                    <option value="3">Vinícius</option>
                                 </select>
                             </div>
 
                             <div class="input-box">
-                                <label for="cep">CEP</label>
-                                <input type="number" id="cep" name="cep" placeholder="Digite o CEP" required>
-                            </div>
-
-                            <div class="input-box">
-                                <label for="selctcdd">Cidade</label>
-                                <select name="selectcdd" id="selectcdd">
+                                <label for="city">Cidade</label>
+                                <select name="city" id="cidade">
                                     <option>Selecione</option>
-                                    <option value="1">São Roque</option>
-                                    <option value="2">Mairinque</option>
-                                    <option value="3">Ibiúna</option>
-                                    <option value="4">Araçariguama</option>
-                                    <option value="5">Alumínio</option>
                                 </select>
                             </div>
 
                             <div class="input-box">
                                 <label for="bairro">Bairro</label>
-                                <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro" required>
+                                <input type="text" id="neighborhood" name="neighborhood" placeholder="Digite o bairro" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="endereço">Endereço</label>
-                                <input type="text" id="endereço" name="endereço" placeholder="Digite o endereço" required>
+                                <input type="text" id="address" name="address" placeholder="Digite o endereço" required>
                             </div>
 
                              <!--Select tipo de imóvel-->
                             <div class="input-box">
                                 <label for="tipoimovel">Tipo de imóvel</label>
-                                <select name="tipoimovel" id="tipoimovel">
+                                <select name="propertyType" id="propertytype">
                                     <option>Selecione</option>
-                                    <option value="1">Apartamento</option>
-                                    <option value="2">Casa</option>
-                                    <option value="3">Comercial</option>
-                                    <option value="4">Galpões</option>
-                                    <option value="5">Rural</option>
-                                    <option value="6">Terrenos</option>
                                 </select>
                             </div>
 
@@ -167,42 +153,47 @@
 
                             <div class="input-box">
                                 <label for="areaM">Área em m²</label>
-                                <input type="text" id="areaM" name="areaM" placeholder="Digite a área em m²" required>
+                                <input type="text" id="groundm2" name="groundm2" placeholder="Digite a área em m²" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="areaConstruida">Área Construída</label>
-                                <input type="text" id="areaConstruida" name="areaConstruida" placeholder="Digite a área construída" required>
+                                <input type="text" id="buildm2" name="buildm2" placeholder="Digite a área construída" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="quartos">Quartos</label>
-                                <input type="number" id="quartos" name="quartos" placeholder="Número de quartos" required>
+                                <input type="number" id="nbedrooms" name="nbedrooms" placeholder="Número de quartos" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="banheiros">Banheiros</label>
-                                <input type="number" id="banheiros" name="banheiros" placeholder="Número de banheiros" required>
+                                <input type="number" id="nbathrooms" name="nbathrooms" placeholder="Número de banheiros" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="nsuites">Suítes</label>
+                                <input type="number" id="nsuites" name="nsuites" placeholder="Digite o número de suítes" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="garagem">Vagas de Garagem</label>
-                                <input type="number" id="garagem" name="garagem" placeholder="Número de vagas" required>
+                                <input type="number" id="nvacancies" name="nvacancies" placeholder="Número de vagas" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="registro">Registro</label>
-                                <input type="number" id="registro" name="registro" placeholder="Número de Registro" required>
+                                <input type="number" id="register" name="register" placeholder="Número de Registro" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="valorPropriedade">Valor Propriedade</label>
-                                <input type="text" id="valorPropriedade" name="valorPropriedade" placeholder="R$ 00.000.000,00" required>
+                                <input type="text" id="value" name="value" placeholder="R$ 00.000.000,00" required>
                             </div>
 
                             <div class="input-box info-add">
                                 <label for="infoadd">Dados do imóvel</label>
-                                <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
+                                <textarea id="description" name="description" placeholder="Digite as informações" required rows="3"></textarea>
                             </div>
                         </div>
 
@@ -230,12 +221,192 @@
                             </div>
                         </div>
                         <div class="envie-button">
-                            <button type="submit" onclick="enviarDados()">Enviar</button>
+                            <button type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>
             </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('form-data').addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    enviarDados();
+                });
+            carregarCorretores();
+            carregarCidades();
+            carregarTipoPropriedade();
+            });
+
+            async function carregarCidades() {
+                try {
+                    const response = await fetch('http://localhost:5502/city/');
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const cidades = data.cities;
+                        const selectElement = document.getElementById('cidade');
+
+                        selectElement.innerHTML = '';
+
+                        const defaultOption = document.createElement('option');
+                        defaultOption.value = '';
+                        defaultOption.text = 'Selecione';
+                        selectElement.appendChild(defaultOption);
+
+
+                        cidades.forEach((city) => {
+                            const option = document.createElement('option');
+                            option.text = city.name;
+                            option.value = city.id;
+                            selectElement.appendChild(option);
+                        });
+
+                        console.log('Cidades carregadas com sucesso!');
+                    } else {
+                        console.log('Erro ao obter cidades:', response.statusText);
+                    }
+                } catch (error) {
+                    console.log('Erro na requisição:', error);
+                }
+            }
+
+
+            async function carregarTipoPropriedade() {
+                try {
+                    const response = await fetch('http://localhost:5502/propertytype/');
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const tipo = data.propertyTypes;
+                        const selectElement = document.getElementById('propertytype');
+
+                        selectElement.innerHTML = '';
+
+                        const defaultOption = document.createElement('option');
+                        defaultOption.value = '';
+                        defaultOption.text = 'Selecione';
+                        selectElement.appendChild(defaultOption);
+
+
+                        tipo.forEach((propertytype) => {
+                            const option = document.createElement('option');
+                            option.text = propertytype.name;
+                            option.value = propertytype.id;
+                            selectElement.appendChild(option);
+                        });
+
+                        console.log('Tipo carregados com sucesso!');
+                    } else {
+                        console.log('Erro ao obter tipo:', response.statusText);
+                    }
+                } catch (error) {
+                    console.log('Erro na requisição:', error);
+                }
+            }
+
+
+
+
+            async function carregarCorretores() {
+                try {
+                    const response = await fetch('http://localhost:5502/broker/');
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const brokers = data.brokers;
+                        const selectElement = document.getElementById('broker');
+
+                        selectElement.innerHTML = '';
+
+                        const defaultOption = document.createElement('option');
+                        defaultOption.value = '';
+                        defaultOption.text = 'Selecione';
+                        selectElement.appendChild(defaultOption);
+
+
+                        brokers.forEach((broker) => {
+                            const option = document.createElement('option');
+                            option.value = broker.id;
+                            option.text = broker.name;
+                            selectElement.appendChild(option);
+                        });
+
+                        console.log('Corretores carregados com sucesso!');
+                    } else {
+                        console.error('Erro ao obter corretores:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Erro na requisição:', error);
+                }
+            }
+
+        
+            async function enviarDados() {
+                try {
+                    const title = document.getElementById('title').value;
+                    const address = document.getElementById('address').value;
+                    const value = document.getElementById('value').value;
+                    const tipoimovel = document.getElementById('propertytype').value;
+                    const bairro = document.getElementById('neighborhood').value;
+                    const banheiros = document.getElementById('nbathrooms').value;
+                    const vagas = document.getElementById('nvacancies').value;
+                    const registro = document.getElementById('register').value;
+                    const suites = document.getElementById('nsuites').value;
+                    const area = document.getElementById('groundm2').value;
+                    const construido = document.getElementById('buildm2').value;
+                    const quartos = document.getElementById('nbedrooms').value;
+                    const city = document.getElementById('cidade').value;
+                    const corretor = document.getElementById('broker').value;
+                    const tipoNegociacao = document.getElementById('tipo-negociacao').value;
+                    const owner = document.getElementById('owner').value;
+                    const ownerPhone = document.getElementById('ownerPhone').value;
+                    const infoadd = document.getElementById('description').value;
+                    const files = document.getElementById('upload-input').files;
+
+                    const formData = new FormData();
+                    formData.append('title', title);
+                    formData.append('address', address);
+                    formData.append('value', value);
+                    formData.append('propertyTypeId', tipoimovel);
+                    formData.append('cityId', city);
+                    formData.append('typeofsale', tipoNegociacao);
+                    formData.append('description', infoadd);
+                    formData.append('brokerId', corretor);
+                    formData.append('neighborhood', bairro);
+                    formData.append('nbedrooms', quartos);
+                    formData.append('buildm2', construido);
+                    formData.append('groundm2', area);
+                    formData.append('nsuites', suites);
+                    formData.append('nvacancies', vagas);
+                    formData.append('owner', owner);
+                    formData.append('ownerPhone', ownerPhone);
+                    formData.append('nbathrooms', banheiros);
+                    formData.append('register', registro);
+
+
+                    for (const file of files) {
+                        formData.append('images', file);
+                    }
+
+                    const response = await fetch('http://localhost:5502/properties/create', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (response.ok) {
+                        const responseData = await response.json();
+                        console.log(responseData);
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Erro ao enviar dados:', response.status, errorData.message);
+                    }
+                } catch (error) {
+                    console.error('Erro na requisição:', error);
+                }
+            }
+    </script>
     
 
     <script src="../../javascript/nav.js"></script>

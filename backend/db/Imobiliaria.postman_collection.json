@@ -1,0 +1,1204 @@
+{
+	"info": {
+		"_postman_id": "f01a21aa-d56d-4a0f-b7b6-63adf5834e04",
+		"name": "Imobiliaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29838702"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/users/register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Arthur Bechir\",\r\n    \"email\":\"arthurbechir@gmail.com\",\r\n    \"phone\": \"11978721140\",\r\n    \"password\" : \"1234\",\r\n    \"confirmPassword\" : \"1234\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"davidlucaskl@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/checkuser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}users/checkuser",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"checkuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/edit/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"David\",\r\n    \"email\": \"davidlucaskl@gmail.com\",\r\n    \"phone\": \"15-996404047\",\r\n    \"password\": \"1308\",\r\n    \"confirmpassword\":\"1308\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/users/edit/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"users",
+								"edit",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "/properties/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "typeofsale",
+									"value": "Aluguel",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua Matheus Ziecjiisk N7",
+									"type": "text"
+								},
+								{
+									"key": "neighborhood",
+									"value": "Canguera",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "nbedrooms",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "buildm2",
+									"value": "150",
+									"type": "text"
+								},
+								{
+									"key": "groundm2",
+									"value": "160",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Apartamento todo mobiliado, em condominio seguro e proximo ao centro, estrutura muito boa, com amplo salão de jogos, academia , piscina e brinquedoteca para as ciranças",
+									"type": "text"
+								},
+								{
+									"key": "nsuites",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nvacancies",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "nbathrooms",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "register",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "Arhur Bechir",
+									"type": "text"
+								},
+								{
+									"key": "ownerPhone",
+									"value": "119875752514",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/apartamento5.jpg",
+										"/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/apartamento2.jpg"
+									]
+								},
+								{
+									"key": "cityId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "propertyTypeId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "brokerId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Apartamento novo e completo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5502/properties/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/BuscarTodas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/getAllBrokerProperties/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/getAllBrokerProperties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"getAllBrokerProperties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "properties/Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/32",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/Editar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "typeofsale",
+									"value": "Venda",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Rua Zidane Jacio , 77, Verava, Ibiuna, SP",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "100.00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nbedrooms",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "buildm2",
+									"value": "500",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "groundm2",
+									"value": "2000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "grande casa no centro da cidade tranquila e pacata tudo novo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nsuites",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nvacancies",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nbathrooms",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "register",
+									"value": "1212",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/chacara3.jpg",
+										"/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/chacara9.jpg",
+										"/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/chacara6.jpg"
+									]
+								},
+								{
+									"key": "brokerId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "cityId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "propertyTypeId",
+									"value": "6",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Barraco",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "neighborhood",
+									"value": "Verava",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5502/properties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/BuscarPorBairro",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"neighborhood\": \"Centro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/properties/unique-neighborhoods?neighborhood=Centro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"unique-neighborhoods"
+							],
+							"query": [
+								{
+									"key": "neighborhood",
+									"value": "Centro"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/Cidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/city/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"city",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/Tipo Propriedade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/propertyType/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"propertyType",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tipo de venda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/typeofsale?typeofsale=Aluguel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"typeofsale"
+							],
+							"query": [
+								{
+									"key": "typeofsale",
+									"value": "Aluguel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/properties/filtros?cityId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"properties",
+								"filtros"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brokers",
+			"item": [
+				{
+					"name": "/broker/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Vinicius Fabrini\",\r\n    \"email\": \"viniciusfabrini@gmail.com\",\r\n    \"phone\": \"11940629779\",\r\n    \"creci\": \"2424\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/broker/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"broker",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/broker/BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/broker/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"broker",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/broker/BuscarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/broker/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"broker",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/broker/Editar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGF2aWQgTHVjYXMiLCJpZCI6MSwiaWF0IjoxNzEwNDIyNTQyfQ.mzae9N09sFg9CEJCEgx7hIaJonQ4FQEgWQcuXwq0ono",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"David Lucas Rosa\",\r\n    \"email\" : \"davidlucas@gmail.com.br\",\r\n    \"phone\" : \"1596353517\",\r\n    \"creci\" : \"1313\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/broker/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"broker",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/broker/ExcluirBroker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/broker/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"broker",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "/templates/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "owner",
+									"value": "David Lucas",
+									"type": "text"
+								},
+								{
+									"key": "emailOwner",
+									"value": "davidlucask@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "typeofsale",
+									"value": "Aluguel",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Ibiúna",
+									"type": "text"
+								},
+								{
+									"key": "propertytype",
+									"value": "Galpão",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Galpão comercial próximo ao centro da cidade, espaço amplo ideal para emprendimentos",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "15996353517",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/Ti-Docknox/Documents/SiteImobi/img/testes/galpao4.jpg"
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5502/templates/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"templates",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/templates/BuscarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/templates/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"templates",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/templates/BuscarPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/templates/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"templates",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "template/delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/templates/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"templates",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "/city/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"São Roque\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/city/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"city",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/city/getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/city/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"city",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/city/GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/city/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"city",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyType",
+			"item": [
+				{
+					"name": "/propertytype/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Apartamento\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/propertyType/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"propertyType",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/propertytype/getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/propertyType/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"propertyType",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/propertytype/getbyId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/propertyType/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"propertyType",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Clienteadd",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Arthur\",\r\n    \"email\":\"arthurbechir@gmail.com\",\r\n    \"phone\":15988747471,\r\n    \"idProperty\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5502/clients/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"clients",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5502/clients/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5502",
+							"path": [
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:5000/",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGF2aWQiLCJpZCI6MSwiaWF0IjoxNjk2ODYzMTAyfQ.ygHilkXVIhNvmqka9H8UZiDLor0kPO7Upc6O-5y1E_s",
+			"type": "string"
+		}
+	]
+}
