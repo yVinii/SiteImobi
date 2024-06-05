@@ -101,122 +101,24 @@
                     </div>
                 </div>
 
-                <div class="cards-imoveis-painel">  
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="../img/chacarateste.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name-card">Tipo de Propriedade</h2>
-                            <h2 class="name-card">Endereço</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <div class="buttons-card-imovel">
-                                <button class="button btn-edit">Editar</button>
-                                <button class="button btn-delete">Excluir</button>
-                            </div>
-                        </div>
+                <div class="modal" id="deleteModal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <p>Tem certeza que deseja excluir este item?</p>
+                        <button class="btn btn-no" id="cancelDelete">Não</button>
+                        <button class="btn btn-yes" id="confirmDelete">Sim</button>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="cards-imoveis-painel" id="property-cards-container">  
+                    
+                 </div>
     </section>
     
 
 
     <!-- Js Navbar Painel-->
-    <script src="../javascript/nav.js"></script>
+    <script src="../../javascript/nav.js"></script>
+    <script src="../../javascript/Fetchs/PainelControle/PropriedadePainel/carregarPropriedadesPainel.js"></script>
 </body>
 </html>
