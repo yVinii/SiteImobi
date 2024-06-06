@@ -13,17 +13,13 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
-    
+    margin-left: 50;
 }
 
-.card-funcionario {
-    display: flex;
-    margin: 0 80px;
-    margin-bottom: 25px;
-}
 
 .card-funcionarios {
-    width: 320px;
+    margin-top: 25px;
+    width: 300px;
     border-radius: 25px;
     background-color: var(--color-light);
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.50);

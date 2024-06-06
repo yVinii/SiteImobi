@@ -47,19 +47,19 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="./cadastrar_corretores_painel.html">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Tarefas</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="./cadastrar_imoveis_painel.html">
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Clientes</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="./corretores.html">
                             <i class='bx bx-pie-chart-alt icon' ></i>
                             <span class="text nav-text">Funcionários</span>
                         </a>
@@ -90,17 +90,17 @@
     <section>
             <div class="container">
                 <div class="form">
-                    <form action="">
+                    <form action="" id="form-data">
                         <div class="form-header">
                             <div class="title">
-                                <h1>Cadastrar Funcionário</h1>
+                                <h1>Cadastrar Corretor</h1>
                             </div>
                         </div>
 
                         <div class="input-group">
                             <div class="input-box">
                                 <label for="firstname">Nome e Sobrenome</label>
-                                <input type="text" id="firstname" name="firstname" placeholder="Digite o nome do funcionário" required>
+                                <input type="text" id="nome" name="firstname" placeholder="Digite o nome do funcionário" required>
                             </div>
 
                             <div class="input-box">
@@ -110,9 +110,15 @@
 
                             <div class="input-box">
                                 <label for="email">Email</label>
-                                <input type="text" id="email" name="email" placeholder="Digite o email">
+                                <input type="email" id="email" name="email" placeholder="Digite o email">
                             </div>
 
+                            <div class="input-box">
+                                <label for="creci">Creci / Registro</label>
+                                <input type="text" id="creci" name="creci" placeholder="Digite o registro">
+                            </div>
+
+                            <!--
                             <div class="input-box">
                                 <label for="cargo">Cargo</label>
                                 <select name="cargo" id="cargo" required>
@@ -124,26 +130,30 @@
                                     <option value="5">T.I</option>
                                 </select>
                             </div>
-
+                                -->
+                            <!--
                             <div class="input-box info-add">
                                 <label for="infoadd">Descrição</label>
                                 <textarea id="infoadd" name="infoadd" placeholder="Digite as informações" required rows="3"></textarea>
                             </div>
+                            -->
                         </div>
 
-                        <!-- Uploud -->
+                        <!-- Uploud 
 
                         <div class='wrapper'>
                             <div class="upload">
                                 <div class="upload-wrapper">
                                     <div class="upload-img">
-                                        <!-- image here -->
+                                        image here  
                                     </div>
                                     <div class="upload-info">
                                         <p>
                                             <span class="upload-info-value">0</span> arquivos(s) selecionados.
                                         </p>
                                     </div>
+                                    
+                                    
                                     <div class="upload-area">
                                         <div class="upload-area-img">
                                             <img src="../img/upload.png" alt="">
@@ -152,17 +162,18 @@
                                     </div>
                                     <input type="file" class="visually-hidden" id="upload-input" multiple>
                                 </div>
+                                -->
                             </div>
                         </div>
                         <div class="envie-button">
-                            <button type="submit" onclick="enviarDados()">Enviar</button>
+                            <button type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>
             </div>
     </section>
     
-
+    <script src="../../javascript/Fetchs/PainelControle/CadastrarCorretores/cadastrarCorretores.js"></script>
     <script src="../../javascript/nav.js"></script>
     <script src="../../javascript/upload.js"></script>
 </body>

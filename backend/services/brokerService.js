@@ -84,7 +84,7 @@ module.exports = class BrokerService {
     if (!brokerExist) {
       throw new Error("Corretor não pode ser excluido");
     }
-    if (properties) {
+    if (properties.length > 0) {
       throw new Error(
         "Corretor não pode ser excluido, Propriedades vinculadas"
       );
