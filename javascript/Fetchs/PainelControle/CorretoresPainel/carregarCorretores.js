@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmDelete = document.getElementById("confirmDelete");
   const cancelDelete = document.getElementById("cancelDelete");
 
-  debugger;
-
   closeModal.addEventListener("click", () => {
     modal.style.display = "none";
   });
@@ -41,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             response.status,
             errorText
           );
-          alert("Erro ao excluir corretor.", errorText.message);
+          alert("Erro ao excluir corretor.", errorText);
         }
       } catch (error) {
         console.error("Erro na requisição de exclusão:", error.message);
@@ -63,7 +61,6 @@ async function carregarCorretores() {
   try {
     const response = await fetch("http://localhost:5502/broker/");
     const data = await response.json();
-    debugger;
     if (response.ok) {
       const corretores = data.brokers;
       corretores.forEach((broker) => CriarCardsCorretores(broker));
@@ -79,12 +76,11 @@ async function carregarCorretores() {
 function CriarCardsCorretores(broker) {
   const container = document.getElementById("broker-cards-container");
 
-  //const card = document.createElement("div");
-  const card2 = document.createElement("div");
-  //card.className = "card-funcionario";
-  card2.className = "card-funcionarios";
+  const card = document.createElement("div");
 
-  card2.innerHTML = `
+  card.className = "card-funcionarios";
+
+  card.innerHTML = `
     <div class="image-content-funcionarios">
       <span class="overlay-funcionarios"></span>
       <div class="card-image">
@@ -94,8 +90,10 @@ function CriarCardsCorretores(broker) {
     <div class="card-funcionarios-content">
       <h2 class="name-funcionario">${broker.name || "Nome corretor"}</h2>
       <h2 class="funcao">${broker.email || "Email"}</h2>
-      <p class="name-funcionario">${broker.creci || "Email não disponível"}</p>
-       <p class="name-funcionario">${
+      <p class="name-funcionario"> Registro : ${
+        broker.creci || "Email não disponível"
+      }</p>
+       <p class="name-funcionario"> Telefone : ${
          broker.phone || "Telefone não disponível"
        }</p>
        </div>
@@ -105,9 +103,9 @@ function CriarCardsCorretores(broker) {
       </div>
   `;
 
-  container.appendChild(card2);
+  container.appendChild(card);
 
-  const deleteButton = card2.querySelector(".btn-delete");
+  const deleteButton = card.querySelector(".btn-delete");
 
   deleteButton.addEventListener("click", function () {
     const modal = document.getElementById("deleteModal");
